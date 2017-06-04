@@ -28,6 +28,10 @@
                 </thead>
                 <tbody>
                   <?php 
+<<<<<<< HEAD
+=======
+
+>>>>>>> c1704433ee45f7adfdcdf4a5a3e527ca71555d46
                     $no=0; 
                       $query = mysql_query("SELECT * FROM tbl_selectclass s JOIN ref_operator o ON s.operator_id_fk = o.operator_id JOIN ref_rooms r ON s.rooms_id = r.rooms_id JOIN ref_coursename c ON s.coursename_id = c.coursename_id");
                       // tadinya untuk kondisi syaratya ada ini >'".$_SESSION['operator_id']."';
