@@ -1,5 +1,5 @@
 <?php 
-$id = $_GET['coursematerial_id'];
+$id = $_GET['materi'];
 $queryRowMateri = mysql_query("SELECT * FROM trx_coursematerial where coursematerial_id = '".$id."'");
 $rowMateri = mysql_fetch_array($queryRowMateri);
     if (isset($_POST['ubah'])) {
@@ -8,6 +8,10 @@ $rowMateri = mysql_fetch_array($queryRowMateri);
                           $move = move_uploaded_file($_FILES['coursematerial_file']['tmp_name'], '../upload/materi/'.$coursematerial_file);
 
             if ($move) {
+              $sqlMateri=mysql_query("SELECT coursematerial_file from trx_coursematerial where coursematerial_id='".$id."'");
+              $dataSilabus=mysql_fetch_array($sqlSilabuss);
+              unlink('../upload/silabus/'.$dataSilabus['silabus_file']);
+
               $queryUpdate  = mysql_query("UPDATE trx_coursematerial SET 
                                     coursematerial_title = '".$_POST['coursematerial_title']."',
                                     coursematerial_file = '".$coursematerial_file."',
@@ -18,7 +22,7 @@ $rowMateri = mysql_fetch_array($queryRowMateri);
                                     operator_id_fk = '".$_SESSION['operator_id']."'
                                     WHERE coursematerial_id = '".$id."'
                                      ");
-                 
+                          echo "<script> alert('Data Berhasil Diubah'); location.href='index.php?hal=master/materi/list' </script>";
 
             }else{
                 mysql_query("UPDATE trx_coursematerial SET 
@@ -29,15 +33,27 @@ $rowMateri = mysql_fetch_array($queryRowMateri);
                                     coursename_id_fk = '".$_POST['coursename_id_fk']."',
                                     operator_id_fk = '".$_SESSION['operator_id']."'
                                     WHERE coursematerial_id = '".$id."'
-                                     ");              
+                                     ");             
+
+                          echo "<script> alert('Data Berhasil Diubah'); location.href='index.php?hal=master/materi/list' </script>"; 
             }
+          }
+            else{
+              $queryUpdate  = mysql_query("UPDATE trx_coursematerial SET 
+                                    coursematerial_title = '".$_POST['coursematerial_title']."',
+                                    coursematerial_description = '".$_POST['coursematerial_description']."',
+                                    coursematerial_dateofposted = NOW(),
+                                    coursematerial_type = '".$_POST['coursematerial_type']."',
+                                    coursename_id_fk = '".$_POST['coursename_id_fk']."',
+                                    operator_id_fk = '".$_SESSION['operator_id']."'
+                                    WHERE coursematerial_id = '".$id."'
+                                     ");
 
+           echo "<script> alert('Data Berhasil Diubah'); location.href='index.php?hal=master/materi/list' </script>";
 
       }
-      if ($queryUpdate) {
-         echo "<script> alert('Data Berhasil Disimpan'); location.href='index.php?hal=master/materi/list' </script>";exit;
-      }
-    }
+     
+    }//tutup ubah
  ?>
   <section class="content-header">
       <h1>
@@ -108,6 +124,8 @@ $rowMateri = mysql_fetch_array($queryRowMateri);
                <label class="col-md-3" ><p align="right">File (PDF,WORD,VIDEO)</p></label>
                 <div class="col-md-3">
                   <input type="file" class="form-control"  name="coursematerial_file">
+                  <!-- <> disini untuk menampilkan file sebelumnya-->
+                   <label><?php echo $rowMateri['coursematerial_file']; ?></label>
                 </div>
             </div>
             <div class="form-group row">

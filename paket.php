@@ -18,7 +18,10 @@
             
             if ($cekBooking > 0) {
               echo "<center><a href='index.php?hal=booking' class='btn btn-warning'><span class='fa fa-shopping-cart fa-2x'></span> Data Booking Anda</a></center>";
-             }
+              } 
+            //  else{
+             //   echo "<script> alert('Maaf anda belum Login , silahkan Login sistem terlebih dahulu'); location.href='index.php?hal=booking' </script>";
+             // }
             }
             ?>
            

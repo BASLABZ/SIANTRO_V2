@@ -3,7 +3,7 @@
     <div style="background-color: #26ad5f;">
       <div id="topbar" class="topbar">
         <div class="container">
-          <div class="row">
+          <div class="row"> 
             <div class="col-sm-6">
               <div class="nav-utility">
                 <span class="nav-item">Jl. Medika, Sekip Utara, YK</span>
@@ -44,8 +44,8 @@
           <div class="container">
             <div class="row">
               <div class="col-sm-3">
-                <div class="site-branding">
-                  <h1 class="site-title"><a href="index.php" rel="home">Antro.</a></h1>
+                <div class="site-branding"><h6 class="site-title" style="font-size: 22px;"><img src="assets/img/logo_ugm.png" width="10%" height="10%">&nbsp<a href="index.php" rel="home">Antropologi Forensik</a></h6>
+                  
                 </div><!-- .site-branding -->
               </div><!-- .col-sm-3 -->
 

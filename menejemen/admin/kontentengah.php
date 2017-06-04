@@ -15,8 +15,7 @@
       <div class="callout callout-success">
         <h4>Selamat Datang Di Pelatihan Kursus ANTROPOLOGI FORENSIK UGM</h4>
 
-        <p>Add the layout-boxed class to the body tag to get this layout. The boxed layout is helpful when working on
-          large screens because it prevents the site from stretching very wide.</p>
+        <p>Anda berada di adminarea Kursus Antropologi Forensik Fakultas Kedokteran Universitas Gadjah Mada. <br/>Selamat Belajar dan Mengajar :)</p>
       </div>
     </div>
       

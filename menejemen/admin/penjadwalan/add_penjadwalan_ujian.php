@@ -13,7 +13,7 @@
           echo "<script> alert('Data Berhasil Disimpan'); location.href='index.php?hal=penjadwalan/add_penjadwalan_ujian&id=$id' </script>";exit;
         }
 
-    }
+    } 
     if (isset($_GET['hapus'])&&isset($_GET['id'])) {
       $idhapus = $_GET['hapus'];
       $queryhapusjadwal = mysql_query("DELETE FROM tbl_jadwal where jadwal_id = '".$_GET['hapus']."'");
@@ -25,7 +25,7 @@
  ?>
   <section class="content-header">
       <h1>
-        Jadwal   Ujian Kurus
+        Jadwal Ujian Kursus
         
       </h1>
       <ol class="breadcrumb">

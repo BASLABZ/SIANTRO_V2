@@ -53,7 +53,7 @@
                             $readmoreDeskripsi  = substr($rowMeteri['coursematerial_description'], 0 ,100 );
                             echo $readmoreDeskripsi;
                             echo ".....<br>";
-                            echo "<a href='index.php?hal=master/silabus/edit&materi=$rowMeteri[coursematerial_id]' class='btn btn-success btn-xs'>Selengkapnya <span class='fa fa-arrow-right'></span></a> ";
+                            echo "<a href='index.php?hal=master/materi/edit&materi=$rowMeteri[coursematerial_id]' class='btn btn-success btn-xs'>Selengkapnya <span class='fa fa-arrow-right'></span></a> ";
                         ?>
                     </td>
                     <td><?php echo $rowMeteri['coursematerial_type']; ?></td>
@@ -68,7 +68,7 @@
                   </td>
                     <td><?php echo $rowMeteri['operator_name']; ?></td>
                      <td>
-                       <a href="index.php?hal=master/materi/edit&coursematerial_id=<?php echo $rowMeteri['coursematerial_id']; ?>" class="btn btn-warning btn-sm"><span class="fa fa-edit"></span> Ubah</a>
+                       <a href="index.php?hal=master/materi/edit&materi=<?php echo $rowMeteri['coursematerial_id']; ?>" class="btn btn-warning btn-sm"><span class="fa fa-edit"></span> Ubah</a>
                        <a href="index.php?hal=master/materi/list&hapus=<?php echo $rowMeteri['coursematerial_id']; ?>" class="btn btn-danger btn-sm"> <span class="fa fa-trash"></span> Hapus</a>
                     </td>
 

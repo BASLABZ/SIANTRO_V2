@@ -16,8 +16,8 @@
             <div class="box-header">
               <h3 class="box-title">Daftar Data Transaksi  Pembayaran</h3>
             </div>
-            <div class="box-body">
-              <table id="tableMaster" class="table table-bordered table-hover">
+            <div class="box-body dataTables_scrollBody">
+              <table id="tableMasterScroll" class="table table-bordered table-hover">
                <thead>
                   <th>No</th>
                   <th>Invoice</th>
@@ -40,7 +40,7 @@
                         t.trainee_id = tx.trainee_id_fk JOIN 
                           ref_coursename c ON
                         c.coursename_id = tx.coursename_id_fk
-                       JOIN tbl_member m ON t.member_id_fk = m.member_id ");
+                       JOIN tbl_member m ON t.member_id_fk = m.member_id order by confirmation_id DESC");
                       while ($roPembayaran = mysql_fetch_array($queryPembayaran)) {
                    ?>
                    <?php 
@@ -61,7 +61,15 @@
                      <td><?php echo $totalPembayaran; ?></td>
                      <td><?php echo $roPembayaran['amount_transfer']; ?></td>
                      <td><?php echo $roPembayaran['confirmation_note']; ?></td>
-                     <td><a href="index.php?hal=pembayaran/verifikasi_pembayaran&id=<?php echo $roPembayaran['confirmation_id']; ?>" class="btn btn-success"><span class="fa fa-pencil"></span> Verifikasi</a></td>
+                     <td>
+                     <?php 
+                          if($roPembayaran['payment_valid']=='VALID'){ ?>
+                            <a href="index.php?hal=pembayaran/verifikasi_pembayaran&id=<?php echo $roPembayaran['confirmation_id']; ?>" class="btn btn-small btn-primary"><span class="fa fa-pencil"></span> Terverifikasi</a>
+                     <?php
+                          } else{?>
+                            <a href="index.php?hal=pembayaran/verifikasi_pembayaran&id=<?php echo $roPembayaran['confirmation_id']; ?>" class="btn btn-success"><span class="fa fa-pencil"></span> Verifikasi</a>
+                      <?php } ?>
+                      </td>
                    </tr>
                    <?php } ?>
                 </tbody>

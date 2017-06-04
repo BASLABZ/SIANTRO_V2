@@ -1,4 +1,8 @@
   <?php 
+    if ($_SESSION['member_id']=='') {
+      echo "<script>alert('Maaf anda belum Login , silahkan Login sistem terlebih dahulu'); history.back(-1)</script>";
+      exit();
+    }
         if (isset($_GET['hapus'])) {
           $queryHapus  = mysql_query("DELETE FROM tbl_temp where temp_id='".$_GET['hapus']."'");
         }
