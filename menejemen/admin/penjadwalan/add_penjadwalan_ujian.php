@@ -152,7 +152,7 @@
                <a href="" class="btn btn-success"><span class="fa fa-pencil"></span></a>
                <a href="index.php?hal=penjadwalan/add_penjadwalan&hapus=<?php echo $rowjadwal['jadwal_id']; ?>&id=<?php echo $id; ?>" class="btn btn-danger"><span class="fa fa-trash"></span></a>
              </td>
-           </tr>
+           </tr> 
           <?php } ?>
         </tbody>
       </table>
