@@ -47,7 +47,7 @@
              	</div>
                 <div class="form-group row">
                     <label class="col-md-6">NAMA MEMBER</label>
-                    <label class="col-md-6"><?php echo $detail['member_name']; ?></label>
+                    <label class="col-md-6"><?php echo $runmember['member_name']; ?></label>
                 </div>
              	<div class="form-group row">
              		<label class="col-md-6">NO REKENING</label>
