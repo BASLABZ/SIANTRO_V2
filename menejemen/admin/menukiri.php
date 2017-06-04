@@ -1,15 +1,18 @@
 <?php include '../config/notif.php' ?>
+
 <aside class="main-sidebar">
-    <section class="sidebar">
+    <section class="sidebar"> 
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="img/admin.gif" class="img-circle" alt="User Image">
+        <!-- nambah foto buat profile sesuai database nya euy   -->
+        <!-- DISINIIIII -->
+          <img src="../upload/image-user/<?php echo $_SESSION['operator_image'] ?>" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p><?php echo $_SESSION['operator_username']; ?></p>
-        </div>
+        </div> 
       </div>
-      <ul class="sidebar-menu">
+      <ul class="sidebar-menu"> 
         <li class="header">MAIN NAVIGATION</li>
         <?php
         
@@ -34,16 +37,25 @@
                         $varMenuName3=$datamenu3['menu_name'];
                         $varMenuUrl3=$datamenu3['menu_url'];?>
                         <ul class="treeview-menu">
-                            <li><a href="index.php?hal=<?php echo $varMenuUrl3?>"><i class="fa fa-location"></i><?php echo $varMenuName3?></a>
+                            <li>
+                                <a href="index.php?hal=<?php echo $varMenuUrl3?>"><i class="fa fa-location"></i><?php echo $varMenuName3?>
+                                    <?php 
+                                        if ($varMenuName3=='Konfirmasi Pembayaran' && $nKonfirmasi>0) { ?>
+                                            <span class="label label-danger"><?php echo $nKonfirmasi ?></span> <?php
+                                        } elseif ($varMenuName3=='Data Registrasi Member' && $nRegistrasi>0) { ?>
+                                            <span class="label label-danger"><?php echo $nRegistrasi ?></span> <?php
+                                        } 
+                                    ?>
+                                </a>
                             </li>
                         </ul>
                     <?php
-                    }
-                }
+                    }//tutup while dalemnya
+                }//while luar
                 ?>
             </li>
         <?php
-        }
+        }//tutup while sql pertama 
         ?>
       </ul>
     </section>

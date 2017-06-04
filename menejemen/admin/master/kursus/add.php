@@ -71,9 +71,10 @@
               </div>
             </div>
             <div class="form-group row">
-              <label class="col-md-3">Kondisi Kursus</label>
+              <label class="col-md-3">Status Bersyarat</label>
               <div class="col-md-4">
-                <select class="form-control" name="coursename_con">
+              <!-- kaya gini ener engga yaaa  mau nambah yg item di hidden itu, munculnya kalau ada aksi tertentu-->
+                <select class="form-control" name="coursename_con" id="">
                   <option>Pilih Kondisi</option>
                   <option value="opened">YA</option>
                   <option value="upcoming">TIDAK</option>
@@ -84,7 +85,7 @@
             <div class="form-group row">
               <label class="col-md-3">Pilih Referensi Kursus</label>
               <div class="col-md-6">
-                <select class="form-control" name="coursename_ref" required="">
+                <select class="form-control" name="coursename_ref" >
                   <option value="">Pilih Nama Kursus</option>
                   <?php $queryKursus = mysql_query("SELECT * FROM ref_coursename order by coursename_id ASC");
                       while ($kursus = mysql_fetch_array($queryKursus)) {

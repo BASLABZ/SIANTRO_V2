@@ -159,7 +159,7 @@
                         <!-- nambah untuk foto user defaultnya -->
                         <?php 
 
-                            if ($data['member_image']=='') {  ?>
+                            if ($m['member_image']=='') {  ?>
                                <img src="menejemen/upload/memberimage/user-add-icon.png" width="200px" height="250px" alt="Foto Diri" style="border: solid 1px #ddd">
                                <input type="file" id="memberimage" class="form-control form-bordered" name="frm_memberimage">
                          <?php   

@@ -2,7 +2,7 @@
     if (isset($_GET['hapus'])) {
       $queryHapus = mysql_query("DELETE FROM ref_silabus where silabus_id = '".$_GET['hapus']."'");
       if ($queryHapus) {
-        echo "<script> alert('Data Berhasil Dihapus'); location.href='index.php?hal=master/silabus/list' </script>";exit;
+        echo "<script> alert('Data Berhasil Dihapus'); location.href='index.php?hal=master/silabus_v2/list' </script>";exit;
       }
     }
  ?>
@@ -22,7 +22,7 @@
       <div class="col-xs-12">
         <div class="box">
           <div class="box-header">
-            <h3 class="box-title">Daftar Data Master Silabus <a href="index.php?hal=master/silabus/add" class="btn btn-info btn-sm"><span class=" fa fa-plus"></span> Tambah Data</a></h3>
+            <h3 class="box-title">Daftar Data Master Silabus <a href="index.php?hal=master/silabus_v2/add" class="btn btn-info btn-sm"><span class=" fa fa-plus"></span> Tambah Data</a></h3>
           </div>
           <!-- apakah disini ksh id utk scrolnya ? -->
           <div class="box-body dataTables_scrollBody">
@@ -53,7 +53,7 @@
                             $readmoreDeskripsi  = substr($rowSilabus['silabus_topic'], 0 ,100 );
                             echo $readmoreDeskripsi;
                             echo ".....<br>";
-                            echo "<a href='index.php?hal=master/silabus/edit&silabus_id=$rowSilabus[silabus_id]' class='btn btn-success btn-xs'>Selengkapnya <span class='fa fa-arrow-right'></span></a> ";
+                            echo "<a href='index.php?hal=master/silabus_v2/edit&silabus_id=$rowSilabus[silabus_id]' class='btn btn-success btn-xs'>Selengkapnya <span class='fa fa-arrow-right'></span></a> ";
                         ?>
                     </td>
                     <td><?php echo $rowSilabus['silabus_file']; ?></td>
@@ -67,8 +67,8 @@
                             if ($idsession != $idpenulis) {
                               echo "TIDAK BISA DI UBAH";
                          }else{ ?>
-                          <a href="index.php?hal=master/silabus/edit&silabus_id=<?php echo $rowSilabus['silabus_id']; ?>" class="btn btn-warning btn-sm"><span class="fa fa-edit"></span> Ubah</a>
-                       <a href="index.php?hal=master/silabus/list&hapus=<?php echo $rowSilabus['silabus_id']; ?>" class="btn btn-danger btn-sm"> <span class="fa fa-trash"></span> Hapus</a>
+                          <a href="index.php?hal=master/silabus_v2/edit&silabus_id=<?php echo $rowSilabus['silabus_id']; ?>" class="btn btn-warning btn-sm"><span class="fa fa-edit"></span> Ubah</a>
+                       <a href="index.php?hal=master/silabus_v2/list&hapus=<?php echo $rowSilabus['silabus_id']; ?>" class="btn btn-danger btn-sm"> <span class="fa fa-trash"></span> Hapus</a>
                          <?php } ?>
                     </td>
                   </tr>

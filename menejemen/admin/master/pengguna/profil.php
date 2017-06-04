@@ -1,14 +1,15 @@
 <?php 
     $operator = mysql_query("SELECT * FROM ref_operator WHERE operator_id='".$_SESSION['operator_id']."' ");
-    $op = mysql_fetch_array($operator);
+    $op = mysql_fetch_array($operator); 
 
     if (isset($_POST['perbarui'])) {
 
       if (!empty($_FILES) && $_FILES['frm_opimage']['size'] >0 && $_FILES['frm_opimage']['error'] == 0){
             $var_opimage = $_FILES['frm_opimage']['name'];
-                          $move = move_uploaded_file($_FILES['frm_opimage']['tmp_name'], 'menejemen/upload/image-user/'.$var_opimage);
+               $move = move_uploaded_file($_FILES['frm_opimage']['tmp_name'], '../../menejemen/upload/image-user/'.$var_opimage);
 
             if ($move) {
+              unlink('../../menejemen/upload/image-user/'.$op['operator_image']);
               $queryUpdate  = mysql_query("UPDATE ref_operator set 
                                                   operator_name='".$_POST['frm_name']."',
                                                   operator_address='".$_POST['frm_address']."',

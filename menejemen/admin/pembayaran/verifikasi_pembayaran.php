@@ -69,7 +69,7 @@
              		<label class="col-md-6">JUMLAH YANG DIBAYAR</label>
              		<label class="col-md-6"><?php echo $detail['amount_transfer']; ?></label>
              	</div>
-             	<div class="form-group row">
+             	<div class="form-group row"> 
              		<form class="role" method="POST">
              			<label class="col-md-6">VERIFIKASI STATUS</label>
 	             		<label class="col-md-6">

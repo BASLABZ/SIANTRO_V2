@@ -17,7 +17,7 @@
             </a>
             <ul class="dropdown-menu">
               <li class="user-header">
-                <img src="img/ditaks.jpg" class="img-circle" alt="User Image">
+                <img src="../upload/img-user/<?php echo $_SESSION['operator_image']; ?>" class="img-circle" alt="User Image">
 
                 <p>
                   <?php echo $_SESSION['operator_username']; ?> - <?php echo $_SESSION['level_name']; ?>

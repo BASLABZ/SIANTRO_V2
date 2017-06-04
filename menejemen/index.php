@@ -14,7 +14,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="assets/index2.html"><b>Siantro</b>UGM</a>
+    <a href="assets/index2.html"><p><img src="../assets/img/logo_ugm.png" width="20%" height="20%"></p><hr><b>Antropologi Forensik</b>UGM</a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
@@ -22,7 +22,7 @@
 
     <form action="config/proses_login.php" method="post">
       <div class="form-group has-feedback">
-        <input type="text" class="form-control" placeholder="Username" name="username">
+        <input type="text" class="form-control" placeholder="Username" name="username" autofocus="">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">

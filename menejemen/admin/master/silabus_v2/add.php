@@ -28,7 +28,7 @@
 
       }
       if ($queryInsert) {
-         echo "<script> alert('Data Berhasil Disimpan'); location.href='index.php?hal=master/silabus/list' </script>";exit;
+         echo "<script> alert('Data Berhasil Disimpan'); location.href='index.php?hal=master/silabus_v2/list' </script>";exit;
       }
     }
  ?>

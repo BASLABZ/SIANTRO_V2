@@ -38,7 +38,7 @@ $rowSilabus = mysql_fetch_array($querySilabus);
                                                                   coursename_id_fk = '".$_POST['coursename_id_fk']."'
                                                              WHERE silabus_id = '".$idsilabus."'");
 
-           echo "<script> alert('Data Berhasil Diubah'); location.href='index.php?hal=master/silabus/list' </script>";
+           echo "<script> alert('Data Berhasil Diubah'); location.href='index.php?hal=master/silabus_v2/list' </script>";
         
       }
     }

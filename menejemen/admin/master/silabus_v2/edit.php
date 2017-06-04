@@ -19,7 +19,7 @@ $rowSilabus = mysql_fetch_array($querySilabus);
                                                                   coursename_id_fk = '".$_POST['coursename_id_fk']."',
                                                                   silabus_file = '".$silabus_file."'
                                                              WHERE silabus_id = '".$idsilabus."'");
-                  echo "<script> alert('Data Berhasil Diubah'); location.href='index.php?hal=master/silabus/list' </script>";
+                  echo "<script> alert('Data Berhasil Diubah'); location.href='index.php?hal=master/silabus_v2/list' </script>";
 
             }else{
                 $queryUpdate  = mysql_query("UPDATE ref_silabus set
@@ -27,7 +27,7 @@ $rowSilabus = mysql_fetch_array($querySilabus);
                                                                     silabus_topic = '".$_POST['silabus_topic']."',
                                                                     coursename_id_fk = '".$_POST['coursename_id_fk']."'
                                                                WHERE silabus_id = '".$idsilabus."'");              
-                echo "<script> alert('Data Berhasil Diubah'); location.href='index.php?hal=master/silabus/list' </script>";
+                echo "<script> alert('Data Berhasil Diubah'); location.href='index.php?hal=master/silabus_v2/list' </script>";
             }
 
 
@@ -38,7 +38,7 @@ $rowSilabus = mysql_fetch_array($querySilabus);
                                                                   coursename_id_fk = '".$_POST['coursename_id_fk']."'
                                                              WHERE silabus_id = '".$idsilabus."'");
 
-           echo "<script> alert('Data Berhasil Diubah'); location.href='index.php?hal=master/silabus/list' </script>";
+           echo "<script> alert('Data Berhasil Diubah'); location.href='index.php?hal=master/silabus_v2/list' </script>";
         
       }
     }

@@ -23,7 +23,7 @@
           <div class="col-md-4 col-md-offset-1 col-sm-5 col-sm-offset-1 padd-40-top">
             <h4>Belajar kapanpun dan dimanapun kamu berada.</h4>
             <p>Kamu dapat mempelajari antropologi forensik dimanapun kamu berada dan kapanpun kamu mau secara interaktif, sehingga belajar menjadi lebih menarik, menyenangkan, dan efisien.</p>
-            <p><a href="signin.html" class="button">Mulai Belajar</a></p>
+            <p><a href="index.php?hal=login" class="button">Mulai Belajar</a></p>
           </div>
         </div><!-- .row -->
       </div><!-- .container -->
