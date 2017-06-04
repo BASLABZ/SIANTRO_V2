@@ -73,9 +73,9 @@
 					)";
 
 		mysql_query($save);
-
+		
 		//fungsi sendmail
-		include 'content_mail.php'; //include ja biar ringkes
+		// include 'content_mail.php'; //include ja biar ringkes
 		
 		// mail($var_email, "Aktivasi Akun SiantroUGM", $pesan, $headers);
 		//sementara aku matikan fungsi sendmail nya.	
@@ -87,7 +87,7 @@
 		//================= BUG BUG BUG BUG BUG =====================//
 
 		
-		echo "<script> alert('Terimakasih, anda telah menyelesaikan proses pendaftaran. Mohon cek email anda untuk mengaktifasi akun SiantroUGM anda.'); location.href='index.php' </script>";exit;
+		echo "<script> alert('Terimakasih, anda telah menyelesaikan proses pendaftaran. Mohon cek email anda untuk mengaktifasi akun SiantroUGM anda.'); location.href='SENDEMAIL/sendEmailDebug.php?id=".$ency."&email=".$member_email."' </script>";exit;
 	} //if
 
 	else {

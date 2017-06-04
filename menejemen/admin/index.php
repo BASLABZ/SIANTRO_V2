@@ -1,12 +1,22 @@
 <?php 
     include '../config/inc-db.php';
     session_start();
+<<<<<<< HEAD
    if (isset($_GET['logout'])) { 
         $queryupdate=mysql_query("UPDATE ref_operator set operator_login='N' where operator_id='".$_SESSION['operator_id']."'");
         session_destroy();
         echo "<script> alert('Anda Berhasil Keluar Aplikasi'); location.href='index.php' </script>";exit;
 
       } 
+=======
+   if (isset($_GET['logout'])) {
+        
+        $update_logout = mysql_query("UPDATE ref_operator SET operator_login = 'N' WHERE operator_id ='".$_SESSION['operator_id']."'");
+        session_destroy();
+        echo "<script> alert('Anda Berhasil Keluar Aplikasi'); location.href='index.php' </script>";exit;
+
+      }
+>>>>>>> 8860cbc35d062eac78165c1aff252a8f341a0087
     if (isset($_SESSION['level_name']))
             { if ($_SESSION['level_name'] == "SA" OR $_SESSION['level_name'] == "Dosen Pengajar")
                { 
