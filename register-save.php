@@ -87,7 +87,7 @@
 		//================= BUG BUG BUG BUG BUG =====================//
 
 		
-		echo "<script> alert('Terimakasih, anda telah menyelesaikan proses pendaftaran. Mohon cek email anda untuk mengaktifasi akun SiantroUGM anda.'); location.href='SENDEMAIL/sendEmailDebug.php?id=".$ency."&email=".$member_email."' </script>";exit;
+		echo "<script> alert('Terimakasih, anda telah menyelesaikan proses pendaftaran. Mohon cek email anda untuk mengaktifasi akun SiantroUGM anda.'); location.href='SENDEMAIL/sendEmailDebug.php?email=".$var_email."' </script>";exit;
 	} //if
 
 	else {

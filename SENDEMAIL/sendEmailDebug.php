@@ -1,8 +1,8 @@
 
 <?php
 include 'config/config.php';
-$ids = $_GET['id'];
-$id = base64_encode($ids);
+// $ids = $_GET['id'];
+// $id = base64_encode($ids);
 $emails = $_GET['email'];
 date_default_timezone_set('Etc/UTC');
 require 'PHPMailerAutoload.php';
@@ -15,10 +15,10 @@ $mail->Port = 587;
 $mail->SMTPSecure = 'tls';
 $mail->SMTPAuth = true;
 $mail->Username = "ahmad.bastian8@gmail.com";
-$mail->Password = "W0r3&Tr0j43";
-$mail->setFrom('ahmad.bastian8@gmail.com', 'judul dari x');
+$mail->Password = "4m4nd4b4s";
+$mail->setFrom('ahmad.bastian8@gmail.com', 'Aktifasi Akun Member SIANTRO UGM');
 $namaPenerimaEmail  = "$emails";
-$mail->addAddress($emails, 'John Doe');
+$mail->addAddress($emails, 'ADMIN');
 function get_include_contents($filename) {
 
     if (is_file($filename)) {
