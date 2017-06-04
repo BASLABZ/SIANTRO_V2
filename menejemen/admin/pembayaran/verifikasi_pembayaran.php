@@ -8,13 +8,13 @@
         $email = $runmember['member_useremail'];
 		if (isset($_POST['ubahstatus'])) {
 			if ($_POST['payment_valid']=='VALID' OR $_POST['payment_valid']=='MENUNGGU KONFIRMASI') {
-				$query_valid = mysql_query("UPDATE trx_confirmation_ofpayment set payment_valid='".$_POST['payment_valid']."',
+				$query_valid = mysql_query("UPDATE trx_confirmation_ofpayment set payment_valid='".$_POST['payment_valid']."' , payment_date_valid = NOW(),
 											catatan_pembayaran_konfirmasi='' where confirmation_id='".$id."'");
 			   if ($query_valid) {
 		            echo "<script> alert('STATUS BERHASIL DIUBAH'); location.href='SENDEMAIL/sendEmailDebug.php?id=".$id."&email=".$email."' </script>";exit;
 		       }
 			}else if ($_POST['payment_valid']=='TIDAK VALID') {
-				$query_not_valid = mysql_query("UPDATE trx_confirmation_ofpayment set payment_valid='".$_POST['payment_valid']."',
+				$query_not_valid = mysql_query("UPDATE trx_confirmation_ofpayment set payment_valid='".$_POST['payment_valid']."',  payment_date_valid = NOW(),
 											catatan_pembayaran_konfirmasi='".$_POST['catatan_pembayaran_konfirmasi']."' where confirmation_id='".$id."'");
 			   if ($query_not_valid) {
 		            echo "<script> alert('STATUS BERHASIL DIUBAH'); location.href='index.php?hal=pembayaran/verifikasi_pembayaran&id=".$id."' </script>";exit;
