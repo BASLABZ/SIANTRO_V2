@@ -13,7 +13,7 @@ $email = $_GET['email'];
 <!DOCTYPE html>
 <html>
 <head>
-  <title></title>
+  <title>      </title>
 </head>
 <body>
 
@@ -23,7 +23,7 @@ $email = $_GET['email'];
 	<h1>PEMBAYARAN ANDA TELAH DI VERIFIKASI & <?php echo $detail['payment_valid']; ?></h1>
 	<table border="1">
 		<thead>
-			<th>TANGGAL KONFIRMASI</th>
+			<th>TANGGAL KONFIRMASI ADMIN</th>
 			<th>NAMA BANK</th>
 			<th>NOMOR REKENING</th>
 			<th>KATEGORI PEMBAYARAN</th>
