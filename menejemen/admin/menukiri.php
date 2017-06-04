@@ -41,9 +41,9 @@
                                 <a href="index.php?hal=<?php echo $varMenuUrl3?>"><i class="fa fa-location"></i><?php echo $varMenuName3?>
                                     <?php 
                                         if ($varMenuName3=='Konfirmasi Pembayaran' && $nKonfirmasi>0) { ?>
-                                            <span class="label label-danger"><?php echo $nKonfirmasi ?></span> <?php
+                                            <span class="label label-danger"><?php echo $nKonfirmasi; ?></span> <?php
                                         } elseif ($varMenuName3=='Data Registrasi Member' && $nRegistrasi>0) { ?>
-                                            <span class="label label-danger"><?php echo $nRegistrasi ?></span> <?php
+                                            <span class="label label-danger"><?php echo $nRegistrasi; ?></span> <?php
                                         } 
                                     ?>
                                 </a>
