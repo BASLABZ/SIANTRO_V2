@@ -2,8 +2,12 @@
     include '../config/inc-db.php';
     session_start();
    if (isset($_GET['logout'])) {
+        
+        $update_logout = mysql_query("UPDATE ref_operator SET operator_login = 'N' WHERE operator_id ='".$_SESSION['operator_id']."'");
         session_destroy();
-        echo "<script> alert('Anda Berhasil Keluar Aplikasi'); location.href='index.php' </script>";exit;}
+        echo "<script> alert('Anda Berhasil Keluar Aplikasi'); location.href='index.php' </script>";exit;
+
+      }
     if (isset($_SESSION['level_name']))
             { if ($_SESSION['level_name'] == "SA" OR $_SESSION['level_name'] == "Dosen Pengajar")
                { 
