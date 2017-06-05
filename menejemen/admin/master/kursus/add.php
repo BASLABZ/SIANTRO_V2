@@ -37,7 +37,7 @@
               <h3 class="box-title">Tambah Data Member</h3>
             </div>
             <div class="box-body">
-              <form class="role" method="POST">
+              <form id="defaultForm" class="role" method="POST">
             <div class="form-group row">
               <label class="col-md-3">Judul Kursus</label>
               <div class="col-md-9">
@@ -104,3 +104,60 @@
         </div>
       </div>
     </section>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#defaultForm').bootstrapValidator({
+        message: 'This value is not valid',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            coursename_title: {
+                validators: {
+                    notEmpty: {
+                        message: 'Judul Kursus harus diisi'
+                    }
+                }
+            },
+             coursename_date: {
+                validators: {
+                    notEmpty: {
+                        message: 'Tanggal Periode Kursus harus diisi'
+                    }
+                }
+            },
+             coursename_info: {
+                validators: {
+                    notEmpty: {
+                        message: 'Deskripsi Kursus harus diisi'
+                    }
+                }
+            },
+             coursename_price: {
+                validators: {
+                    notEmpty: {
+                        message: 'Biaya harus diisi'
+                    }
+                }
+            },
+            coursename_quota: {
+                validators: {
+                    notEmpty: {
+                        message: 'Kuota Kursus harus diisi'
+                    }
+                }
+            },
+            coursename_status: {
+                validators: {
+                    notEmpty: {
+                        message: 'Status Kursus harus diisi'
+                    }
+                }
+            },
+
+        }
+    });
+});
+</script>

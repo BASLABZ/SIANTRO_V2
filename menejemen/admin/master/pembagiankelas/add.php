@@ -27,7 +27,7 @@
               <h3 class="box-title">Tambah Data Pembagian Kelas Kursus</h3>
             </div>
             <div class="box-body">
-              <form class="role" method="POST" >
+              <form id="defaultForm" class="role" method="POST" >
                     <div class="form-group row">
                       <label class="col-md-3">Pilih Kursus</label>
                       <div class="col-md-6">

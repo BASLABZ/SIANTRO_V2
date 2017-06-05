@@ -45,7 +45,7 @@
               <h3 class="box-title">Tambah Data Materi</h3>
             </div>
             <div class="box-body">
-              <form class="role" method="POST" enctype="multipart/form-data">
+              <form id="defaultForm" class="role" method="POST" enctype="multipart/form-data">
                <div class="form-group row">
               <label class="col-md-3">Pilih Nama Kursus</label>
               <div class="col-md-9">
@@ -95,3 +95,57 @@
         </div>
       </div>
     </section>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#defaultForm').bootstrapValidator({
+        message: 'This value is not valid',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            coursename_id_fk: {
+                //message: 'The username is not valid',
+                validators: {
+                    notEmpty: {
+                        message: 'Pilihan Nama Kursus harus diisi'
+                    }
+                }
+            },
+            coursematerial_title: {
+                //message: 'The username is not valid', coursematerial_description
+                validators: {
+                    notEmpty: {
+                        message: 'Judul Kursus harus diisi'
+                    }
+                }
+            },
+             coursematerial_description: {
+                //message: 'The username is not valid', coursematerial_description
+                validators: {
+                    notEmpty: {
+                        message: 'Deskripsi Materi harus diisi'
+                    }
+                }
+            },
+            coursematerial_type: {
+                //message: 'The username is not valid', coursematerial_description
+                validators: {
+                    notEmpty: {
+                        message: 'Jenis File harus diisi'
+                    }
+                }
+            },
+             coursematerial_file: {
+                //message: 'The username is not valid', coursematerial_description
+                validators: {
+                    notEmpty: {
+                        message: 'File (PDF,WORD,VIDEO) harus diisi'
+                    }
+                }
+            }
+        }
+    });
+});
+</script>

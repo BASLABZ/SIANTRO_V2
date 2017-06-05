@@ -67,8 +67,13 @@
     reserved.
   </footer>
 </div>
+
+<!-- INI KENAPA MUSTI DI HIDDEN SIH MALAH JEPAT BENTROK -->
+<!-- kalau validasi dr mas edi itu duaa baris coding ini dihidden baru JS validatornyamau nyalaaa -__- setelah kucoba dg metode yg sama malah bentrok js nya , jd ku UnHidden lg -->
 <script src="../assets/plugins/jQuery/jQuery-2.2.0.min.js"></script>
 <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<!-- ================================================================================= -->
+
 <script>
   $.widget.bridge('uibutton', $.ui.button);
 </script>
