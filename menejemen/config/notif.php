@@ -1,0 +1,24 @@
+<?php 
+	
+	//ini file utk ngecek menu apa saja yg harus segera diproses. intine ngecek siji2
+
+
+	// ===== KONFIRMASI PEMBAYARAN ==== //
+		$queryKonfirmasi=mysql_query("SELECT * from trx_confirmation_ofpayment WHERE payment_valid='MENUNGGU KONFIRMASI'");
+		$cqK = mysql_num_rows($queryKonfirmasi);
+		if ($cqK>0) { 
+			$nKonfirmasi = $cqK;
+		} 
+	// ===== KONFIRMASI PEMBAYARAN ==== //
+
+	// ===== REGISTRASI MEMBER ==== //
+		$queryRegistrasi=mysql_query("SELECT * from tbl_member WHERE member_status_active='pending'");
+		$cqR = mysql_num_rows($queryRegistrasi);
+		if ($cqR>0) { 
+			$nRegistrasi = $cqR;
+		} 
+	// ===== REGISTRASI MEMBER ==== //		
+
+
+
+?>
