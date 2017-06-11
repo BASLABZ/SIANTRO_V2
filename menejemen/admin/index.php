@@ -44,6 +44,9 @@
   <link rel="stylesheet" href="../assets/plugins/select2/select2.min.css">
   <link rel="stylesheet" href="../assets/plugins/timepicker/bootstrap-timepicker.min.css">
 
+<link rel="stylesheet" href="../assets/jquery_datepicker/jquery-ui.css">  
+<link rel="stylesheet" href="../assets/jquery_datepicker/style.css">
+
 </head>
 <body class="hold-transition skin-green sidebar-mini">
 <div class="wrapper">
@@ -68,10 +71,15 @@
   </footer>
 </div>
 
+<!-- tambahan JS buat tanggal  -->
+<script src="../assets/jquery_datepicker/jquery-1.12.4.js"></script>
+<script src="../assets/jquery_datepicker/jquery-ui.js"></script>
+
+
 <!-- INI KENAPA MUSTI DI HIDDEN SIH MALAH JEPAT BENTROK -->
 <!-- kalau validasi dr mas edi itu duaa baris coding ini dihidden baru JS validatornyamau nyalaaa -__- setelah kucoba dg metode yg sama malah bentrok js nya , jd ku UnHidden lg -->
-<script src="../assets/plugins/jQuery/jQuery-2.2.0.min.js"></script>
-<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<!-- <script src="../assets/plugins/jQuery/jQuery-2.2.0.min.js"></script> -->
+<!-- <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script> -->
 <!-- ================================================================================= -->
 
 <script>
@@ -148,6 +156,17 @@
     });
   
 </script>
+<!-- nambahin JS disini  -->
+<!-- <script>
+  $( function() {
+    $( "#datepicker" ).datepicker();
+  } );
+  </script> -->
+  <script>
+  $( function() {
+    $( "#datepicker" ).datepicker({minDate: -5, maxDate: 2});
+  } );
+  </script>
 </body>
 </html>
 <?php

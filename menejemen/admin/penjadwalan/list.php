@@ -48,7 +48,7 @@
                      <td><?php echo $rowselect['rooms_name']; ?></td>
                      <td><?php echo $rowselect['kuota']; ?></td>
                      <td><a href="" class="btn btn-warning"><span class="fa fa-edit"></span> ubah</a>
-                     <a href="index.php?hal=penjadwalan/add_penjadwalan&id=<?php echo $rowselect['selectcalss_id']; ?>" class="btn btn-success"><span class="fa fa-calendar"></span> JADWALKAN KURUS INI</a>
+                     <a href="index.php?hal=penjadwalan/add_penjadwalan&id=<?php echo $rowselect['selectcalss_id']; ?>" class="btn btn-success"><span class="fa fa-calendar"></span> JADWALKAN KURSUS INI</a>
                      <a href="index.php?hal=penjadwalan/add_penjadwalan_ujian&id=<?php echo $rowselect['selectcalss_id']; ?>" class="btn btn-primary"><span class="fa fa-calendar"></span> JADWALKAN UJIAN</a>
                      </td>
                    </tr>

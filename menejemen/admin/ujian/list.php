@@ -13,7 +13,7 @@
         Jadwal Ujian Kursus Hari Ini
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="index.php"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="#">Transaksi</a></li>
         <li class="active">Jadwal  Ujian</li>
         <li class="active"><?php echo $rowList['coursename_title']; ?></li>

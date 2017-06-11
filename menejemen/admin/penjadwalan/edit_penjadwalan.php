@@ -5,31 +5,31 @@
     $idkus = $rowList['coursename_id'];
     $jumlah = $rowList['kuota'];
     $rowtrain = mysql_fetch_array(mysql_query("SELECT * FROM tblx_trainee_detail where coursename_id_fk = '".$idkus."'"));
-    if (isset($_POST['jadwal'])) {
-      $queryjadwal  = "INSERT INTO tbl_jadwal (jadwal_tanggal,jadwal_mulai,jadwal_selesai,selectcalss_id_fk,trainee_id_fk,rooms_id_fk,jadwal_jenis) 
-        VALUES ('".$_POST['jadwal_tanggal']."','".$_POST['jadwal_mulai']."','".$_POST['jadwal_selesai']."','".$rowList['selectcalss_id']."','".$rowtrain['trainee_id_fk']."','".$_POST['rooms_id']."','".$_POST['jadwal_jenis']."')";
-        $runQuery = mysql_query($queryjadwal);
-        if ($runQuery) {
-          echo "<script> alert('Data Berhasil Disimpan'); location.href='index.php?hal=penjadwalan/add_penjadwalan&id=$id' </script>";exit;
-        }
+    // if (isset($_POST['jadwal'])) {
+    //   $queryjadwal  = "INSERT INTO tbl_jadwal (jadwal_hari,jadwal_mulai,jadwal_selesai,selectcalss_id_fk,trainee_id_fk,rooms_id_fk,jadwal_jenis) 
+    //     VALUES ('".$_POST['jadwal_hari']."','".$_POST['jadwal_mulai']."','".$_POST['jadwal_selesai']."','".$rowList['selectcalss_id']."','".$rowtrain['trainee_id_fk']."','".$_POST['rooms_id']."','".$_POST['jadwal_jenis']."')";
+    //     $runQuery = mysql_query($queryjadwal);
+    //     if ($runQuery) {
+    //       echo "<script> alert('Data Berhasil Disimpan'); location.href='index.php?hal=penjadwalan/add_penjadwalan&id=$id' </script>";exit;
+    //     }
 
-    }
-    if (isset($_GET['hapus'])&&isset($_GET['id'])) {
-      $idhapus = $_GET['hapus'];
-      $queryhapusjadwal = mysql_query("DELETE FROM tbl_jadwal where jadwal_id = '".$_GET['hapus']."'");
-      if ($queryhapusjadwal) {
-          echo "<script> alert('Data Berhasil Dihapus'); location.href='index.php?hal=penjadwalan/add_penjadwalan&id=".$_GET['id']."' </script>";exit;
-        }
-    }
+    // }
+    // if (isset($_GET['hapus'])&&isset($_GET['id'])) {
+    //   $idhapus = $_GET['hapus'];
+    //   $queryhapusjadwal = mysql_query("DELETE FROM tbl_jadwal where jadwal_id = '".$_GET['hapus']."'");
+    //   if ($queryhapusjadwal) {
+    //       echo "<script> alert('Data Berhasil Dihapus'); location.href='index.php?hal=penjadwalan/add_penjadwalan&id=".$_GET['id']."' </script>";exit;
+    //     }
+    // }
 
  ?>
   <section class="content-header">
       <h1>
-        Jadwal Kurus
+        Jadwal Kursus
         
       </h1>
       <ol class="breadcrumb">
-        <li><a href="index.php"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="#">Transaksi</a></li>
         <li class="active">Jadwal</li>
         <li class="active"><?php echo $rowList['coursename_title']; ?></li>
@@ -64,16 +64,19 @@
                 </select>
               </div>
             </div>
-            <!-- perubhan disini -->
             <div class="form-group row">
-              <label class="col-md-4">Hari/Tanggal</label>
-              <div class="col-md-5">
-                <input type="text" autocomplete="off" id="datepicker" required class="form-control" name="jadwal_tanggal" value="">
-                </div>
-                <div class="col-md-3">
-                <input type="text" class="form-control" name="jadwal_day" value="" readonly="">
+              <label class="col-md-4">Hari</label>
+              <div class="col-md-8">
+                <select class="select2 form-control" name="jadwal_hari">
+                  <option value="">Pilih Hari</option>
+                  <option value="SENIN">SENIN</option>
+                  <option value="SELASA">SELASA</option>
+                  <option value="RABU">RABU</option>
+                  <option value="KAMIS">KAMIS</option>
+                  <option value="JUMAT">JUMAT</option>
+                  <option value="SABTU">SABTU</option>
+                </select>
               </div>
-            
             </div>
 
             <div class="form-group row">
@@ -139,7 +142,7 @@
         <thead>
           <th>No</th>
           <th>JENIS</th>
-          <th>HARI/TANGGAL</th>
+          <th>HARI</th>
           <th>JAM MULAI</th>
           <th>JAM SELESAI</th>
           <th>RUANG</th>
@@ -153,7 +156,7 @@
            <tr>
              <td><?php echo ++$no; ?></td>
              <td><?php echo $rowjadwal['jadwal_jenis']; ?></td>
-             <td><?php echo $rowjadwal['jadwal_tanggal']; ?></td>
+             <td><?php echo $rowjadwal['jadwal_hari']; ?></td>
              <td><?php echo $rowjadwal['jadwal_mulai']; ?></td>
              <td><?php echo $rowjadwal['jadwal_selesai']; ?></td>
              <td><?php echo $rowjadwal['rooms_name']; ?></td>
