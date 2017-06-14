@@ -29,7 +29,8 @@
                 <tbody>
                   <?php 
                     $no=0;
-                      $query = mysql_query("SELECT * FROM tbl_selectclass s JOIN ref_operator o ON s.operator_id_fk = o.operator_id JOIN ref_rooms r ON s.rooms_id = r.rooms_id JOIN ref_coursename c ON s.coursename_id = c.coursename_id where o.operator_id = '".$_SESSION['operator_id']."'");
+                      $query = mysql_query("SELECT * FROM tbl_selectclass s JOIN ref_operator o ON s.operator_id_fk = o.operator_id JOIN ref_rooms r ON s.rooms_id = r.rooms_id JOIN ref_coursename c ON s.coursename_id = c.coursename_id ");
+                      // TADINYA ADA INI TAPI NGGA NAMPIL DATANYA -___- : where o.operator_id = '".$_SESSION['operator_id']."'
                       while ($rowselect  = mysql_fetch_array($query)) {
                         
                    ?>
@@ -40,7 +41,7 @@
                      <td><?php echo $rowselect['rooms_name']; ?></td>
                      <td><?php echo $rowselect['kuota']; ?></td>
                      <td>
-                     <a href="index.php?hal=absensi/jadwal_absensi&id=<?php echo $rowselect['selectcalss_id']; ?>" class="btn btn-success"><span class="fa fa-users"></span> ABENSI KURUS INI</a>
+                     <a href="index.php?hal=absensi/jadwal_absensi&id=<?php echo $rowselect['selectcalss_id']; ?>" class="btn btn-success"><span class="fa fa-users"></span> ABENSI KURSUS INI</a>
                      </td>
                    </tr>
                    <?php } ?>

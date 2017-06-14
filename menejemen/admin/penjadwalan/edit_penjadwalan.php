@@ -1,10 +1,15 @@
   <?php 
     $id = $_GET['id'];
+    // $idEdit=$_GET['edit'];
     $query  = mysql_query("SELECT * FROM tbl_selectclass s JOIN ref_operator o ON s.operator_id_fk = o.operator_id JOIN ref_rooms r ON s.rooms_id = r.rooms_id JOIN ref_coursename c ON s.coursename_id = c.coursename_id where s.selectcalss_id='".$id."' ");
     $rowList = mysql_fetch_array($query);
     $idkus = $rowList['coursename_id'];
     $jumlah = $rowList['kuota'];
     $rowtrain = mysql_fetch_array(mysql_query("SELECT * FROM tblx_trainee_detail where coursename_id_fk = '".$idkus."'"));
+
+    $showJadwal = mysql_query("SELECT * from tbl_jadwal where selectcalss_id_fk='".$id."'");
+    $dataJadwal = mysql_fetch_array($showJadwal);
+
     // if (isset($_POST['jadwal'])) {
     //   $queryjadwal  = "INSERT INTO tbl_jadwal (jadwal_hari,jadwal_mulai,jadwal_selesai,selectcalss_id_fk,trainee_id_fk,rooms_id_fk,jadwal_jenis) 
     //     VALUES ('".$_POST['jadwal_hari']."','".$_POST['jadwal_mulai']."','".$_POST['jadwal_selesai']."','".$rowList['selectcalss_id']."','".$rowtrain['trainee_id_fk']."','".$_POST['rooms_id']."','".$_POST['jadwal_jenis']."')";
@@ -14,13 +19,13 @@
     //     }
 
     // }
-    // if (isset($_GET['hapus'])&&isset($_GET['id'])) {
-    //   $idhapus = $_GET['hapus'];
-    //   $queryhapusjadwal = mysql_query("DELETE FROM tbl_jadwal where jadwal_id = '".$_GET['hapus']."'");
-    //   if ($queryhapusjadwal) {
-    //       echo "<script> alert('Data Berhasil Dihapus'); location.href='index.php?hal=penjadwalan/add_penjadwalan&id=".$_GET['id']."' </script>";exit;
-    //     }
-    // }
+    if (isset($_GET['edit'])&&isset($_GET['id'])) {
+       $idupdate = $_GET['edit'];
+      $queryeditjadwal = mysql_query("UPDATE tbl_jadwal SET jadwal_tanggal='".$_POST['jadwal_tanggal']."', jadwal_mulai='".$_POST['jadwal_mulai']."', jadwal_selesai='".$_POST['jadwal_selesai']."',    where jadwal_id = '".$_GET['edit']."'");
+      if ($queryhapusjadwal) {
+          echo "<script> alert('Data Berhasil Dihapus'); location.href='index.php?hal=penjadwalan/add_penjadwalan&id=".$_GET['id']."' </script>";exit;
+        }
+     }
 
  ?>
   <section class="content-header">
@@ -39,7 +44,7 @@
     <div class="col-md-6">
           <div class="box box-default">
         <div class="box-header with-border">
-          <h3 class="box-title">Penjadwalan Kursus</h3>
+          <h3 class="box-title">Ubah Penjadwalan Kursus</h3>
           <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
             <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
@@ -54,29 +59,38 @@
                 <input type="hidden" name="selectcalss_id" value="<?php echo $rowList['selectcalss_id']; ?>">
               </div>
             </div>
+             <!-- nambah disiini -->
+            <div class="form-group row">
+              <label class="col-md-4">Nama Trainer</label>
+              <div class="col-md-8">
+                <input type="text" class="form-control" name="" value="<?php echo $rowList['operator_name']; ?>" readonly>
+                <input type="hidden" name="selectcalss_id" value="<?php echo $rowList['operator_id_fk']; ?>">
+              </div>
+              </div>
             <div class="form-group row">
               <label class="col-md-4">Jenis Jadwal</label>
               <div class="col-md-8">
                 <select class="form-control" name="jadwal_jenis">
                   <option value="">Pilih Jenis Jadwal</option>
-                  <option value="TEORI">TEORI</option>
-                  <option value="PRAKTEK">PRAKTEK</option>
+                  <option value="TEORI"
+                      <?php if($dataJadwal['jadwal_jenis']=='TEORI'){echo "selected=selected";}?>>TEORI
+                  </option>
+                  <option value="PRAKTEK"
+                      <?php if($dataJadwal['jadwal_jenis']=='PRAKTEK'){echo "selected=selected";}?>>TEORI
+                  </option>
                 </select>
               </div>
             </div>
+               <!-- perubhan disini -->
             <div class="form-group row">
-              <label class="col-md-4">Hari</label>
-              <div class="col-md-8">
-                <select class="select2 form-control" name="jadwal_hari">
-                  <option value="">Pilih Hari</option>
-                  <option value="SENIN">SENIN</option>
-                  <option value="SELASA">SELASA</option>
-                  <option value="RABU">RABU</option>
-                  <option value="KAMIS">KAMIS</option>
-                  <option value="JUMAT">JUMAT</option>
-                  <option value="SABTU">SABTU</option>
-                </select>
+              <label class="col-md-4">Hari/Tanggal</label>
+              <div class="col-md-5">
+                <input type="text" autocomplete="off" id="datepicker" required class="form-control" name="jadwal_tanggal" value="<?php $dataJadwal['jadwal_tanggal'];?>">
+                </div>
+                <div class="col-md-3">
+                <input type="text" class="form-control" name="jadwal_day" value="" readonly="">
               </div>
+            
             </div>
 
             <div class="form-group row">
@@ -85,7 +99,7 @@
                <div class="bootstrap-timepicker">
                 <div class="form-group">
                   <div class="input-group">
-                    <input type="text" class="form-control timepicker" name="jadwal_mulai">
+                    <input type="text" class="form-control timepicker" name="jadwal_mulai" value="<?php $dataJadwal['jadwal_mulai'];?>">
 
                     <div class="input-group-addon">
                       <i class="fa fa-clock-o"></i>
@@ -103,7 +117,7 @@
                 <div class="bootstrap-timepicker">
                 <div class="form-group">
                   <div class="input-group">
-                    <input type="text" class="form-control timepicker" name="jadwal_selesai">
+                    <input type="text" class="form-control timepicker" name="jadwal_selesai" value="<?php $dataJadwal['jadwal_selesai'];?>">
 
                     <div class="input-group-addon">
                       <i class="fa fa-clock-o"></i>
@@ -122,8 +136,10 @@
                           <option value="">Pilih Ruangan</option>
                           <?php $queryrooms = mysql_query("SELECT * FROM ref_rooms order by rooms_id asc");
                           while ($rooms  = mysql_fetch_array($queryrooms)) {?>
-                          <option value="<?php echo $rooms['rooms_id']; ?>"><?php echo $rooms['rooms_name']; ?></option>
-                          <?php } ?>
+                          <!-- BERHENTI DISINI BINGUNG EUY SIK SIK ISTIRAHAT BENTAR -->
+                          <option value="<?php echo $rooms['rooms_id']; ?>"
+                          <?php if($rooms['rooms_id']==$rowMenu['menu_parent']){echo "selected=selected";}?>><?php  echo $varMenuname; ?></option>
+                          <?php } ?> 
                         </select>
                       </div>
                     </div>

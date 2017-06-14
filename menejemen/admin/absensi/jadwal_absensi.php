@@ -40,7 +40,7 @@
            <tr>
              <td><?php echo ++$no; ?></td>
              <td><?php echo $rowjadwal['jadwal_jenis']; ?></td>
-             <td><?php echo $rowjadwal['jadwal_hari']; ?></td>
+             <td><?php echo $rowjadwal['jadwal_tanggal']; ?></td>
              <td><?php echo $rowjadwal['jadwal_mulai']; ?></td>
              <td><?php echo $rowjadwal['jadwal_selesai']; ?></td>
              <td><?php echo $rowjadwal['rooms_name']; ?></td>

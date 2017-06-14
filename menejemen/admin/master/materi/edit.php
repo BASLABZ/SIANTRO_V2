@@ -57,7 +57,7 @@ $rowMateri = mysql_fetch_array($queryRowMateri);
  ?>
   <section class="content-header">
       <h1>
-        Tambah Data Materi
+        Update Data Materi
         
       </h1>
       <ol class="breadcrumb">
@@ -72,7 +72,7 @@ $rowMateri = mysql_fetch_array($queryRowMateri);
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Tambah Data Materi</h3>
+              <h3 class="box-title">Update/Ubah Data Materi</h3>
             </div>
             <div class="box-body">
               <form class="role" method="POST" enctype="multipart/form-data">

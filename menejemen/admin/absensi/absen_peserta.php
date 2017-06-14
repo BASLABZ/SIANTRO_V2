@@ -60,9 +60,9 @@
                       </div>
                     </div>
                       <div class="form-group row">
-                      <label class="col-md-3">Hari</label>
+                      <label class="col-md-3">Hari/Tanggal</label>
                       <div class="col-md-6">
-                      <input type="text" class="form-control" name="" disabled="" value="<?php echo $runqueryJadwal['jadwal_hari']; ?>">
+                      <input type="text" class="form-control" name="" disabled="" value="<?php echo $runqueryJadwal['jadwal_tanggal']; ?>">
                       </div>
                     </div>
                       <div class="form-group row">

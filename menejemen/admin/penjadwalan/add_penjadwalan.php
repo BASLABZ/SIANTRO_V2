@@ -6,8 +6,9 @@
     $jumlah = $rowList['kuota'];
     $rowtrain = mysql_fetch_array(mysql_query("SELECT * FROM tblx_trainee_detail where coursename_id_fk = '".$idkus."'"));
     if (isset($_POST['jadwal'])) {
+      $tglJadwal=date('Y-m-d',strtotime($_POST['jadwal_tanggal']));
       $queryjadwal  = "INSERT INTO tbl_jadwal (jadwal_tanggal,jadwal_mulai,jadwal_selesai,selectcalss_id_fk,trainee_id_fk,rooms_id_fk,jadwal_jenis) 
-        VALUES ('".$_POST['jadwal_tanggal']."','".$_POST['jadwal_mulai']."','".$_POST['jadwal_selesai']."','".$rowList['selectcalss_id']."','".$rowtrain['trainee_id_fk']."','".$_POST['rooms_id']."','".$_POST['jadwal_jenis']."')";
+        VALUES ('".$tglJadwal."','".$_POST['jadwal_mulai']."','".$_POST['jadwal_selesai']."','".$rowList['selectcalss_id']."','".$rowtrain['trainee_id_fk']."','".$_POST['rooms_id']."','".$_POST['jadwal_jenis']."')";
         $runQuery = mysql_query($queryjadwal);
         if ($runQuery) {
           echo "<script> alert('Data Berhasil Disimpan'); location.href='index.php?hal=penjadwalan/add_penjadwalan&id=$id' </script>";exit;
@@ -50,14 +51,22 @@
             <div class="form-group row">
               <label class="col-md-4">Nama Kursus</label>
               <div class="col-md-8">
-                <input type="text" required class="form-control" name="" value="<?php echo $rowList['coursename_title']; ?>" readonly>
+                <input type="text" class="form-control" name="" value="<?php echo $rowList['coursename_title']; ?>" readonly>
                 <input type="hidden" name="selectcalss_id" value="<?php echo $rowList['selectcalss_id']; ?>">
+              </div>
+            </div>
+            <!-- nambah disiini -->
+            <div class="form-group row">
+              <label class="col-md-4">Nama Trainer</label>
+              <div class="col-md-8">
+                <input type="text" class="form-control" name="" value="<?php echo $rowList['operator_name']; ?>" readonly>
+                <input type="hidden" name="selectcalss_id" value="<?php echo $rowList['operator_id_fk']; ?>">
               </div>
             </div>
             <div class="form-group row">
               <label class="col-md-4">Jenis Jadwal</label>
               <div class="col-md-8">
-                <select class="form-control" name="jadwal_jenis">
+                <select class="form-control" name="jadwal_jenis" required="">
                   <option value="">Pilih Jenis Jadwal</option>
                   <option value="TEORI">TEORI</option>
                   <option value="PRAKTEK">PRAKTEK</option>
@@ -68,7 +77,7 @@
             <div class="form-group row">
               <label class="col-md-4">Hari/Tanggal</label>
               <div class="col-md-5">
-                <input type="text" autocomplete="off" id="datepicker" required class="form-control" name="jadwal_tanggal" value="">
+                <input type="text" autocomplete="off" id="datepicker" class="form-control" name="jadwal_tanggal" value="" required="">
                 </div>
                 <div class="col-md-3">
                 <input type="text" class="form-control" name="jadwal_day" value="" readonly="">
@@ -82,7 +91,7 @@
                <div class="bootstrap-timepicker">
                 <div class="form-group">
                   <div class="input-group">
-                    <input type="text" class="form-control timepicker" name="jadwal_mulai">
+                    <input type="text" class="form-control timepicker" name="jadwal_mulai" required>
 
                     <div class="input-group-addon">
                       <i class="fa fa-clock-o"></i>
@@ -100,7 +109,7 @@
                 <div class="bootstrap-timepicker">
                 <div class="form-group">
                   <div class="input-group">
-                    <input type="text" class="form-control timepicker" name="jadwal_selesai">
+                    <input type="text" class="form-control timepicker" name="jadwal_selesai" required>
 
                     <div class="input-group-addon">
                       <i class="fa fa-clock-o"></i>
@@ -115,7 +124,7 @@
             <div class="form-group row">
                       <label class="col-md-4">Pilih Ruangan</label>
                       <div class="col-md-8">
-                        <select class="form-control select" name="rooms_id">
+                        <select class="form-control select" name="rooms_id" required="">
                           <option value="">Pilih Ruangan</option>
                           <?php $queryrooms = mysql_query("SELECT * FROM ref_rooms order by rooms_id asc");
                           while ($rooms  = mysql_fetch_array($queryrooms)) {?>
