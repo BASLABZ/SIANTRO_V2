@@ -1,14 +1,35 @@
   <?php 
     $id = $_GET['id'];
     // $idEdit=$_GET['edit'];
-    $query  = mysql_query("SELECT * FROM tbl_selectclass s JOIN ref_operator o ON s.operator_id_fk = o.operator_id JOIN ref_rooms r ON s.rooms_id = r.rooms_id JOIN ref_coursename c ON s.coursename_id = c.coursename_id where s.selectcalss_id='".$id."' ");
+    $query  = mysql_query("SELECT
+  `ref_coursename`.`coursename_id` as aku,
+  `ref_coursename`.`coursename_title`,
+  ref_operator.`operator_name`,
+  tbl_jadwal.`jadwal_jenis`,
+  tbl_jadwal.`jadwal_tanggal`,
+  tbl_jadwal.`jadwal_mulai`,
+  tbl_jadwal.`jadwal_selesai`,
+  ref_rooms.`rooms_id`,
+  ref_rooms.`rooms_name`
+  
+  FROM tbl_selectclass
+  
+  JOIN `ref_coursename`
+    ON `ref_coursename`.`coursename_id`=tbl_selectclass.`coursename_id`
+  JOIN ref_operator
+    ON ref_operator.`operator_id`=tbl_selectclass.`operator_id_fk`
+  JOIN tbl_jadwal
+    ON tbl_jadwal.`selectcalss_id_fk`=tbl_selectclass.`selectcalss_id`
+  JOIN ref_rooms
+    ON ref_rooms.`rooms_id`=tbl_selectclass.`rooms_id`
+    
+  WHERE tbl_selectclass.`selectcalss_id`= '".$_GET['id']."'
+  AND tbl_jadwal.`jadwal_id`='".$_GET['edit']."' ");
     $rowList = mysql_fetch_array($query);
-    $idkus = $rowList['coursename_id'];
-    $jumlah = $rowList['kuota'];
-    $rowtrain = mysql_fetch_array(mysql_query("SELECT * FROM tblx_trainee_detail where coursename_id_fk = '".$idkus."'"));
+    
+    $idkus = $rowList['aku'];
+    // $jumlah = $rowList['kuota'];
 
-    $showJadwal = mysql_query("SELECT * from tbl_jadwal where selectcalss_id_fk='".$id."'");
-    $dataJadwal = mysql_fetch_array($showJadwal);
 
     // if (isset($_POST['jadwal'])) {
     //   $queryjadwal  = "INSERT INTO tbl_jadwal (jadwal_hari,jadwal_mulai,jadwal_selesai,selectcalss_id_fk,trainee_id_fk,rooms_id_fk,jadwal_jenis) 
@@ -19,11 +40,13 @@
     //     }
 
     // }
-    if (isset($_GET['edit'])&&isset($_GET['id'])) {
-       $idupdate = $_GET['edit'];
-      $queryeditjadwal = mysql_query("UPDATE tbl_jadwal SET jadwal_tanggal='".$_POST['jadwal_tanggal']."', jadwal_mulai='".$_POST['jadwal_mulai']."', jadwal_selesai='".$_POST['jadwal_selesai']."',    where jadwal_id = '".$_GET['edit']."'");
-      if ($queryhapusjadwal) {
-          echo "<script> alert('Data Berhasil Dihapus'); location.href='index.php?hal=penjadwalan/add_penjadwalan&id=".$_GET['id']."' </script>";exit;
+    if (isset($_POST['jadwal'])&&isset($_GET['id'])) {
+       // $idupdate = $_GET['edit'];
+      $queryeditjadwal = mysql_query("UPDATE tbl_jadwal SET 
+                                                  jadwal_tanggal='".date('Y-m-d', strtotime($_POST['jadwal_tanggal']))."', jadwal_mulai='".$_POST['jadwal_mulai']."', jadwal_selesai='".$_POST['jadwal_selesai']."' where jadwal_id = '".$_GET['edit']."'");
+      if ($queryeditjadwal) {
+          echo "<script> alert('Data Berhasil Diubah'); location.href='index.php?hal=penjadwalan/add_penjadwalan&id=".$_GET['id']."' </script>";exit;
+          
         }
      }
 
@@ -73,10 +96,10 @@
                 <select class="form-control" name="jadwal_jenis">
                   <option value="">Pilih Jenis Jadwal</option>
                   <option value="TEORI"
-                      <?php if($dataJadwal['jadwal_jenis']=='TEORI'){echo "selected=selected";}?>>TEORI
+                      <?php if($rowList['jadwal_jenis']=='TEORI'){echo "selected=selected";}?>>TEORI
                   </option>
                   <option value="PRAKTEK"
-                      <?php if($dataJadwal['jadwal_jenis']=='PRAKTEK'){echo "selected=selected";}?>>TEORI
+                      <?php if($rowList['jadwal_jenis']=='PRAKTEK'){echo "selected=selected";}?>>PRAKTEK
                   </option>
                 </select>
               </div>
@@ -85,7 +108,7 @@
             <div class="form-group row">
               <label class="col-md-4">Hari/Tanggal</label>
               <div class="col-md-5">
-                <input type="text" autocomplete="off" id="datepicker" required class="form-control" name="jadwal_tanggal" value="<?php $dataJadwal['jadwal_tanggal'];?>">
+                <input type="text" autocomplete="off" id="datepicker" required class="form-control" name="jadwal_tanggal" value="<?php echo date('m-d-Y', strtotime($rowList['jadwal_tanggal']));?>">
                 </div>
                 <div class="col-md-3">
                 <input type="text" class="form-control" name="jadwal_day" value="" readonly="">
@@ -99,7 +122,7 @@
                <div class="bootstrap-timepicker">
                 <div class="form-group">
                   <div class="input-group">
-                    <input type="text" class="form-control timepicker" name="jadwal_mulai" value="<?php $dataJadwal['jadwal_mulai'];?>">
+                    <input type="text" class="form-control timepicker" name="jadwal_mulai" value="<?php echo $rowList['jadwal_mulai'];?>">
 
                     <div class="input-group-addon">
                       <i class="fa fa-clock-o"></i>
@@ -117,7 +140,7 @@
                 <div class="bootstrap-timepicker">
                 <div class="form-group">
                   <div class="input-group">
-                    <input type="text" class="form-control timepicker" name="jadwal_selesai" value="<?php $dataJadwal['jadwal_selesai'];?>">
+                    <input type="text" class="form-control timepicker" name="jadwal_selesai" value="<?php echo $rowList['jadwal_selesai'];?>">
 
                     <div class="input-group-addon">
                       <i class="fa fa-clock-o"></i>
@@ -138,53 +161,16 @@
                           while ($rooms  = mysql_fetch_array($queryrooms)) {?>
                           <!-- BERHENTI DISINI BINGUNG EUY SIK SIK ISTIRAHAT BENTAR -->
                           <option value="<?php echo $rooms['rooms_id']; ?>"
-                          <?php if($rooms['rooms_id']==$rowMenu['menu_parent']){echo "selected=selected";}?>><?php  echo $varMenuname; ?></option>
+                          <?php if($rooms['rooms_id']==$rowList['rooms_id']){echo "selected=selected";}?>><?php echo $rooms['rooms_name']; ?></option>
                           <?php } ?> 
                         </select>
                       </div>
                     </div>
             <div class="form-group">
-              <button class="btn btn-primary btn-sm pull-right" name="jadwal" type="submit" name="simpan"><span class="fa fa-save"></span> Simpan</button>
+              <button class="btn btn-primary btn-sm pull-right" name="jadwal" type="submit" name="simpan"><span class="fa fa-save"></span>Ubah</button>
             </div>
           </form>
         </div>
       </div>
-    </div>
-    <div class="col-md-12">
-    <div class="box box-default">
-       <div class="box-header"><h3>JADWAL KURSUS</h3></div>
-       <div class="box-body">
-          <table class="table table-responsive table-hover table-stripped">
-        <thead>
-          <th>No</th>
-          <th>JENIS</th>
-          <th>HARI</th>
-          <th>JAM MULAI</th>
-          <th>JAM SELESAI</th>
-          <th>RUANG</th>
-          <th>AKSI</th>
-        </thead>
-        <tbody>
-          <?php $no = 0;
-              $queryshow = mysql_query("SELECT * FROM tbl_jadwal j JOIN ref_rooms r ON j.rooms_id_fk = r.rooms_id where j.jadwal_jenis !='UJIAN' AND j.selectcalss_id_fk = '".$id."'  ");
-              while ($rowjadwal = mysql_fetch_array($queryshow)) {
-           ?>
-           <tr>
-             <td><?php echo ++$no; ?></td>
-             <td><?php echo $rowjadwal['jadwal_jenis']; ?></td>
-             <td><?php echo $rowjadwal['jadwal_hari']; ?></td>
-             <td><?php echo $rowjadwal['jadwal_mulai']; ?></td>
-             <td><?php echo $rowjadwal['jadwal_selesai']; ?></td>
-             <td><?php echo $rowjadwal['rooms_name']; ?></td>
-             <td>
-               <a href="index.php?hal=penjadwalan/edit_penjadwalan&edit=<?php echo $rowjadwal['jadwal_id']; ?>&id=<?php echo $id; ?>" class="btn btn-success"><span class="fa fa-pencil"></span></a>
-               <a href="index.php?hal=penjadwalan/add_penjadwalan&hapus=<?php echo $rowjadwal['jadwal_id']; ?>&id=<?php echo $id; ?>" class="btn btn-danger"><span class="fa fa-trash"></span></a>
-             </td>
-           </tr>
-          <?php } ?>
-        </tbody>
-      </table>
-       </div>
-     </div>
     </div>
   </section>

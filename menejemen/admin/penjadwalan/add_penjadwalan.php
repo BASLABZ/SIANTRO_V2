@@ -22,6 +22,7 @@
           echo "<script> alert('Data Berhasil Dihapus'); location.href='index.php?hal=penjadwalan/add_penjadwalan&id=".$_GET['id']."' </script>";exit;
         }
     }
+    
 
  ?>
   <section class="content-header">
