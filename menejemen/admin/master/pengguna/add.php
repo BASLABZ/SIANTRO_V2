@@ -190,15 +190,20 @@
                    ?>
                  <option value="<?php echo $var_idLev?>"><?php echo $var_namaLev ?></option>
                   <?php 
-                                    }//tutup dari while
+                      }//tutup dari while
 
-                                  ?>
+                    ?>
                 </select>
                 </div>
               </div>
-            <div class="form-group">
-              <button class="btn btn-primary btn-sm pull-right" type="submit" name="simpan"><span class="fa fa-save"></span> Simpan</button>
+              <hr style="padding-top: 50px;">
+              <div class="col-md-12">
+                <div class="form-group">
+
+              <button class="btn btn-primary btn-lg pull-right" type="submit" name="simpan"><span class="fa fa-save"></span> Simpan</button>
             </div>
+              </div>
+            
           </form>
        
           

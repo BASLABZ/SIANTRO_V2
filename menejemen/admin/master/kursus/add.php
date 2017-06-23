@@ -47,7 +47,7 @@
             <div class="form-group row">
               <label class="col-md-3">Deskripsi Kursus</label>
               <div class="col-md-9">
-                <textarea class="form-control" required="" name="coursename_info" placeholder="Deskripsi Kursus" style="height: 250px;" id="summerBas"></textarea>
+                <textarea class="form-control"  name="coursename_info" placeholder="Deskripsi Kursus" style="height: 250px;" id="summerBas"></textarea>
               </div>
             </div>
             <div class="form-group row">
