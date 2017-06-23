@@ -46,7 +46,7 @@
                 <input type="password" class="form-control form-bordered" placeholder="Masukkan password" id="password" name="password">
               </div>
               <button type="submit" name="login" class="button btn-square">Masuk</button>
-              <br><br><p class="text-center"><small>Belum punya akun ? <a href="index.php?hal=register">Daftar Sekarang !</a></small></p>
+              <br><br><p class="text-center"><small>Belum punya akun ? <a href="index.php?hal=register">Daftar Sekarang !</a> | <a href="index.php?hal=forgot_password">Lupa Kata Sandi ?</a></small></p>
             </form>
           </div>
         </div><!-- .row -->
