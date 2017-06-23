@@ -54,13 +54,13 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="instansi" class="form-label">Instansi</label>
-                        <input type="text" id="instansi" class="form-control form-bordered" placeholder="Masukan instansi" name="frm_instansi" required="">
+                        <input type="text" id="instansi" class="form-control form-bordered" placeholder="Masukan instansi" name="frm_institution" required="">
                       </div><!-- .form-group -->
                     </div><!-- .col-sm-6 -->
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="keahlian" class="form-label">Keahlian</label>
-                        <input type="text" id="keahlian" class="form-control form-bordered" placeholder="Masukan keahlian" name="frm_keahlian" required="">
+                        <input type="text" id="keahlian" class="form-control form-bordered" placeholder="Masukan keahlian" name="frm_skill" required="">
                       </div><!-- .form-group -->
                     </div><!-- .col-sm-6 -->
                     <div class="col-sm-6">

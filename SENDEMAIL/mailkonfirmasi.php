@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title></title>
+  <title>SIANTRO UGM KONFIRMASI</title>
 </head>
 <body style="background-color: grey;">
 <!-- ayoo buat sesuatu disiniiii tampilannya mau kya gmn ? hohoohoo -->

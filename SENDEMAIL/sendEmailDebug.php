@@ -29,7 +29,7 @@ function get_include_contents($filename) {
     return false;
 }
 $mail->IsHTML(true);    // set email format to HTML
-$mail->Subject = "You have an event today";
+$mail->Subject = "Aktifasi Akun Member SIANTRO UGM";
 $mail->Body = get_include_contents('content\invoice.php'); // HTML -> PHP!
 // $mail->addAttachment("file/file.txt", "File.txt");
 // //Attach an image file
@@ -38,6 +38,5 @@ $mail->Body = get_include_contents('content\invoice.php'); // HTML -> PHP!
 if (!$mail->send()) {
     echo "Mailer Error: " . $mail->ErrorInfo;
 } else {
-    include 'mailkonfirmasi.php';
-
+    echo "<script> alert('Mohon cek email anda untuk mengaktifasi akun SiantroUGM anda.'); location.href='../index.php' </script>";exit;
 }
