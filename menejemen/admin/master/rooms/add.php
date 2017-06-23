@@ -59,7 +59,7 @@
   <script type="text/javascript">
       $(document).ready(function() {
           $('#defaultForm').bootstrapValidator({
-              message: 'This value is not valid',
+              message: 'Nama Ruangan harus diisi',
               feedbackIcons: {
                   valid: 'glyphicon glyphicon-ok',
                   invalid: 'glyphicon glyphicon-remove',
