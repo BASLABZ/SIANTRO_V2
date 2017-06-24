@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+<<<<<<< HEAD
   <title></title>
 </head> 
 <body style="background-color: white;">
+  <title>SIANTRO UGM KONFIRMASI</title>
+</head>
+<body style="background-color: grey;">
 <!-- ayoo buat sesuatu disiniiii tampilannya mau kya gmn ? hohoohoo -->
 <div class="container">
         <div class="row">
