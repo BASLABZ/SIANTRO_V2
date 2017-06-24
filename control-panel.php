@@ -1,7 +1,7 @@
 <?php 
   
   //cek data akun sdh lengkap belum
-  $cek = mysql_query("SELECT member_address FROM tbl_member WHERE member_id='".$_SESSION['member_id']."' ");
+  $cek = mysql_query("SELECT member_name, member_address, member_image FROM tbl_member WHERE member_id='".$_SESSION['member_id']."' ");
   $n_cek = mysql_fetch_array($cek);
   if ($n_cek['member_address']=='') {
     echo "<script> alert('Mohon lengkapi data akun terlebih dahulu'); location.href='index.php?hal=settingakun';</script>  ";exit;
@@ -18,8 +18,9 @@
           <div class="col-md-12">
             <div class="process-item highlight text-center">
               <div class="process-item-icon">
-               
+                  <h3><span class="fa fa-user-o"></span> Hallo <b><?php echo $n_cek['member_name']; ?></b> <img src="../upload/image-user/<?php echo $_SESSION['member_image'] ?>" class="img-circle" alt="User Image"> Selamat Datang di Pelatihan Kursus Antropologi Forensik </h3>
                   <h3><span class="fa fa-gear fa"></span> Control Panel</h3>
+
                
               </div>
               <div class="process-item-content"> 

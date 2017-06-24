@@ -2,8 +2,8 @@
 <html>
 <head>
   <title></title>
-</head>
-<body style="background-color: grey;">
+</head> 
+<body style="background-color: white;">
 <!-- ayoo buat sesuatu disiniiii tampilannya mau kya gmn ? hohoohoo -->
 <div class="container">
         <div class="row">

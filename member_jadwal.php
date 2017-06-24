@@ -34,7 +34,7 @@
               <thead>
                 <th>No</th>
                 <th>JENIS</th>
-                <th>HARI</th>
+                <th>HARI/TANGGAL</th>
                 <th>JAM MULAI</th>
                 <th>JAM SELESAI</th>
                 <th>RUANG</th>
@@ -47,7 +47,7 @@
                  <tr>
                    <td><?php echo ++$no; ?></td>
                    <td><?php echo $rowjadwal['jadwal_jenis']; ?></td>
-                   <td><?php echo $rowjadwal['jadwal_hari']; ?></td>
+                   <td><?php echo $rowjadwal['jadwal_tanggal']; ?></td>
                    <td><?php echo $rowjadwal['jadwal_mulai']; ?></td>
                    <td><?php echo $rowjadwal['jadwal_selesai']; ?></td>
                    <td><?php echo $rowjadwal['rooms_name']; ?></td>
@@ -74,7 +74,7 @@
               <thead>
                 <th>No</th>
                 <th>JENIS</th>
-                <th>HARI</th>
+                <th>HARI/TANGGAL</th>
                 <th>JAM MULAI</th>
                 <th>JAM SELESAI</th>
                 <th>RUANG</th>
@@ -87,7 +87,7 @@
                  <tr>
                    <td><?php echo ++$no; ?></td>
                    <td><?php echo $rowjadwal['jadwal_jenis']; ?></td>
-                   <td><?php echo $rowjadwal['jadwal_hari']; ?></td>
+                   <td><?php echo $rowjadwal['jadwal_tanggal']; ?></td>
                    <td><?php echo $rowjadwal['jadwal_mulai']; ?></td>
                    <td><?php echo $rowjadwal['jadwal_selesai']; ?></td>
                    <td><?php echo $rowjadwal['rooms_name']; ?></td>

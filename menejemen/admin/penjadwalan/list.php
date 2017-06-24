@@ -47,9 +47,21 @@
                      <td><?php echo $rowselect['operator_name']; ?></td>
                      <td><?php echo $rowselect['rooms_name']; ?></td>
                      <td><?php echo $rowselect['kuota']; ?></td>
-                     <td><a href="" class="btn btn-warning"><span class="fa fa-edit"></span> ubah</a>
+                     <td><a href="index.php?hal=penjadwalan/ubah_jadwal&id=<?php echo $rowselect['selectcalss_id']; ?>" class="btn btn-warning"><span class="fa fa-edit"></span> ubah</a>
+                     <?php
+                     // if($rowselect['kuota']==0) { ?>
+
+                      <!-- <a href="index.php?hal=penjadwalan/list" class="btn btn-success"><span class="fa fa-calendar"></span> JADWALKAN KURSUS INI</a>
+                      <a href="index.php?hal=penjadwalan/list" class="btn btn-primary"><span class="fa fa-calendar"></span> JADWALKAN UJIAN</a> -->
+                    <?php  
+                     //      echo "<script> alert('Belum ada peserta pada kursus ini !'); location.href='index.php?hal=penjadwalan/list' </script>";exit;
+                     // }else{
+                     ?>
                      <a href="index.php?hal=penjadwalan/add_penjadwalan&id=<?php echo $rowselect['selectcalss_id']; ?>" class="btn btn-success"><span class="fa fa-calendar"></span> JADWALKAN KURSUS INI</a>
                      <a href="index.php?hal=penjadwalan/add_penjadwalan_ujian&id=<?php echo $rowselect['selectcalss_id']; ?>" class="btn btn-primary"><span class="fa fa-calendar"></span> JADWALKAN UJIAN</a>
+                     <?php
+                      // }//tutup else
+                     ?>
                      </td>
                    </tr>
                    <?php } ?>

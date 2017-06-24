@@ -20,6 +20,7 @@
             if ($no>0) {
                 $_SESSION['member_id'] = $member_id;
                 $_SESSION['member_name']= $namalengkap;
+                $_SESSION['member_image']= $member_image
                 $_SESSION['member_password'] = $password;
                 $_SESSION['member_useremail'] = $email;
                 $_SESSION['member_phonenumber'] = $phone;
