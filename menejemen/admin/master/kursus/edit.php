@@ -25,8 +25,8 @@ if (isset($_POST['ubah'])) {
         
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Master</a></li>
+        <li><a href="index.php"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="index.php?hal=master/kursus/list">Master</a></li>
         <li class="active">Ubah</li>
         <li class="active">Kursus</li>
       </ol>

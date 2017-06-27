@@ -1,10 +1,19 @@
+    <!-- proses hapus data master menu -->
+  <?php 
+      if (isset($_GET['hapus'])) {
+         $queryHapusMenu  = mysql_query("DELETE FROM ref_operator where operator_id='".$_GET['hapus']."'");
+        if ($queryHapusMenu){
+            echo "<script> alert('Terimakasih Data Berhasil Dihapus'); location.href='index.php?hal=master/pengguna/list'</script>";exit;
+        }
+      }
+   ?>
   <section class="content-header">
       <h1>
         Master Pengguna
         
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="index.php"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="#">Master</a></li>
         <li class="active">Pengguna</li>
       </ol>
@@ -45,7 +54,7 @@
                      <td><?php echo $rowOperator['level_name']; ?></td>
                      <td>
                        <a href="index.php?hal=master/pengguna/edit&id=<?php echo $rowOperator['operator_id']; ?>" class="btn btn-warning btn-sm"><span class="fa fa-edit"></span> Ubah</a>
-                       <a href="index.php?hal=master/pengguna/edit&id=<?php echo $rowOperator['operator_id']; ?>" class="btn btn-danger btn-sm"> <span class="fa fa-trash"></span> Hapus</a>
+                       <a href="index.php?hal=master/list/pengguna/hapus&id=<?php echo $rowOperator['operator_id']; ?>" class="btn btn-danger btn-sm"> <span class="fa fa-trash"></span> Hapus</a>
                      </td>
                    </tr>
                    <?php } ?>

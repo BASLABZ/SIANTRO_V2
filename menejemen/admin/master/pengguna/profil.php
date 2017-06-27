@@ -80,7 +80,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-8 col-md-offset-2">
-            <h2 class="text-big text-center marg-40-btm">Edit Akun Operator<span class="fa fa-gear"></span></h2>
+            <h2 class="text-big text-center marg-40-btm">Halaman Akun Operator<span class="fa fa-gear"></span></h2>
             <form class="role" method="POST" enctype="multipart/form-data">
               <div class="row">
                 <div class="panel panel-success">

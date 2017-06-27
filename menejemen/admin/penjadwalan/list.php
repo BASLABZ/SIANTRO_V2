@@ -4,7 +4,7 @@
         
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="index.php"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="#">Transaksi</a></li>
         <li class="active">Penjadwalan Kelas</li>
       </ol>
@@ -47,7 +47,7 @@
                      <td><?php echo $rowselect['operator_name']; ?></td>
                      <td><?php echo $rowselect['rooms_name']; ?></td>
                      <td><?php echo $rowselect['kuota']; ?></td>
-                     <td><a href="index.php?hal=penjadwalan/ubah_jadwal&id=<?php echo $rowselect['selectcalss_id']; ?>" class="btn btn-warning"><span class="fa fa-edit"></span> ubah</a>
+                     <td><a href="index.php?hal=penjadwalan/ubah_jadwal&id=<?php echo $rowselect['selectcalss_id']; ?>" class="btn btn-warning"><span class="fa fa-edit"></span> Ubah</a>
                      <?php
                      // if($rowselect['kuota']==0) { ?>
 

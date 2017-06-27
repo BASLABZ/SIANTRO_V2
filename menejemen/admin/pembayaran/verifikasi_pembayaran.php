@@ -27,8 +27,8 @@
   <section class="content-header">
       <h1>Verfikasi Pembayaran</h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Pembayaran</a></li>
+        <li><a href="index.php"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="index.php?hal=pembayaran/pembayaran">Pembayaran</a></li>
         <li class="active">Verifikasi Pembayaran</li>
       </ol>
   </section>

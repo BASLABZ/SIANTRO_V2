@@ -34,8 +34,8 @@
         
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Master</a></li>
+        <li><a href="index.php"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="index.php?hal=master/pengguna/list">Master</a></li>
         <li class="active">Tambah</li>
         <li class="active">Pengguna</li>
       </ol>
@@ -190,20 +190,15 @@
                    ?>
                  <option value="<?php echo $var_idLev?>"><?php echo $var_namaLev ?></option>
                   <?php 
-                      }//tutup dari while
+                                    }//tutup dari while
 
-                    ?>
+                                  ?>
                 </select>
                 </div>
               </div>
-              <hr style="padding-top: 50px;">
-              <div class="col-md-12">
-                <div class="form-group">
-
-              <button class="btn btn-primary btn-lg pull-right" type="submit" name="simpan"><span class="fa fa-save"></span> Simpan</button>
+            <div class="form-group">
+              <button class="btn btn-primary btn-sm pull-right" type="submit" name="simpan"><span class="fa fa-save"></span> Simpan</button>
             </div>
-              </div>
-            
           </form>
        
           

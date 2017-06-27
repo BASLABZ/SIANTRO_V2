@@ -23,8 +23,8 @@
         
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Master</a></li>
+        <li><a href="index.php"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="index.php?hal=master/kursus/list">Master</a></li>
         <li class="active">Tambah</li>
         <li class="active">Kursus</li>
       </ol>
@@ -47,7 +47,7 @@
             <div class="form-group row">
               <label class="col-md-3">Deskripsi Kursus</label>
               <div class="col-md-9">
-                <textarea class="form-control"  name="coursename_info" placeholder="Deskripsi Kursus" style="height: 250px;" id="summerBas"></textarea>
+                <textarea class="form-control" required="" name="coursename_info" placeholder="Deskripsi Kursus" style="height: 250px;" id="summerBas"></textarea>
               </div>
             </div>
             <div class="form-group row">
@@ -104,3 +104,60 @@
         </div>
       </div>
     </section>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#defaultForm').bootstrapValidator({
+        message: 'This value is not valid',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            coursename_title: {
+                validators: {
+                    notEmpty: {
+                        message: 'Judul Kursus harus diisi'
+                    }
+                }
+            },
+             coursename_date: {
+                validators: {
+                    notEmpty: {
+                        message: 'Tanggal Periode Kursus harus diisi'
+                    }
+                }
+            },
+             coursename_info: {
+                validators: {
+                    notEmpty: {
+                        message: 'Deskripsi Kursus harus diisi'
+                    }
+                }
+            },
+             coursename_price: {
+                validators: {
+                    notEmpty: {
+                        message: 'Biaya harus diisi'
+                    }
+                }
+            },
+            coursename_quota: {
+                validators: {
+                    notEmpty: {
+                        message: 'Kuota Kursus harus diisi'
+                    }
+                }
+            },
+            coursename_status: {
+                validators: {
+                    notEmpty: {
+                        message: 'Status Kursus harus diisi'
+                    }
+                }
+            },
+
+        }
+    });
+});
+</script>

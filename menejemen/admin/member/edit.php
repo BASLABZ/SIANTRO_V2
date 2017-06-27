@@ -12,8 +12,8 @@
         
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Daftar Member</a></li>
+        <li><a href="index.php"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="index.php?hal=member/list">Daftar Member</a></li>
         <li class="active">Detail Member</li>
       </ol>
   </section>

@@ -37,8 +37,8 @@
         
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Master</a></li>
+        <li><a href="index.php"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="index.php?hal=master/pengguna/list">Master</a></li>
         <li class="active">Edit</li>
         <li class="active">Pengguna</li>
       </ol>

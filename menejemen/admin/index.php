@@ -46,8 +46,6 @@
 
 <link rel="stylesheet" href="../assets/jquery_datepicker/jquery-ui.css">  
 <link rel="stylesheet" href="../assets/jquery_datepicker/style.css">
-<!-- include js boost validator -->
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/css/bootstrapValidator.min.css">
 
 </head>
 <body class="hold-transition skin-green sidebar-mini">
@@ -76,7 +74,7 @@
 <!-- tambahan JS buat tanggal  -->
 <script src="../assets/jquery_datepicker/jquery-1.12.4.js"></script>
 <script src="../assets/jquery_datepicker/jquery-ui.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/js/bootstrapValidator.min.js"></script>
+
 
 <!-- INI KENAPA MUSTI DI HIDDEN SIH MALAH JEPAT BENTROK -->
 <!-- kalau validasi dr mas edi itu duaa baris coding ini dihidden baru JS validatornyamau nyalaaa -__- setelah kucoba dg metode yg sama malah bentrok js nya , jd ku UnHidden lg -->
@@ -176,7 +174,3 @@
        {header('location:index.php');}}
     if (!isset($_SESSION['level_name'])){header('location:../index.php');}
 ?>
-<?php 
-  // include master validasi seluruh master fitur admin
-include 'master-validasi.php';
- ?>

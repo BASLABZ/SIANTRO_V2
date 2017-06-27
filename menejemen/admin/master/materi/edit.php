@@ -61,8 +61,8 @@ $rowMateri = mysql_fetch_array($queryRowMateri);
         
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Data</a></li>
+        <li><a href="index.php"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="index.php?hal=master/materi/list">Data</a></li>
         <li class="active">Tambah</li>
         <li class="active">Materi</li>
       </ol>
