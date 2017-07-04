@@ -5,28 +5,41 @@ $rowSilabus = mysql_fetch_array($querySilabus);
     if (isset($_POST['ubah'])) {
       if (!empty($_FILES) && $_FILES['silabus_file']['size'] >0 && $_FILES['silabus_file']['error'] == 0){
             $silabus_file = $_FILES['silabus_file']['name'];
+                          // $move = move_uploaded_file($_FILES['silabus_file']['tmp_name'], '../upload/silabus/'.$silabus_file);
                           $move = move_uploaded_file($_FILES['silabus_file']['tmp_name'], '../upload/silabus/'.$silabus_file);
 
             if ($move) {
-              $queryInsert  = mysql_query("UPDATE ref_silabus set 
+              $sqlSilabuss=mysql_query("SELECT silabus_file from ref_silabus where silabus_id='".$idsilabus."'");
+              $dataSilabus=mysql_fetch_array($sqlSilabuss);
+              unlink('../upload/silabus/'.$dataSilabus['silabus_file']);
+              
+              $queryUpdate  = mysql_query("UPDATE ref_silabus set 
                                                                   silabus_purpose='".$_POST['silabus_purpose']."',
                                                                   silabus_topic = '".$_POST['silabus_topic']."',
                                                                   coursename_id_fk = '".$_POST['coursename_id_fk']."',
                                                                   silabus_file = '".$silabus_file."'
                                                              WHERE silabus_id = '".$idsilabus."'");
+                  echo "<script> alert('Data Berhasil Diubah'); location.href='index.php?hal=master/silabus/list' </script>";
 
             }else{
-                $queryInsert  = mysql_query("UPDATE ref_silabus set
+                $queryUpdate  = mysql_query("UPDATE ref_silabus set
                                                                     silabus_purpose='".$_POST['silabus_purpose']."',
                                                                     silabus_topic = '".$_POST['silabus_topic']."',
                                                                     coursename_id_fk = '".$_POST['coursename_id_fk']."'
                                                                WHERE silabus_id = '".$idsilabus."'");              
+                echo "<script> alert('Data Berhasil Diubah'); location.href='index.php?hal=master/silabus/list' </script>";
             }
 
 
-      }
-      if ($queryInsert) {
-         echo "<script> alert('Data Berhasil Diubah'); location.href='index.php?hal=master/silabus/list' </script>";exit;
+      } else {
+        $queryUpdate  = mysql_query("UPDATE ref_silabus set 
+                                                                  silabus_purpose='".$_POST['silabus_purpose']."',
+                                                                  silabus_topic = '".$_POST['silabus_topic']."',
+                                                                  coursename_id_fk = '".$_POST['coursename_id_fk']."'
+                                                             WHERE silabus_id = '".$idsilabus."'");
+
+           echo "<script> alert('Data Berhasil Diubah'); location.href='index.php?hal=master/silabus/list' </script>";
+        
       }
     }
  ?>
@@ -36,8 +49,8 @@ $rowSilabus = mysql_fetch_array($querySilabus);
         
       </h1>
       <ol class="breadcrumb">
-        <li><a href="index.php"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="index.php?hal=master/silabus/list">Master</a></li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">Master</a></li>
         <li class="active">Tambah</li>
         <li class="active">Silabus</li>
       </ol>
@@ -79,7 +92,7 @@ $rowSilabus = mysql_fetch_array($querySilabus);
               </div>
             </div>
             <div class="form-group row">
-                <label class="col-md-3">File (PDF,WORD,VIDEO)</label>
+                <label class="col-md-3">File</label>
                 <div class="col-md-4">
                   <input type="file" class="form-control"  name="silabus_file">
                   <label><?php echo $rowSilabus['silabus_file']; ?></label>

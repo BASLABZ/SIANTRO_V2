@@ -45,6 +45,7 @@
 
 <link rel="stylesheet" href="../assets/jquery_datepicker/jquery-ui.css">  
 <link rel="stylesheet" href="../assets/jquery_datepicker/style.css">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/css/bootstrapValidator.min.css">
 
 </head>
 <body class="hold-transition skin-green sidebar-mini">
@@ -105,6 +106,7 @@
 <script src="../assets/summerBas/summernote.min.js"></script>
 <script src="../assets/plugins/select2/select2.full.min.js"></script>
 <script src="../assets/plugins/timepicker/bootstrap-timepicker.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/js/bootstrapValidator.min.js"></script>
 <script type="text/javascript">
   $('#kondisi_bersyarat').on('change',function () {
       if(this.value == "Y") {
@@ -164,12 +166,7 @@
     });
   
 </script>
-<!-- nambahin JS disini  -->
-<!-- <script>
-  $( function() {
-    $( "#datepicker" ).datepicker();
-  } );
-  </script> -->
+
   <script>
   $( function() {
     $( "#datepicker" ).datepicker({minDate: -5, maxDate: 2});
@@ -184,3 +181,6 @@
        {header('location:index.php');}}
     if (!isset($_SESSION['level_name'])){header('location:../index.php');}
 ?>
+<?php 
+    include 'master-validasi.php';
+ ?>
