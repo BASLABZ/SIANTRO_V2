@@ -1,7 +1,8 @@
 <?php 
+   
     include 'menejemen/config/inc-db.php';
-    session_start();
-    error_reporting(0);
+     session_start();
+    //error_reporting(0);
     
      if (isset($_GET['logout'])) {
       // ---------UPDATE STATUS LOGIN MEMBER-------//
@@ -11,14 +12,14 @@
         }
 
     // ----- PERINTAH AKTIVASI MEMBER ----- //
-    if ($_GET['id']!='') {
-      //update status member
-      $q_member = mysql_query("UPDATE tbl_member SET 
-                      member_status_active='active' 
-                      WHERE member_id='".$_GET['id']."' ");
+    // if ($_GET['id']!='') {
+    //   //update status member
+    //   $q_member = mysql_query("UPDATE tbl_member SET 
+    //                   member_status_active='active' 
+    //                   WHERE member_id='".$_GET['id']."' ");
 
-      echo "<script> alert('Selamat, akun anda telah aktif. Segera login dan lengkapi data diri anda'); location.href='index.php' </script>";exit;
-    }
+    //   echo "<script> alert('Selamat, akun anda telah aktif. Segera login dan lengkapi data diri anda'); location.href='index.php' </script>";exit;
+    // }
     // ----- Tutup PERINTAH AKTIVASI MEMBER ----- //
     
  ?>
