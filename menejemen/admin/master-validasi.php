@@ -68,5 +68,122 @@
                         }
                     }
                 });
+            // validasi tambah pengguna
+            $('#tambah_pengguna').bootstrapValidator({
+        message: 'This value is not valid',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            operator_name: {
+                validators: {
+                    notEmpty: {
+                        message: 'Nama Operator harus diisi'
+                    }
+                }
+            },
+            operator_username: {
+                validators: {
+                    notEmpty: {
+                        message: 'Username harus diisi'
+                    }
+                }
+            },
+            operator_password: {
+                validators: {
+                    notEmpty: {
+                        message: 'Password harus diisi'
+                    }
+                }
+            },
+             operator_placeofbirth: {
+                validators: {
+                    notEmpty: {
+                        message: 'Tempat Lahir harus diisi'
+                    }
+                }
+            },
+             operator_dateofbirth: {
+                validators: {
+                    notEmpty: {
+                        message: 'Tanggal Lahir harus diisi'
+                    }
+                }
+            },
+            operator_gender: {
+                validators: {
+                    notEmpty: {
+                        message: 'Jenis Kelamin harus diisi'
+                    }
+                }
+            },
+            operator_address: {
+                validators: {
+                    notEmpty: {
+                        message: 'Alamat harus diisi'
+                    }
+                }
+            },
+            operator_phonenumber: {
+                validators: {
+                    notEmpty: {
+                        message: 'Nomor telepon harus diisi'
+                    }
+                }
+            },
+            operator_email: {
+                validators: {
+                    notEmpty: {
+                        message: 'Email harus diisi'
+                    }
+                }
+            },
+            operator_religion: {
+                validators: {
+                    notEmpty: {
+                        message: 'Agama harus diisi'
+                    }
+                }
+            },
+            operator_website: {
+                validators: {
+                    notEmpty: {
+                        message: 'Website harus diisi'
+                    }
+                }
+            },
+            operator_position: {
+                validators: {
+                    notEmpty: {
+                        message: 'Jabatan harus diisi'
+                    }
+                }
+            },
+            operator_image: {
+                validators: {
+                    notEmpty: {
+                        message: 'Foto harus diisi'
+                    }
+                }
+            },
+             operator_status: {
+                validators: {
+                    notEmpty: {
+                        message: 'Status harus diisi'
+                    }
+                }
+            },
+             operator_level: {
+                validators: {
+                    notEmpty: {
+                        message: 'Level Operator harus diisi'
+                    }
+                }
+            }
+
+        }
+    });
       });
 </script>
