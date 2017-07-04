@@ -105,7 +105,16 @@
 <script src="../assets/summerBas/summernote.min.js"></script>
 <script src="../assets/plugins/select2/select2.full.min.js"></script>
 <script src="../assets/plugins/timepicker/bootstrap-timepicker.min.js"></script>
-
+<script type="text/javascript">
+  $('#kondisi_bersyarat').on('change',function () {
+      if(this.value == "Y") {
+        $('#referensi').show();
+        // alert('tes show');
+      }else if (this.value == "N") {
+        $('#referensi').hide();
+      }
+    });
+</script>
  <script type="text/javascript">
  //Timepicker
     $(".timepicker").timepicker({
@@ -164,6 +173,8 @@
   <script>
   $( function() {
     $( "#datepicker" ).datepicker({minDate: -5, maxDate: 2});
+    $( "#datepicker_mulai" ).datepicker();
+    $( "#datepicker_penutupan" ).datepicker();
   } );
   </script>
 </body>

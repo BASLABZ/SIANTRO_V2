@@ -226,7 +226,7 @@
                     </div><!-- .col-sm-6 -->
                   </div>
                 </div>
-                <div class="col-sm-12 marg-20-top">
+                <div class="col-sm-12 marg-20-top" style="padding-bottom: 50px;">
                   <button type="submit" class="btn btn-primary" name="perbarui">Simpan Perubahan</button>
                 </div>
               </div><!-- .row -->
