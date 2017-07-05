@@ -1,13 +1,14 @@
-<!-- function for login system -->
 <?php 
         if (isset($_POST['login'])) {
+            
             $username   = $_POST['username'];
             $password   = md5($_POST['password']);
             $no = 0;
             // ===================nambah syarat di query dikit disini =====================
             $sqllogin = " SELECT * FROM tbl_member where member_useremail = '".$username."' and member_password= '".$password."' and member_status_active='active'";
-            // echo $sqllogin;
-            // exit();
+            
+             
+
             $hasil = mysql_query($sqllogin);
             while ($login=mysql_fetch_array($hasil)) {
                 $member_id       = $login['member_id'];
@@ -15,12 +16,14 @@
                 $namalengkap     = $login['member_name']; 
                 $email     = $login['member_useremail']; 
                 $phone     = $login['member_phonenumber']; 
+                $member_image = $login['member_image'];
                 $no++;
             } 
             if ($no>0) {
+
                 $_SESSION['member_id'] = $member_id;
                 $_SESSION['member_name']= $namalengkap;
-                $_SESSION['member_image']= $member_image
+                $_SESSION['member_image']= $member_image;
                 $_SESSION['member_password'] = $password;
                 $_SESSION['member_useremail'] = $email;
                 $_SESSION['member_phonenumber'] = $phone;
@@ -32,6 +35,7 @@
             }
         }
  ?>
+<!-- function for login system -->
     <div id="signin" class="signin content-section bg-grey">
       <div class="container">
         <div class="row">

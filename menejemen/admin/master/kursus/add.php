@@ -1,19 +1,22 @@
 <?php 
     if (isset($_POST['simpan'])) {
+        $mulai = date('Y-m-d', strtotime(str_replace('-', '/', $_POST['mulai'])));
+        $penutupan = date('Y-m-d', strtotime(str_replace('-', '/', $_POST['penutupan'])));
       if ($_POST['coursename_status']=='opened') {
+        
         $query = mysql_query("INSERT INTO ref_coursename
                                            (coursename_title, coursename_date, coursename_info,
-                                            coursename_price, coursename_quota, coursename_status,coursename_con,coursename_ref) 
-                              VALUES ('".$_POST['coursename_title']."', NOW(), '".$_POST['coursename_info']."', '".$_POST['coursename_price']."', '".$_POST['coursename_quota']."', 'opened','".$_POST['coursename_con']."','".$_POST['coursename_ref']."')");  
-      }else{
-        $query = mysql_query("INSERT INTO ref_coursename
+                                            coursename_price, coursename_quota, coursename_status,coursename_con,coursename_ref,coursename_date_end) 
+                              VALUES ('".$_POST['coursename_title']."','$mulai', '".$_POST['coursename_info']."', '".$_POST['coursename_price']."', '".$_POST['coursename_quota']."', 'opened','".$_POST['coursename_con']."','".$_POST['coursename_ref']."','$penutupan')");  
+      }else if($_POST['coursename_status']=='upcoming'){
+         $query = mysql_query("INSERT INTO ref_coursename
                                            (coursename_title, coursename_date, coursename_info,
-                                            coursename_price, coursename_quota, coursename_status) 
-                              VALUES ('".$_POST['coursename_title']."', NOW(), '".$_POST['coursename_info']."', '".$_POST['coursename_price']."', '".$_POST['coursename_quota']."', '".$_POST['coursename_status']."')");
+                                            coursename_price, coursename_quota, coursename_status,coursename_con,coursename_ref,coursename_date_end) 
+                              VALUES ('".$_POST['coursename_title']."','$mulai', '".$_POST['coursename_info']."', '".$_POST['coursename_price']."', '".$_POST['coursename_quota']."', 'upcoming','".$_POST['coursename_con']."','".$_POST['coursename_ref']."','$penutupan')");
       }
       
       if ($query) {
-            echo "<script> alert('Terimakasih Data Berhasil Disimpan'); location.href='index.php?hal=master/kursus/list' </script>";exit;
+          echo "<script> alert('Terimakasih Data Berhasil Disimpan'); location.href='index.php?hal=master/kursus/list' </script>";exit;
        } 
     }
  ?>
@@ -62,35 +65,40 @@
             </div>
             <div class="form-group row">
               <label class="col-md-3">Status Kursus</label>
-              <div class="col-md-4">
-                <select class="form-control" name="coursename_status">
-                  <option>Pilih status</option>
+              <div class="col-md-2">
+                <select class="form-control" name="coursename_status" required="">
+                  <option value="">Pilih status</option>
                   <option value="opened">BUKA</option>
                   <option value="upcoming">AKAN DIBUKA</option>
                 </select>
               </div>
+              <label class="col-md-1">Mulai</label>
+              <div class="col-md-2"><input type="text" class="form-control " id="datepicker_mulai" name="mulai" required=""></div>
+              <label class="col-md-1">Penutupan</label>
+              <div class="col-md-2"><input type="text" class="form-control " id="datepicker_penutupan" name="penutupan" required=""></div>
             </div>
             <div class="form-group row">
               <label class="col-md-3">Status Bersyarat</label>
               <div class="col-md-4">
               <!-- kaya gini ener engga yaaa  mau nambah yg item di hidden itu, munculnya kalau ada aksi tertentu-->
-                <select class="form-control" name="coursename_con" id="">
-                  <option>Pilih Kondisi</option>
-                  <option value="opened">YA</option>
-                  <option value="upcoming">TIDAK</option>
+                <select class="form-control" name="coursename_con" id="kondisi_bersyarat" required="">
+                  <option value="">Pilih Kondisi</option>
+                  <option value="Y">YA</option>
+                  <option value="N">TIDAK</option>
                 </select>
               </div>
             </div>
             
-            <div class="form-group row">
+            <div class="form-group row" id="referensi" hidden>
               <label class="col-md-3">Pilih Referensi Kursus</label>
-              <div class="col-md-6">
-                <select class="form-control" name="coursename_ref" >
+              <div class="col-md-9">
+                <select class="form-control select" name="coursename_ref" style="width: 100%;">
                   <option value="">Pilih Nama Kursus</option>
                   <?php $queryKursus = mysql_query("SELECT * FROM ref_coursename order by coursename_id ASC");
                       while ($kursus = mysql_fetch_array($queryKursus)) {
                    ?>
-                    <option value="<?php echo $kursus['coursename_id']; ?>"><?php echo $kursus['coursename_title']; ?></option>
+                    <option value="<?php echo $kursus['coursename_id']; ?>">
+                    <?php echo $kursus['coursename_title']; ?></option>
                   <?php } ?>
                 </select>
               </div>
@@ -105,6 +113,8 @@
       </div>
     </section>
 <script type="text/javascript">
+// validasi status bersyarat
+
 $(document).ready(function() {
     $('#defaultForm').bootstrapValidator({
         message: 'This value is not valid',

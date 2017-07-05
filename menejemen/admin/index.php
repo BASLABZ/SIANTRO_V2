@@ -29,11 +29,10 @@
   <title>SIANTRO UGM | Dashboard</title>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <link rel="stylesheet" href="../assets/font/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../assets/font/ionicons.min.css">
   <link rel="stylesheet" href="../assets/dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="../assets/dist/css/skins/_all-skins.min.css">
-  <!-- <link rel="stylesheet" href="../assets/plugins/iCheck/flat/blue.css"> -->
   <link rel="stylesheet" href="../assets/plugins/morris/morris.css">
   <link rel="stylesheet" href="../assets/plugins/jvectormap/jquery-jvectormap-1.2.2.css">
   <link rel="stylesheet" href="../assets/plugins/datepicker/datepicker3.css">
@@ -46,6 +45,7 @@
 
 <link rel="stylesheet" href="../assets/jquery_datepicker/jquery-ui.css">  
 <link rel="stylesheet" href="../assets/jquery_datepicker/style.css">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/css/bootstrapValidator.min.css">
 
 </head>
 <body class="hold-transition skin-green sidebar-mini">
@@ -106,7 +106,17 @@
 <script src="../assets/summerBas/summernote.min.js"></script>
 <script src="../assets/plugins/select2/select2.full.min.js"></script>
 <script src="../assets/plugins/timepicker/bootstrap-timepicker.min.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/js/bootstrapValidator.min.js"></script>
+<script type="text/javascript">
+  $('#kondisi_bersyarat').on('change',function () {
+      if(this.value == "Y") {
+        $('#referensi').show();
+        // alert('tes show');
+      }else if (this.value == "N") {
+        $('#referensi').hide();
+      }
+    });
+</script>
  <script type="text/javascript">
  //Timepicker
     $(".timepicker").timepicker({
@@ -156,15 +166,12 @@
     });
   
 </script>
-<!-- nambahin JS disini  -->
-<!-- <script>
-  $( function() {
-    $( "#datepicker" ).datepicker();
-  } );
-  </script> -->
+
   <script>
   $( function() {
     $( "#datepicker" ).datepicker({minDate: -5, maxDate: 2});
+    $( "#datepicker_mulai" ).datepicker();
+    $( "#datepicker_penutupan" ).datepicker();
   } );
   </script>
 </body>
@@ -174,3 +181,6 @@
        {header('location:index.php');}}
     if (!isset($_SESSION['level_name'])){header('location:../index.php');}
 ?>
+<?php 
+    include 'master-validasi.php';
+ ?>

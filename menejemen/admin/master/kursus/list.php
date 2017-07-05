@@ -29,11 +29,12 @@
              <thead>
                <th>No</th>
                <th>Judul Kursus</th>
-               <th>Tanggal Start</th>
-               <th>Deskripsi</th>
+               <th>Tanggal Mulai</th>
+               <th>Tanggal Penutupan</th>
                <th>Harga</th>
                <th>Kuota</th>
-               <th>Status</th>
+               <th>Status Kursus</th>
+               <th>Status Bersyarat</th>
                <th>Aksi</th>
              </thead> 
              <tbody>
@@ -46,19 +47,32 @@
                   <td><?php echo ++$no; ?></td>
                   <td><?php echo $rowKursus['coursename_title']; ?></td>
                   <td><?php echo $rowKursus['coursename_date']; ?></td>
-                  <td>
-                      <?php 
-                            $readmoreDeskripsi  = substr($rowKursus['coursename_info'], 0 ,250 );
-                            echo $readmoreDeskripsi;
-                            echo ".....<br>";
-                            echo "<a href='index.php?hal=master/kursus/edit&coursename_id=$rowKursus[coursename_id]' class='btn btn-success btn-xs'>Selengkapnya <span class='fa fa-arrow-right'></span></a> ";
-                        ?>
-                  </td>
+                  <td><?php echo $rowKursus['coursename_date_end']; ?></td>
                   <td>Rp.<?php echo $rowKursus['coursename_price']; ?></td>
                   <td><?php echo $rowKursus['coursename_quota']; ?></td>
                   <td><?php echo $rowKursus['coursename_status']; ?></td>
+                  <td>
+                    <?php if ($rowKursus['coursename_con'] == 'Y') { ?>
+                    <span class="btn btn-warning">Bersyarat</span>
+                    <b><i><?php 
+                        // filter show coursename_name 
+                        $param  = $rowKursus['coursename_ref'];
+                        $query_param  = mysql_query("SELECT * FROM ref_coursename where coursename_id = '".$param."'");
+                        echo "<ul>";
+                        while ($row_param_ref = mysql_fetch_array($query_param)) {
+                          echo "<li>";
+                          echo $row_param_ref['coursename_title'];
+                          echo "</li>";
+                        }
+                        echo "</ul>";
+                     ?></i></b>
+                     <?php }else if ($rowKursus['coursename_con'] =='N') { ?>
+                     <span class="btn btn-info">Tidak Bersyarat</span>
+                     <?php } ?>
+                  </td>
                    <td>
                        <a href="index.php?hal=master/kursus/edit&coursename_id=<?php echo $rowKursus['coursename_id']; ?>" class="btn btn-warning btn-sm"><span class="fa fa-edit"></span> Ubah</a>
+                       <br><br>
                        <a href="index.php?hal=master/kursus/list&hapus=<?php echo $rowKursus['coursename_id']; ?>" class="btn btn-danger btn-sm"> <span class="fa fa-trash"></span> Hapus</a>
                     </td>
                 </tr>

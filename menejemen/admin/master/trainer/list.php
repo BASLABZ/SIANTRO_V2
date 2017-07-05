@@ -63,7 +63,7 @@
                       <td><?php echo $rowTrainner['operator_email']; ?></td>
                       <td><?php echo $rowTrainner['operator_position']; ?></td>
                       <td><?php echo $rowTrainner['operator_status']; ?></td>
-                      <td><img src="img/<?php echo $rowTrainner['operator_image']; ?>" class="img-thumbnail img-responsive" style="width: 100px; height: 100px;" >
+                      <td><img src="img/<?php echo $rowTrainner['operator_image']; ?>" class="img-thumbnail img-responsive" width='150px'>
                       </td>
                       <td><?php echo $rowTrainner['operator_website']; ?></td>
 
