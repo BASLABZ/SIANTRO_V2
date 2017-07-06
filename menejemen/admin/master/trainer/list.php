@@ -25,7 +25,7 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Daftar Data Master Pengajar <a href="index.php?hal=master/operator/add" class="btn btn-info btn-sm"><span class=" fa fa-plus"></span> Tambah Data</a></h3>
+              <h3 class="box-title">Daftar Data Master Pengajar <a href="index.php?hal=master/trainer/add" class="btn btn-info btn-sm"><span class=" fa fa-plus"></span> Tambah Data</a></h3>
             </div>
             <div class="box-body">
               <table id="tableMasterScroll" class="table table-bordered table-hover table-responsive">
