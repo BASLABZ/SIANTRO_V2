@@ -27,7 +27,16 @@ if (isset($_POST['simpan'])) {
                                        coursename_status = 'upcoming', coursename_con = '".$_POST['coursename_con']."', coursename_ref = '".$_POST['coursename_ref']."' , coursename_date_end = '$penutupan'
                                       WHERE coursename_id = '".$id."'  ");  
       }
-      
+      else if($_POST['coursename_status']=='clossed'){
+        $query = mysql_query( "UPDATE  ref_coursename set 
+                                       coursename_title = '".$_POST['coursename_title']."',
+                                       coursename_date = '$mulai',
+                                       coursename_info = '".$_POST['coursename_info']."',
+                                       coursename_price = '".$_POST['coursename_price']."',
+                                       coursename_quota = '".$_POST['coursename_quota']."',
+                                       coursename_status = 'clossed', coursename_con = '".$_POST['coursename_con']."', coursename_ref = '".$_POST['coursename_ref']."' , coursename_date_end = '$penutupan'
+                                      WHERE coursename_id = '".$id."'  ");  
+      }      
       if ($query) {
           echo "<script> alert('Terimakasih Data Berhasil Diubah'); location.href='index.php?hal=master/kursus/list' </script>";exit;
        } 

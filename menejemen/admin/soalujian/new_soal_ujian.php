@@ -10,7 +10,7 @@
       }
     }
 
-    // jawab
+    // jawab 
     if (isset($_POST['jawab'])) {
       $jawab = mysql_query("UPDATE trx_exam set exam_true='".$_POST['exam_true']."' where exam_id = '".$_POST['idupdate']."'");
         echo "<script> alert('Terimakasih Data Berhasil Diubah'); location.href='index.php?hal=soalujian/new_soal_ujian&id=".$id."' </script>";exit;
@@ -66,7 +66,21 @@
                      <td><?php echo $rowselect['exam_option5']; ?></td>
                      <td>
                        <form class="role" method="POST">
-                        <h3>Jawaban Yang Benar : <?php echo $rowselect['exam_true']; ?></h3>
+                        <h3>Jawaban Yang Benar : 
+                          <?php 
+                            if ($rowselect['exam_true']==$rowselect['exam_option1']) {
+                              echo "A";
+                            } elseif ($rowselect['exam_true']==$rowselect['exam_option2']) {
+                              echo "B";
+                            } elseif ($rowselect['exam_true']==$rowselect['exam_option3']) {
+                              echo "C";
+                            } elseif ($rowselect['exam_true']==$rowselect['exam_option4']) {
+                              echo "D";
+                            } else {
+                              echo "E";
+                            }
+                          ?>
+                        </h3>
                         <input type="hidden" name="idupdate" value="<?php echo $rowselect['exam_id']; ?>">
                          <select class="form-control" name="exam_true">
                            <option value="">JAWBAN YANG BENAR</option>

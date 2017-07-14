@@ -86,7 +86,9 @@
                     <div class="col-md-2"></div>
                     <div class="col-md-8">
                       <table class="table table-responsive table-bordered table-hover " id="tableMaster">
+
                       <thead>
+
                         <th>Absen</th>
                         <th>Nama Member</th>
                       </thead>
@@ -110,6 +112,8 @@
                   <br>
                   <div class="form-group">
                       <div class="col-md-10">
+                      <!-- nambah disini ??? -->
+                       <input type="checkbox" name="absen">Pilih semua 
                         <button type="submit" class="btn btn-info pull-right" name="simpan"><span class="fa fa-check"></span> ABSEN</button>
                       </div>
                     </div>
