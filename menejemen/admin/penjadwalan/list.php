@@ -1,3 +1,6 @@
+  <?php  
+    // session_start();
+  ?>
   <section class="content-header">
       <h1>
         Penjadwalan Kelas
@@ -30,8 +33,8 @@
                   <?php 
 
                     $no=0; 
-                      $query = mysql_query("SELECT * FROM tbl_selectclass s JOIN ref_operator o ON s.operator_id_fk = o.operator_id JOIN ref_rooms r ON s.rooms_id = r.rooms_id JOIN ref_coursename c ON s.coursename_id = c.coursename_id");
-                      // tadinya untuk kondisi syaratya ada ini >'".$_SESSION['operator_id']."';
+                      $query = mysql_query("SELECT * FROM tbl_selectclass s JOIN ref_operator o ON s.operator_id_fk = o.operator_id JOIN ref_rooms r ON s.rooms_id = r.rooms_id JOIN ref_coursename c ON s.coursename_id = c.coursename_id where o.operator_id='".$_SESSION['operator_id']."'");
+                      // tadinya untuk kondisi syaratya ada ini >;
                       // nah itu bikin penjadwalannya nggak nampil ,,, 
                       //penjadwalan tampil setelah kondisi where nya dihilangkan 
 

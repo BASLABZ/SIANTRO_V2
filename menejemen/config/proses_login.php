@@ -3,7 +3,7 @@
 		include 'inc-db.php';
 		$username = $_POST['username'];
 		$password = $_POST['password'];
-		$password = md5($password);
+		$password = md5($password); 
 
 		$query = "SELECT operator_username, operator_password, operator_name, operator_login, operator_image, operator_id, ref_level.level_id, level_name,level_id FROM ref_operator left join ref_level on ref_level.level_id=ref_operator.operator_levelid_fk
 		    WHERE operator_username='".$username."' AND operator_password='".$password."' ";

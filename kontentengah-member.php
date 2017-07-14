@@ -1,3 +1,6 @@
+<?php 
+  error_reporting(0);
+ ?>
       <div class="header" data-parallax="scroll" data-image-src="assets/img/website-desain-grafis.jpeg">
        <div class="container">
         <div class="row">

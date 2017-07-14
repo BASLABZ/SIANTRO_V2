@@ -97,7 +97,7 @@
                           <span class="fa fa-desktop"></span>
                         </div>
                         <div class="process-item-content">
-                        <a href="index.php"><label>Ujian </label> </a>
+                        <a href="index.php?hal=exam/list"><label>Ujian </label> </a>
                         </div>
                       </div>
                     </div>

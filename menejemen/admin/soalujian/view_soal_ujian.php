@@ -33,8 +33,9 @@
                   <th><center>No</center></th>
                   <th><center>Nama Kursus</center></th>
                   <th><center>Nama Soal Ujian</center></th>
-                  <th><center>Aktifkan</center></th>
+                  <th><center>Status</center></th>
                   <th><center>Tanggal</center></th>
+                  <th><center>Operator admin</center></th>
                   <th><center>Action</center></th>
                 </thead>
                 <tbody>
@@ -46,6 +47,7 @@
                         
                    ?>
                    <tr>
+                   
                      <td><?php echo ++$no; ?></td>
                      <td><?php echo $rowselect['coursename_title']; ?></td>
                      <td><?php echo $rowselect['soalexam_title']; ?></td>
@@ -55,7 +57,7 @@
                      <td>
                      <a href="index.php?hal=soalujian/new_soal_ujian&id=<?php echo $rowselect['soalexam_id']; ?>" class="btn btn-success"> <span class="fa fa-plus"></span> Buat / Lihat Soal Ujian</a>
 
-                     <a href="index.php?hal=soalujian/view_soal_ujian&id=<?php echo $rowselect['soalexam_id']; ?>" class="btn btn-primary"> <span class="fa fa-pencil"></span> Edit</a>
+                     <a href="index.php?hal=soalujian/edit_soal_ujian&id=<?php echo $rowselect['soalexam_id']; ?>" class="btn btn-primary"> <span class="fa fa-pencil"></span> Edit</a>
                      
                      <a href="index.php?hal=soalujian/view_soal_ujian&hapus=<?php echo $rowselect['soalexam_id']; ?>&id=<?php echo $rowselect['coursename_id_fk']; ?>" class="btn btn-danger"> <span class="fa fa-eye"></span> hapus</a>
                      </td>
