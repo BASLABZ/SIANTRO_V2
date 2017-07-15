@@ -1,10 +1,10 @@
-<?php
-	error_reporting(0); 
-	session_start();
+<?php 
+	
+	error_reporting(0);
+
 	$var_kursus			= $_POST['kursus'];
 	$var_paketsoal		= $_POST['paketsoal'];
 	$var_nomorsoal 		= $_POST['nomorsoal'];
-	$var_nomorurutsoal  = $_POST['nomorurutsoal'];
 	$var_peserta 		= $_POST['peserta'];
 	$var_peserta_detail = $_POST['peserta_detail'];
 	$var_jawaban 		= $_POST['jawaban'];
@@ -13,20 +13,10 @@
 	$q_kunci = mysql_query("SELECT * FROM trx_exam WHERE soalexam_id_fk='".$var_paketsoal."' and exam_id='".$var_nomorsoal."' ");
 	$d_kunci = mysql_fetch_array($q_kunci);
 
-	if ($var_nomorurutsoal==1){
-		if ($var_jawaban==$d_kunci['exam_true']) {
-			$tampungscore = 1;
-		} else {
-			$tampungscore = 0;
-		}
-		$_SESSION['tampungscore'.$var_peserta] = $tampungscore;
+	if ($var_jawaban==$d_kunci['exam_true']) {
+		$tampungscore = $tampungscore+1;
 	} else {
-		if ($var_jawaban==$d_kunci['exam_true']) {
-			$_SESSION['tampungscore'.$var_peserta] = $_SESSION['tampungscore'.$var_peserta]+1;
-		} else {
-			$_SESSION['tampungscore'.$var_peserta] = $_SESSION['tampungscore'.$var_peserta]-1;
-		}
-		$tampungscore = $_SESSION['tampungscore'.$var_peserta];
+		$tampungscore = $tampungscore-1;
 	}
 
 	//simpan jawaban
@@ -34,13 +24,13 @@
 													VALUES(
 															'',
 															'".$var_nomorsoal."',
-															'".$var_peserta_detail."',
+															'".$var_peserta."',
 															'".$var_jawaban."'
 														  ) ");
 
-	if ($var_nomorurutsoal<3) {
+	if ($var_nomorsoal<3) {
 		// $var_nomorsoal = $var_nomorsoal+1;
-		echo "<script>location.href='index.php?hal=exam/member-exam&kur=$var_kursus&no=$var_nomorurutsoal' </script>";
+		echo "<script>location.href='index.php?hal=exam/member-exam&kur=$var_kursus&no=$var_nomorsoal' </script>";
 		// header('location:index.php?hal=member-exam&kur=$var_kursus&no=$var_nomorsoal');
 		exit;
 	} else {
@@ -74,8 +64,8 @@
 																	'".$status."'	
 																)");	
 		//=========== (3) gue tampol loh =============
-		// echo "<script>location.href='index.php?hal=exam/member-exam-finish&peserta='".$var_peserta."' </script>";
-		echo "<script>location.href='index.php?hal=exam/member-exam-finish&detailpeserta=".$var_peserta_detail."' </script>";
+		// echo "<script>location.href='index.php?hal=exam/member-exam-finish?peserta=$var_peserta' </script>";
+		echo "<script>location.href='index.php?hal=exam/member-exam-finish' </script>";
 		// tampilan score
 	}
 

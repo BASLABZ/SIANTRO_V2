@@ -42,6 +42,7 @@
               <tbody>
                 <?php $no = 0;
                     $queryshow = mysql_query("SELECT * FROM tbl_jadwal j JOIN ref_rooms r ON j.rooms_id_fk = r.rooms_id where  j.jadwal_jenis !='UJIAN' and j.selectcalss_id_fk = '".$idselectclass."' ");
+                  print_r("SELECT * FROM tbl_jadwal j JOIN ref_rooms r ON j.rooms_id_fk = r.rooms_id where  j.jadwal_jenis !='UJIAN' and j.selectcalss_id_fk = '".$idselectclass."' ");
                     while ($rowjadwal = mysql_fetch_array($queryshow)) {
                  ?>
                  <tr>

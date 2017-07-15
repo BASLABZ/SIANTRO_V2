@@ -50,10 +50,9 @@
                 <h5>
                   <input type="hidden" name="kursus" value="<?php echo $_GET['kur'] ?>">
                   <input type="hidden" name="paketsoal" value="<?php echo $rowExam['soalexam_id']; ?>">
-                  <input type="hidden" name="peserta" value="<?php echo $rowExam['trainee_id_fk']; ?>">
+                  <input type="hidden" name="peserta" value="<?php echo $rowExam['trainee_id']; ?>">
                   <input type="hidden" name="peserta_detail" value="<?php echo $rowExam['tblx_trainee_detail_id']; ?>">
-                  <input type="hidden" name="nomorsoal" value="<?php echo $rowExam['exam_id'] ?>">
-                  <input type="hidden" name="nomorurutsoal" value="<?php echo $no_urut ?>">
+                  <input type="hidden" name="nomorsoal" value="<?php echo $no_urut ?>">
 
 
                   <input type="radio" name="jawaban" value="<?php echo $rowExam['exam_option1']; ?>" onclick="cek()">&nbsp;&nbsp;&nbsp;<?php echo $rowExam['exam_option1']; ?><br/>

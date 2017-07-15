@@ -1,7 +1,7 @@
     <!-- proses hapus data master menu -->
   <?php 
       if (isset($_GET['hapus'])) {
-         $queryHapusMenu  = mysql_query("DELETE FROM ref_operator where operator_id='".$_GET['hapus']."'");
+         $queryHapusMenu  = mysql_query("DELETE FROM ref_operator where operator_id='".$_GET['id']."'");
         if ($queryHapusMenu){
             echo "<script> alert('Terimakasih Data Berhasil Dihapus'); location.href='index.php?hal=master/pengguna/list'</script>";exit;
         }

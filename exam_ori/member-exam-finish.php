@@ -7,7 +7,7 @@ error_reporting(0);
   
   $rowKursus = mysql_fetch_array($kursus);
 
-  $q_score = mysql_query("SELECT * FROM trx_score LEFT JOIN tbl_trainee ON trx_score.trainee_id_fk=tbl_trainee.trainee_id LEFT JOIN tblx_trainee_detail ON tblx_trainee_detail.trainee_id_fk=tbl_trainee.trainee_id WHERE tblx_trainee_detail_id='".$_GET['detailpeserta']."' ");
+  $q_score = mysql_query("SELECT * FROM trx_score WHERE trainee_id_fk='".$_GET['peserta']."' ");
   $d_score = mysql_fetch_array($q_score);
 ?>
   <!-- prosedur -->
@@ -32,20 +32,6 @@ error_reporting(0);
                 <div class="col-md-12" style="background-color: #26AD5F; text-align: center; padding-bottom: 1em; margin-bottom: 4em"><h3 style="color: #fff">SELAMAT <?php echo strtoupper($_SESSION['member_name']); ?></h3></div>
               <div class="process-item-content" style="text-align: left; padding-bottom: 4em"> 
                 <h5>
-                <?php 
-                  $benar = 0;
-                  $salah = 0;
-                  $getAnsw = mysql_query("SELECT * FROM tbl_temp_score 
-                    LEFT JOIN trx_exam ON trx_exam.exam_id=tbl_temp_score.exam_id_fk
-                    WHERE traineedetail_id_fk='".$_GET['detailpeserta']."' ORDER BY temp_score_id ASC");
-                  while ($dataAnsw = mysql_fetch_array($getAnsw)) {
-                    if ($dataAnsw['temp_answer']==$dataAnsw['exam_true']) {
-                      $benar = $benar+1;
-                    } else {
-                      $salah = $salah+1;
-                    }
-                  }
-                ?>
                   <table class="table">
                     <tr>
                       <td>Score Anda</td>
@@ -55,12 +41,12 @@ error_reporting(0);
                     <tr>
                       <td>Jawaban Benar</td>
                       <td> : </td>
-                      <td> <?php echo $benar; ?> </td>
+                      <td> 12 </td>
                     </tr>
                     <tr>
                       <td>Jawaban Salah</td>
                       <td> : </td>
-                      <td> <?php echo $salah; ?> </td>
+                      <td> 2 </td>
                     </tr>
                     <tr>
                       <td>Status</td>
@@ -91,29 +77,7 @@ error_reporting(0);
                     </div>
                     <div class="modal-body">
                         <!-- query jawaban peserta dengan jawaban yg benar -->
-                      <?php 
-                        $no_urut = 1;
-                        $getAnsw2 = mysql_query("SELECT * FROM tbl_temp_score 
-                          LEFT JOIN trx_exam ON trx_exam.exam_id=tbl_temp_score.exam_id_fk
-                          WHERE traineedetail_id_fk='".$_GET['detailpeserta']."' ORDER BY temp_score_id ASC");
-                        while ($dataAnsw2 = mysql_fetch_array($getAnsw2)) { ?>
-                        <h4><?php echo $no_urut++.") ".$dataAnsw2['exam_title'] ?></h4>
-                        <table>
-                          <tr>
-                            <td width="100px">Jawaban anda</td>
-                            <td width="20px"> : </td>
-                            <td><?php echo $dataAnsw2['temp_answer']; ?></td>
-                          </tr>
-                          <tr>
-                            <td>Jawaban benar</td>
-                            <td> : </td>
-                            <td><?php echo $dataAnsw2['exam_true']; ?></td>
-                          </tr>
-                        </table>
-                                                    
-                      <?php    
-                        }
-                      ?>
+                        <h4>1. Lorem ipsum dolor sit amet</h4>
 
                     </div>
                     <div class="modal-footer">
