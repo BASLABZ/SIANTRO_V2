@@ -1,7 +1,7 @@
 <?php 
 	
 	//ini file utk ngecek menu apa saja yg harus segera diproses. intine ngecek siji2
-
+		$nKonfirmasi = 0;
 		$nRegistrasi = 0;
 		$nKonfirmasi = 0;
 	// ===== KONFIRMASI PEMBAYARAN ==== //

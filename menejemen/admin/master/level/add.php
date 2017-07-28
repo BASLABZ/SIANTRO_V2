@@ -32,7 +32,7 @@
           </div>
         </div>
         <div class="box-body">
-          <form id="defaultForm" class="role" method="POST">
+          <form id="masterlevel" class="role" method="POST">
             <div class="form-group row">
               <label class="col-md-4">Nama Level</label>
               <div class="col-md-8">
@@ -50,25 +50,3 @@
     </div>
   </section>
 
-<script type="text/javascript">
-$(document).ready(function() {
-    $('#defaultForm').bootstrapValidator({
-        message: 'This value is not valid',
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            level_name: {
-                //message: 'The username is not valid',
-                validators: {
-                    notEmpty: {
-                        message: 'Nama Level harus diisi'
-                    }
-                }
-            }
-        }
-    });
-});
-</script>
