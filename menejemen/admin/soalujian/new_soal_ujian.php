@@ -36,7 +36,7 @@
               <h3 class="box-title"> <a href="index.php?hal=soalujian/new_add_soal&id=<?php echo $row['soalexam_id']; ?>" class="btn btn-success"> <span class="fa fa-plus"></span> Tambah Soal</a> <br/>
             </div>
             <div class="box-body">
-              <table id="tableMaster" class="table table-bordered table-hover">
+              <table id="tableMasterScroll" class="table table-bordered table-hover">
                 <thead>
                   <th><center>No</center></th>
                   <th><center>Pertanyaan</center></th>
@@ -50,8 +50,10 @@
                 </thead>
                 <tbody>
                   <?php 
+                  // tambahin where 
                     $no=0;
-                      $query = mysql_query("SELECT * FROM   trx_exam  order by exam_id asc
+                      $query = mysql_query("SELECT * FROM   trx_exam JOIN trx_soalexam
+                      on trx_soalexam.soalexam_id=trx_exam.soalexam_id_fk where soalexam_id_fk='".$id."' order by exam_id asc
                         ");
                       while ($rowselect  = mysql_fetch_array($query)) {
                         
@@ -90,15 +92,15 @@
                            <option value="<?php echo $rowselect['exam_option4']; ?>"><?php echo $rowselect['exam_option4']; ?></option>
                            <option value="<?php echo $rowselect['exam_option5']; ?>"><?php echo $rowselect['exam_option5']; ?></option>
                          </select> 
-                         <button type="submit" name="jawab" class="btn btn-warning">JAWAN</button>
+                         <button type="submit" name="jawab" class="btn btn-xs btn-warning">JAWAB</button>
                        </form>
                      </td>
                      <td>
-                     <a href="index.php?hal=soalujian/new_soal_ujian&id=<?php echo $rowselect['soalexam_id']; ?>" class="btn btn-success"> <span class="fa fa-plus"></span> Buat Soal Ujian</a>
+                     <a href="index.php?hal=soalujian/new_soal_ujian&id=<?php echo $rowselect['soalexam_id']; ?>" class="btn btn-xs btn-success"> <span class="fa fa-plus"></span> Buat Soal Ujian</a>
                      
-                     <a href="index.php?hal=soalujian/view_soal_ujian&id=<?php echo $rowselect['soalexam_id']; ?>" class="btn btn-primary"> <span class="fa fa-pencil"></span> Edit</a>
+                     <a href="index.php?hal=soalujian/new_edit_soal&id=<?php echo $rowselect['soalexam_id']; ?>" class="btn btn-xs btn-primary"> <span class="fa fa-pencil"></span> Edit</a>
                      
-                     <a href="index.php?hal=soalujian/new_soal_ujian&hapus=<?php echo $rowselect['exam_id']; ?>&id=<?php echo $rowselect['soalexam_id_fk']; ?>" class="btn btn-danger"> <span class="fa fa-eye"></span> hapus</a>
+                     <a href="index.php?hal=soalujian/new_soal_ujian&hapus=<?php echo $rowselect['exam_id']; ?>&id=<?php echo $rowselect['soalexam_id_fk']; ?>" class="btn btn-xs btn-danger"> <span class="fa fa-eye"></span> hapus</a>
                      </td>
                    </tr>
                    <?php } ?>

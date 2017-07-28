@@ -8,16 +8,27 @@
 
         $row = mysql_fetch_array($query);
 
-        // update
+        // update disini dittt=====================
         if (isset($_POST['ubah'])) {
-          $querysimpan  = mysql_query("INSERT INTO trx_soalexam(soalexam_title,soalexam_jenis,soalexam_status,soalexam_datecreated,soalexam_text,coursename_id_fk,operator_id_fk)VALUES 
-            ('".$_POST['soalexam_title']."','".$_POST['soalexam_jenis']."','ACTIVE',NOW(),'".$_POST['soalexam_text']."','".$row['coursename_id']."','".$_SESSION['operator_id']."')");
-          if ($querysimpan) {
-                echo "<script> alert('Terimakasih Data Berhasil Disimpan'); location.href='index.php?hal=soalujian/view_soal_ujian&id=".$id."' </script>";exit;
-          }else{
-                echo "<script> alert('Terimakasih Data gagal Disimpan'); location.href='index.php?hal=soalujian/view_soal_ujian&id=".$id."' </script>";exit;
+          if($_POST['soalexam_jenis']=='UJIAN REGULER' || $_POST['soalexam_status']=='ACTIVE'){
+              $queryUpdate=mysql_query("UPDATE trx_soalexam SET soalexam_title='".$_POST['soalexam_title']."',soalexam_jenis='UJIAN REGULER',soalexam_status='ACTIVE',soalexam_datecreated=NOW(),soalexam_text='".$_POST['soalexam_text']."',coursename_id_fk='".$row['coursename_id']."',operator_id_fk='".$_SESSION['operator_id']."' WHERE soalexam_id='".$id."'");
+            }
+            elseif ($_POST['soalexam_jenis']=='UJIAN REGULER' || $_POST['soalexam_status']=='NONACTIVE') {
+                $queryUpdate=mysql_query("UPDATE trx_soalexam SET soalexam_title='".$_POST['soalexam_title']."',soalexam_jenis='UJIAN REGULER',soalexam_status='NONACTIVE',soalexam_datecreated=NOW(),soalexam_text='".$_POST['soalexam_text']."',coursename_id_fk='".$row['coursename_id']."',operator_id_fk='".$_SESSION['operator_id']."' WHERE soalexam_id='".$id."'");
+            }
+            elseif ($_POST['soalexam_jenis']=='REMIDI' || $_POST['soalexam_status']=='ACTIVE'){
+                $queryUpdate=mysql_query("UPDATE trx_soalexam SET soalexam_title='".$_POST['soalexam_title']."',soalexam_jenis='REMIDI',soalexam_status='ACTIVE',soalexam_datecreated=NOW(),soalexam_text='".$_POST['soalexam_text']."',coursename_id_fk='".$row['coursename_id']."',operator_id_fk='".$_SESSION['operator_id']."' WHERE soalexam_id='".$id."'");   
+            } 
+            elseif ($_POST['soalexam_jenis']=='REMIDI' || $_POST['soalexam_status']=='NONACTIVE') {
+                $queryUpdate=mysql_query("UPDATE trx_soalexam SET soalexam_title='".$_POST['soalexam_title']."',soalexam_jenis='REMIDI',soalexam_status='NONACTIVE',soalexam_datecreated=NOW(),soalexam_text='".$_POST['soalexam_text']."',coursename_id_fk='".$row['coursename_id']."',operator_id_fk='".$_SESSION['operator_id']."' WHERE soalexam_id='".$id."'");   
+            }
+              if ($queryUpdate) {
+                echo "<script> alert('Terimakasih Data Berhasil Diubah'); location.href='index.php?hal=soalujian/view_soal_ujian&id=".$id."' </script>";exit;
+              }else{
+                    echo "<script> alert('Opps Data gagal Diubah, periksa kembali data anda'); location.href='index.php?hal=soalujian/view_soal_ujian&id=".$id."' </script>";exit;
+              } //tutup else 
           }
-        }
+          
    ?>
   <section class="content-header">
       <h1>
@@ -57,8 +68,24 @@
               <div class="col-md-4">
                 <select class="form-control" name="soalexam_jenis">
                   <option>Pilih Jenis</option>
-                  <option value="UJIAN REGULER">UJIAN REGULER</option>
-                  <option value="REMIDI">REMIDI</option>
+                  <option value="UJIAN REGULER"
+                      <?php if($row['soalexam_jenis']=='UJIAN REGULER'){echo "selected=selected";}?>>UJIAN REGULER
+                  </option>
+                  <option value="REMIDI"
+                      <?php if($row['soalexam_jenis']=='REMIDI'){echo "selected=selected";}?>>REMIDI
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-3">Status Ujian</label>
+              <div class="col-md-4">
+                <select class="form-control" name="soalexam_status">
+                  <option>Pilih Status</option>
+                  <option value="ACTIVE">
+                  <?php if($row['soalexam_status']=='ACTIVE'){echo "selected=selected";}?>>ACTIVE</option>
+                  <option value="NONACTIVE">
+                  <?php if($row['soalexam_status']=='NONACTIVE'){echo "selected=selected";}?>>NONACTIVE</option>
                 </select>
               </div>
             </div>

@@ -1125,7 +1125,7 @@ img {
   height: auto;
 }
 .img-rounded {
-  border-radius: 6px;
+  border-radius: 10px;
 }
 .img-thumbnail {
   display: inline-block;
@@ -1141,7 +1141,7 @@ img {
           transition: all .2s ease-in-out;
 }
 .img-circle {
-  border-radius: 50%;
+  border-radius: 60%;
 }
 hr {
   margin-top: 20px;

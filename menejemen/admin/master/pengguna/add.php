@@ -91,7 +91,8 @@
               <div class="col-md-6">
                  <label class="col-md-3">Tanggal Lahir</label>
                  <div class="col-md-8">
-                   <input type="date" required class="form-control" name="operator_dateofbirth" placeholder=" Tanggal Lahir">
+                 <input type="text" autocomplete="off" id="datepicker_birthday" class="form-control" name="operator_dateofbirth" value="" required="">
+                   
                  </div>
               </div>
             </div>
@@ -212,4 +213,8 @@
     </div>
   </section>
 
-  
+    <style type="text/css">
+    div#ui-datepicker-div {
+      top: 99px !important;
+    }
+  </style>

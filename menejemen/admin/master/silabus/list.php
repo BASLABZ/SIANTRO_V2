@@ -56,7 +56,8 @@
                         ?>
                     </td>
                     <td><?php echo $rowSilabus['silabus_file']; ?></td>
-                    <td><?php echo $rowSilabus['operator_name']; ?><?php echo $rowSilabus['operator_id']; ?></td>
+                    <td><?php echo $rowSilabus['operator_name']; ?>
+                    <?php echo $rowSilabus['operator_id']; ?></td>
 
                     <td>
                         <?php $idsession = $_SESSION['operator_id']; ?>

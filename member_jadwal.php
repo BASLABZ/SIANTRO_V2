@@ -30,6 +30,7 @@
            
               </div>
               <div class="process-item-content"> 
+              <button class="btn btn primary " style="pull-right">Cetak Jadwal </button>
              <table class="table table-resposive table-hover table-bordered">
               <thead>
                 <th>No</th>
@@ -42,7 +43,7 @@
               <tbody>
                 <?php $no = 0;
                     $queryshow = mysql_query("SELECT * FROM tbl_jadwal j JOIN ref_rooms r ON j.rooms_id_fk = r.rooms_id where  j.jadwal_jenis !='UJIAN' and j.selectcalss_id_fk = '".$idselectclass."' ");
-                  print_r("SELECT * FROM tbl_jadwal j JOIN ref_rooms r ON j.rooms_id_fk = r.rooms_id where  j.jadwal_jenis !='UJIAN' and j.selectcalss_id_fk = '".$idselectclass."' ");
+                  // print_r("SELECT * FROM tbl_jadwal j JOIN ref_rooms r ON j.rooms_id_fk = r.rooms_id where  j.jadwal_jenis !='UJIAN' and j.selectcalss_id_fk = '".$idselectclass."' ");
                     while ($rowjadwal = mysql_fetch_array($queryshow)) {
                  ?>
                  <tr>
@@ -92,8 +93,9 @@
                    <td><?php echo $rowjadwal['jadwal_mulai']; ?></td>
                    <td><?php echo $rowjadwal['jadwal_selesai']; ?></td>
                    <td><?php echo $rowjadwal['rooms_name']; ?></td>
-                  
+                  <!-- $_SESSION['tgl_ujian']= -->
                  </tr>
+
                 <?php } ?>
               </tbody>
             </table>

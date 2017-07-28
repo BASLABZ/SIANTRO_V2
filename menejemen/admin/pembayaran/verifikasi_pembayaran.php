@@ -10,13 +10,27 @@
 			if ($_POST['payment_valid']=='VALID' OR $_POST['payment_valid']=='MENUNGGU KONFIRMASI') {
 				$query_valid = mysql_query("UPDATE trx_confirmation_ofpayment set payment_valid='".$_POST['payment_valid']."' , payment_date_valid = NOW(),
 											catatan_pembayaran_konfirmasi='' where confirmation_id='".$id."'");
+                $qv1 = mysql_fetch_array(mysql_query("SELECT trainee_id_fk FROM trx_confirmation_ofpayment WHERE confirmation_id='".$id."' "));  
+
+                $query_valid = mysql_query("UPDATE tbl_trainee set trainee_invoice_status='".$_POST['payment_valid']."', trainee_inputdateconfirm= NOW() where trainee_id='".$qv1['trainee_id_fk']."'");
+
+                     
+
 			   if ($query_valid) {
 		            echo "<script> alert('STATUS BERHASIL DIUBAH'); location.href='SENDEMAIL/sendEmailDebug.php?id=".$id."&email=".$email."' </script>";exit;
+
 		       }
 			}else if ($_POST['payment_valid']=='TIDAK VALID') {
 				$query_not_valid = mysql_query("UPDATE trx_confirmation_ofpayment set payment_valid='".$_POST['payment_valid']."',  payment_date_valid = NOW(),
 											catatan_pembayaran_konfirmasi='".$_POST['catatan_pembayaran_konfirmasi']."' where confirmation_id='".$id."'");
-			   if ($query_not_valid) {
+                // BIKIN QUERY UNTUK UPDATE 3 TABEL SEKALIGUS UNTUK MERUBAH STATUS PEMBAYARAN UNTUK SISI MEMBER JUGA ITU DIATAS BARU SATU TABEL TOK MAKANYA PAS FRONT END STAUS NGGA BERUBAH WALAU DI UPDATE SISI ADMIN
+                $q_notv1 = mysql_fetch_array(mysql_query("SELECT trainee_id_fk FROM trx_confirmation_ofpayment WHERE confirmation_id='".$id."' "));  
+
+                $query_notvalid = mysql_query("UPDATE tbl_trainee set trainee_invoice_status='".$_POST['payment_valid']."', trainee_inputdateconfirm= NOW() where trainee_id='".$q_notv1['trainee_id_fk']."'");
+                // bener begini kah ? marikita cobaaa :)))))))))
+
+
+			   if ($query_notvalid) {
 		            echo "<script> alert('STATUS BERHASIL DIUBAH'); location.href='index.php?hal=pembayaran/verifikasi_pembayaran&id=".$id."' </script>";exit;
 		       } 	
 			}
@@ -91,11 +105,10 @@
 	             		</label>
 	             		<div class="col-md-12" id="catatan_pembayaran_konfirmasi" hidden>
 	             			<label>Alasan Tidak Valid</label>
-	             			<textarea class="form-control" name="catatan_pembayaran_konfirmasi">
-	             				<?php echo $detail['catatan_pembayaran_konfirmasi']; ?>
+	             			<textarea class="form-control" name="catatan_pembayaran_konfirmasi" >
 	             			</textarea>
 	             		</div>
-	             			<p><?php echo $detail['catatan_pembayaran_konfirmasi']; ?></p>
+	             			
 	             		<div class="col-md-12">
 	             			<button type="submit" name="ubahstatus" class="btn btn-success pull-right">UBAH STATUS</button>
 	             		</div>

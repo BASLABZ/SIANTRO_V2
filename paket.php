@@ -5,7 +5,7 @@
           <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 marg-60-btm">
             <h2 class="text-big text-center text-uppercase"><span class="fa fa-list"></span> Paket - Paket Kursus</h2>
             <hr>
-           <i><p align="center"><span class="fa fa-arrow-left"></span> INFORMASI DAFTAR KURSUS ANTROPLOGY UGM YOGYAKARTA <span class="fa fa-arrow-right"></span> </p></i>
+           <i><p align="center"><span class="fa fa-arrow-left"></span> INFORMASI DAFTAR KURSUS ANTROPOLOGI UGM YOGYAKARTA <span class="fa fa-arrow-right"></span> </p></i>
            <?php 
             error_reporting(0);
             $session = $_SESSION['member_id'];
@@ -65,8 +65,8 @@
                   <h6 class="process-item-title">
                   <?php 
                   
-                        $queyCekStatusLulus = mysql_query("SELECT * FROM tbl_trainee where member_id_fk = '".$_SESSION['member_id']."' and coursename_id_fk = '".$rowPaket['coursename_ref']."' order by tbl_trainee_id DESC");
-                        $rowCekStatus = mysql_fetch_array($queyCekStatusLulus);
+                        $queryCekStatusLulus = mysql_query("SELECT * FROM tbl_trainee where member_id_fk = '".$_SESSION['member_id']."' and coursename_id_fk = '".$rowPaket['coursename_ref']."' order by tbl_trainee_id DESC");
+                        $rowCekStatus = mysql_fetch_array($queryCekStatusLulus);
                         if ($rowCekStatus['trainee_invoice_status '] =='AKTIVE') {
                           echo "<script> alert('ANDA BELUM MENYELESAIKAN PRASYARAT KURSUS INI');</script>  ";exit;
                         }if ($rowCekStatus['coursename_con']=='Y') {

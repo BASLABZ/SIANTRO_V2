@@ -67,6 +67,11 @@
                     document.getElementById('lanjut').disabled = false;
                   }
                 </script>
+                  <?php 
+                    if ($no_urut!=1) { ?>
+                      <button type="button" class="btn btn-primary" onclick="history.back()"><i class="fa fa-arrow-left"></i> Sebelumnya</button> <?php
+                    }
+                  ?>
                     <button type="submit" class="btn btn-primary pull-right" id="lanjut" onclick="return confirm('Apakah anda yakin dengan jawaban anda?')" disabled="">Selanjutnya <i class="fa fa-arrow-right"></i> </button> 
               </div><!-- .process-item-content -->
             </div><!-- .process-item -->

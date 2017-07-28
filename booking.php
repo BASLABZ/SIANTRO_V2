@@ -1,4 +1,5 @@
   <?php 
+  error_reporting(0);
     if ($_SESSION['member_id']=='') {
       echo "<script>alert('Maaf anda belum Login , silahkan Login sistem terlebih dahulu'); history.back(-1)</script>";
       exit();
@@ -7,6 +8,26 @@
           $queryHapus  = mysql_query("DELETE FROM tbl_temp where temp_id='".$_GET['hapus']."'");
         }
         if (isset($_POST['simpan'])) {
+
+          // ayo buat validasi bab quotaaanya disini 
+
+            // ================================================================
+                // $sqlCek=mysql_query("SELECT coursename_id, coursename_quota from ref_coursename where coursename_id='".$_GET['id']."'");
+                // $dataCek=mysql_fetch_array($sqlCek);
+
+                // if($dataCek['coursename_quota']<='0'){
+                //     echo "<script> alert('Maaf, kuota Kursus yang Anda pilih sudah habis '); location.href='index.php?hal=booking' </script>";exit;
+                //}
+            // =====================================================================
+
+            // $cek = mysql_query("SELECT * from "));
+            // $lihatData= mysql_num_rows($cekTemp);
+            // nambah validasi disini
+            // if ($lihatData=='' || $lihatData=='0') {
+            //    echo "<script>alert('Maaf, Belum ada Data Paket yang terpilih, silahkan plih Paket kursus anda '); history.back(-1)</script>";
+            //    exit();
+            // }
+
             $tahun = date('Y');
             $subtahun   = substr($tahun, 2);
             $queryCekI = mysql_query("SELECT * FROM  tbl_trainee order by trainee_id DESC");
@@ -35,17 +56,30 @@
               $queryUPDATE = mysql_query("UPDATE ref_coursename set coursename_quota = '".$hasilkurang."'
 
                 where coursename_id='".$kodeKursus."'");
+              // nambah validasi disiniiii -----
+              // ====================================================================
+              // $dataUpdate=mysql_fetch_array($queryUPDATE);
 
-            }
+              //   if($dataUpdate['coursename_quota']=='0'){
+              //     $queryUPDATEstatus=mysql_query("UPDATE ref_coursename set coursename_status='clossed' where coursename_id='".$kodeKursus."'");
 
+              //      // if($dataCek['coursename_quota']<='0'){
+              //       // echo "<script> alert('Maaf, kuota Kursus yang Anda pilih sudah habis '); location.href='index.php?hal=booking' </script>";exit;
+              //     // }
+              //   }//tutup ifupdate
+              }//tutup for
+
+            // }
+                
             $queryHapusTemp  = mysql_query("DELETE FROM tbl_temp WHERE member_id_fk = '".$_SESSION['member_id']."'");
 
             if ($queryHapusTemp) {
                echo "<script> alert('Terimakasih Data Berhasil Disimpan, Silahkan lakukan konfirmasi pembayarannya'); location.href='index.php?hal=pembayaran/pembayaran&invoice=$invoice' </script>";exit;
             }
             
+            
 
-        }
+        }//button simpan booking 
    ?>
     <div id="process" class="process content-section bg-light">
       <div class="container">
@@ -63,23 +97,8 @@
               </div>
               <div class="process-item-content"> 
                 <form method="POST">
-                   <div class="row">
-                <div class="col-md-2"><a href="index.php?hal=paket" class="btn btn-success"><span class="fa fa-arrow-left"></span> Kembali</a></div>
-                <div class="col-md-8"></div>
-                <?php 
-                  //=============cek data akun sdh lengkap belum===================
-            //====jika blm lengkap makan tidak boleh melkukan kofirmasi pembayaran dulu =====
-                  $cek = mysql_query("SELECT member_address FROM tbl_member WHERE member_id='".$_SESSION['member_id']."' ");
-                  $n_cek = mysql_fetch_array($cek);
-                  if ($n_cek['member_address']=='') { ?>
-                    <div class="col-md-2"><a href="index.php?hal=settingakun" onclick="ucing()" class="btn btn-success"><span class="fa fa-save"></span> Simpans</a></div> <?php
-                  } else { ?>
-                    <div class="col-md-2"><button type="submit" name="simpan" class="btn btn-success"><span class="fa fa-save"></span> Simpan</button>
-                    </div> <?php
-                  }
-                ?>
-              </div>
-              <br>
+                
+              
               <table class="table table-resposive table-hover table-bordered">
                 <thead>
                   <th>No</th>
@@ -99,6 +118,13 @@
                                                       ON  t.member_id_fk = m.member_id
                                                        where t.member_id_fk = '".$_SESSION['member_id']."'");
                   while ($rowTemp = mysql_fetch_array($sqltemp)) {
+                    // 27 juli 2017
+                      if ($rowTemp['coursename_quota']==0) {
+                        $penuh = 1; ?>
+
+                        <input type="hidden" id="var_penuh" value="<?php echo $rowTemp['coursename_title'] ?>" <?php
+                      }
+                    // close 27 juli 2017
                  ?>
                   <tr>
                     <td><?php echo ++$no; ?></td>
@@ -133,6 +159,28 @@
                   </tr>
                 </tfoot>
               </table>
+              <br/>
+              <div class="row">
+                <div class="col-md-2"><a href="index.php?hal=paket" class="btn btn-success"><span class="fa fa-arrow-left"></span> Kembali</a></div>
+                <div class="col-md-8"></div>
+                <?php 
+                  //=============cek data akun sdh lengkap belum===================
+            //====jika blm lengkap makan tidak boleh melkukan kofirmasi pembayaran dulu =====
+                  $cek = mysql_query("SELECT member_address FROM tbl_member WHERE member_id='".$_SESSION['member_id']."' ");
+                  $n_cek = mysql_fetch_array($cek);
+                  if ($n_cek['member_address']=='') { ?>
+                    <div class="col-md-2"><a href="index.php?hal=settingakun" onclick="ucing()" class="btn btn-success"><span class="fa fa-save"></span> Simpans</a></div> <?php
+                  } else { 
+                    if ($penuh!='') { ?>
+                      <div class="col-md-2"><button type="button" name="simpan" class="btn btn-success" onclick="kebak()"><span class="fa fa-save"></span> Simpan</button>
+                      </div> <?php
+                    } else { ?>
+                      <div class="col-md-2"><button type="submit" name="simpan" class="btn btn-success"><span class="fa fa-save"></span> Simpan</button>
+                      </div> <?php
+                    }
+                  }
+                ?>
+              </div>
                 </form>
               </div>
             </div>
@@ -146,5 +194,10 @@
   function ucing(){
     alert('Mohon lengkapi data');
     // document.getElementById('nyoh').click();
+  }
+  function kebak(){
+    var a = document.getElementById('var_penuh').value;
+    alert('Maaf Kuota Kursus '+a+' yang anda pilih sudah penuh');
+    
   }
 </script>

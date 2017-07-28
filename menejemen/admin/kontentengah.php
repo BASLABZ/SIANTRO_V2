@@ -13,7 +13,10 @@
         <div class="row">
         <div class="col-md-12">
       <div class="callout callout-success">
-        <h4>Selamat Datang Di Pelatihan Kursus ANTROPOLOGI FORENSIK UGM</h4>
+        <h3>Selamat Datang Di Pelatihan Kursus ANTROPOLOGI FORENSIK UGM</h3>
+        <h3>Anda Login sebagai : <?php 
+                                      // session_start();
+                                       echo $_SESSION['level_name'];   ?></h3>
 
         <p>Anda berada di adminarea Kursus Antropologi Forensik Fakultas Kedokteran Universitas Gadjah Mada. <br/>Selamat Belajar dan Mengajar :)</p>
       </div>

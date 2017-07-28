@@ -6,7 +6,7 @@
            <div class="col-md-12">
            <div class="panel-group" id="accordion">
                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
-                          <h1><span class="fa fa-list"></span> Control Panel</h1></a>
+                  <h1><span class="fa fa-list"></span> Control Panel</h1></a>
                    <div id="collapse3" class="panel-collapse collapse">
                        <div class="container">
                          <div class="row">
@@ -30,17 +30,39 @@
 
               <table class="table table-resposive table-hover table-bordered">
                 <thead>
-                  <th>No</th>
-                  <th>Invoice</th>
-                  <th>Tanggal Input</th>
-                  <th>Nama Kursus</th>
-                  <th>Status</th>
-                  <th>Aksi</th>
+                  <th><center>No</center></th>
+                  <th><center>Invoice</center></th>
+                  <th><center>Tanggal Input</center></th>
+                  <th><center>Nama Kursus</center></th>
+                  <th><center>Status</center></th>
+                  <th><center>Keterangan</center></th>
+                  <th><center>Aksi</center></th>
                 </thead>
                 <tbody>
                 <?php 
+                if (isset($_GET['hapus'])) {
+                $queryHapus  = mysql_query("DELETE FROM tbl_trainee where trainee_id='".$_GET['hapus']."'");
+                  }
+                  // query yang beneeer ///////////////////////////
                   $no=0;
-                  $sqlpaketkursus  = mysql_query("SELECT * FROM tblx_trainee_detail t join tbl_trainee tn on t.trainee_id_fk = tn.trainee_id  JOIN  ref_coursename c ON t.coursename_id_fk = c.coursename_id where tn.member_id_fk='".$_SESSION['member_id']."' ");
+                  $sqlpaketkursus  = mysql_query("SELECT 
+                `trainee_id`,
+                `trainee_invoice`,
+                `trainee_inputdate`,
+                `coursename_title`,
+                `trainee_invoice_status`,
+                `catatan_pembayaran_konfirmasi`,
+                `trainee_invoice_status`
+                 
+                FROM tbl_trainee
+                LEFT JOIN `tblx_trainee_detail`
+                  ON `tblx_trainee_detail`.`trainee_id_fk`=tbl_trainee.`trainee_id`
+                LEFT JOIN `ref_coursename`
+                  ON `ref_coursename`.`coursename_id`=`tblx_trainee_detail`.`coursename_id_fk`
+                LEFT JOIN `trx_confirmation_ofpayment`
+                  ON `trx_confirmation_ofpayment`.`trainee_id_fk`=`tbl_trainee`.`trainee_id`
+
+                WHERE member_id_fk='".$_SESSION['member_id']."'");
 
                   while ($paketkursus = mysql_fetch_array($sqlpaketkursus)) {
                  ?>
@@ -50,11 +72,20 @@
                           <td><?php echo $paketkursus['trainee_inputdate']; ?></td>
                           <td><?php echo $paketkursus['coursename_title']; ?></td>
                           <td><?php echo $paketkursus['trainee_invoice_status']; ?> </td>
+                          <td><?php echo $paketkursus['catatan_pembayaran_konfirmasi']; ?> </td>
                           <td>
-                            <a href="index.php?hal=paketkursus/detail_paket&invoice=<?php echo $paketkursus['trainee_invoice']; ?>" class="btn btn-warning"><span class="fa fa-eye"></span> Lihat Data</a>
-                            <?php if ($paketkursus['trainee_invoice_status']=='PENDING') {
-                              echo " <a href='index.php?hal=pembayaran/pembayaran&invoice=".$paketkursus['trainee_invoice']."' class='btn btn-success'><span class='fa fa-eye'></span> Bayar</a>";
-                            } 
+                            
+                            <?php if ($paketkursus['trainee_invoice_status']=='PENDING' || $paketkursus['trainee_invoice_status']=='TIDAK VALID') {?>
+                               <a href="index.php?hal=paketkursus/detail_paket&invoice=<?php echo $paketkursus['trainee_invoice']; ?>" class="btn btn-sm btn-warning"><span class="fa fa-eye"></span> Lihat Data</a> <?php
+                              echo " <a href='index.php?hal=pembayaran/pembayaran&invoice=".$paketkursus['trainee_invoice']."' class='btn btn-sm btn-success'><span class='fa fa-money'></span> Bayar</a>";?>
+                              <!-- hapusssss -->
+                              <a href='index.php?hal=paketkursus/list&hapus=<?php echo $paketkursus['trainee_id']; ?>' class='btn btn-sm btn-danger btn-flat'><span class='fa fa-trash'></span> Batal Bayar</a> <?php
+
+                            }else {  ?>
+                             <a href="index.php?hal=paketkursus/detail_paket&invoice=<?php echo $paketkursus['trainee_invoice']; ?>" class="btn btn-warning"><span class="fa fa-eye"></span> Lihat Data</a>
+                           <?php
+                             }
+
                             ?>
                            </td>
                       </tr>

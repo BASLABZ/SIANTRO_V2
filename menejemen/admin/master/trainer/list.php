@@ -22,10 +22,10 @@
   </section>
     <section class="content">
       <div class="row">
-        <div class="col-xs-12">
+        <div class="col-xs-12"> 
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Daftar Data Master Pengajar <a href="index.php?hal=master/operator/add" class="btn btn-info btn-sm"><span class=" fa fa-plus"></span> Tambah Data</a></h3>
+              <h3 class="box-title">Daftar Data Master Pengajar <a href="index.php?hal=master/pengguna/add" class="btn btn-info btn-sm"><span class=" fa fa-plus"></span> Tambah Data</a></h3>
             </div>
             <div class="box-body">
               <table id="tableMasterScroll" class="table table-bordered table-hover table-responsive">
@@ -48,7 +48,7 @@
                 <tbody>
                   <?php 
                     $no=0;
-                    $queryPengajar = mysql_query("SELECT * FROM ref_operator order by operator_id DESC");
+                    $queryPengajar = mysql_query("SELECT * FROM ref_operator o JOIN ref_level l ON l.level_id=o.operator_levelid_fk where level_name='Dosen Pengajar' order by operator_id DESC");
                     while ($rowTrainner  = mysql_fetch_array($queryPengajar)) {
                    ?>
                     <tr>
@@ -63,7 +63,7 @@
                       <td><?php echo $rowTrainner['operator_email']; ?></td>
                       <td><?php echo $rowTrainner['operator_position']; ?></td>
                       <td><?php echo $rowTrainner['operator_status']; ?></td>
-                      <td><img src="img/<?php echo $rowTrainner['operator_image']; ?>" class="img-thumbnail img-responsive" width='150px'>
+                      <td><img src="../../upload/<?php echo $rowTrainner['operator_image']; ?>" class="img-thumbnail img-responsive" width='150px'>
                       </td>
                       <td><?php echo $rowTrainner['operator_website']; ?></td>
 

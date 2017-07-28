@@ -6,8 +6,9 @@
     $jumlah = $rowList['kuota'];
     $rowtrain = mysql_fetch_array(mysql_query("SELECT * FROM tblx_trainee_detail where coursename_id_fk = '".$idkus."'"));
     if (isset($_POST['jadwal'])) {
+      $tglJadwal=date('Y-m-d',strtotime($_POST['jadwal_tanggal']));
       $queryjadwal  = "INSERT INTO tbl_jadwal (jadwal_tanggal,jadwal_mulai,jadwal_selesai,selectcalss_id_fk,trainee_id_fk,rooms_id_fk,jadwal_jenis) 
-        VALUES ('".$_POST['jadwal_tanggal']."','".$_POST['jadwal_mulai']."','".$_POST['jadwal_selesai']."','".$rowList['selectcalss_id']."','".$rowtrain['trainee_id_fk']."','".$_POST['rooms_id']."','UJIAN')";
+        VALUES ('".$tglJadwal."','".$_POST['jadwal_mulai']."','".$_POST['jadwal_selesai']."','".$rowList['selectcalss_id']."','".$rowtrain['trainee_id_fk']."','".$_POST['rooms_id']."','UJIAN')";
         $runQuery = mysql_query($queryjadwal);
         if ($runQuery) {
           echo "<script> alert('Data Berhasil Disimpan'); location.href='index.php?hal=penjadwalan/add_penjadwalan_ujian&id=$id' </script>";exit;

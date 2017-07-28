@@ -63,12 +63,13 @@
                      <td><?php echo $roPembayaran['confirmation_note']; ?></td>
                      <td>
                      <?php 
-                          if($roPembayaran['payment_valid']=='VALID'){ ?>
+                          if($roPembayaran['payment_valid']=='VALID' || $roPembayaran['payment_valid']=='TIDAK VALID' ){ ?>
                             <a href="index.php?hal=pembayaran/verifikasi_pembayaran&id=<?php echo $roPembayaran['confirmation_id']; ?>" class="btn btn-small btn-primary"><span class="fa fa-pencil"></span> Terverifikasi</a>
                      <?php
                           } else{?>
                             <a href="index.php?hal=pembayaran/verifikasi_pembayaran&id=<?php echo $roPembayaran['confirmation_id']; ?>" class="btn btn-success"><span class="fa fa-pencil"></span> Verifikasi</a>
                       <?php } ?>
+                           <!-- <a href="index.php?hal=pembayaran/verifikasi_pembayaran&id=<?php //echo $roPembayaran['confirmation_id']; ?>" class="btn btn-success"><span class="fa fa-pencil"></span> Verifikasi</a> -->
                       </td>
                    </tr>
                    <?php } ?>

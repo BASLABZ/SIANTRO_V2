@@ -13,7 +13,11 @@
 
     <?php 
         // proses simpan pembayaran 
-        if (isset($_POST['simpanPembayaran'])) {
+
+        if (isset($_POST['simpanPembayaran'])) { 
+          
+
+
             if (!empty($_FILES) && $_FILES['confirmation_proofpayment']['error'] == 0) {
               $fileName = $_FILES['confirmation_proofpayment']['name'];
               $move = move_uploaded_file($_FILES['confirmation_proofpayment']['tmp_name'], 'menejemen/upload/payment/'.$fileName);

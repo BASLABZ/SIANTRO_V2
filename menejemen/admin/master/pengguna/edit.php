@@ -85,10 +85,11 @@
                </textarea>
               </div>
               </div>
+            
               <div class="col-md-6">
               <label class="col-md-4">Tanggal Lahir</label>
               <div class="col-md-8">
-                <input type="date" required class="form-control" name="operator_dateofbirth" placeholder=" Tanggal Lahir" value="<?php echo $rowOperator['operator_dateofbirth'] ?>">
+              <input type="text" autocomplete="off" id="datepicker_birthday" class="form-control" name="operator_dateofbirth" value="<?php echo $rowOperator['operator_dateofbirth'] ?>">
               </div>
               </div>
             </div>

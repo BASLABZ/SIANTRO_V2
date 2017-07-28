@@ -44,7 +44,7 @@
             <form class="contact-form" method="POST">
               <div class="form-group">
                 <label for="username">Username</label>
-                <input type="text" class="form-control form-bordered" placeholder="Masukkan username/email" id="username" name="username">
+                <input type="text" class="form-control form-bordered" autofocus="" placeholder="Masukkan username/email" id="username" name="username">
               </div>
               <div class="form-group">
                 <label for="password" class="form-label">Password</label>

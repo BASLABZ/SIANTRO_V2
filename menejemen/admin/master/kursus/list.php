@@ -50,7 +50,22 @@
                   <td><?php echo $rowKursus['coursename_date_end']; ?></td>
                   <td>Rp.<?php echo $rowKursus['coursename_price']; ?></td>
                   <td><?php echo $rowKursus['coursename_quota']; ?></td>
-                  <td><?php echo $rowKursus['coursename_status']; ?></td>
+                  <td><center><?php //echo $rowKursus['coursename_status']; 
+                          
+                            if ($rowKursus['coursename_status']=='opened'){ 
+                                echo "<span class='btn btn-sm btn-success '>Dibuka</span>";   
+                              } elseif($rowKursus['coursename_status']=='clossed' || $rowKursus['coursename_quota']=='0'){
+                                echo "<span class='btn btn-sm btn-danger '>Ditutup</span>";  
+                              } elseif($rowKursus['coursename_status']=='upcoming') {
+                                echo "<span class='btn btn-sm btn-info '> Belum Dibuka</span>";
+                              } else{
+                                // if(){
+                                // echo "<span class='btn btn-sm btn-warning '> Kuota Habis</span>";
+                                // }
+                          
+                              }?>
+                    
+                  </center></td>
                   <td>
                     <?php if ($rowKursus['coursename_con'] == 'Y') { ?>
                     <span class="btn btn-warning">Bersyarat</span>

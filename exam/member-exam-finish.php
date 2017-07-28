@@ -72,7 +72,13 @@ error_reporting(0);
                     <button class="btn btn-primary">
                      <a href='#detail_paket' id='custId' data-toggle='modal' data-id="<?php echo $rowPaket['coursename_id']; ?>" style="color: #fff"><span class='fa fa-eye'></span> Cek Jawaban Anda</a>
                      </button>
-                    <button class="btn btn-primary pull-right"><a href="sertifikat/index.html" target="_blank" style="color: #fff">Cetak Sertifikat <i class="fa fa-print"></i></a> </button> 
+                  <?php 
+                    if ($d_score['score_status']=='Tidak Lulus') { ?>
+                      <button class="btn btn-primary pull-right" disabled>Cetak Sertifikat <i class="fa fa-print"></i></button> <?php                      
+                    } else { ?>
+                      <button class="btn btn-primary pull-right"><a href="sertifikat/index.php?idtrainee=<?php echo $d_score['trainee_id']; ?>" target="_blank" style="color: #fff">Cetak Sertifikat <i class="fa fa-print"></i></a> </button> <?php 
+                    }
+                  ?>
               </div><!-- .process-item-content -->
             </div><!-- .process-item -->
           </div><!-- .col-## -->

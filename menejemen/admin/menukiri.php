@@ -10,7 +10,7 @@
           <img src="../upload/image-user/<?php echo $_SESSION['operator_image'] ?>" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p><?php echo $_SESSION['operator_username']; ?></p>
+          <p><?php echo $_SESSION['operator_name']; ?></p><br/>
         </div> 
       </div>
       <ul class="sidebar-menu"> 

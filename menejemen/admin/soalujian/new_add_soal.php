@@ -23,7 +23,7 @@
       </ol>
   </section>
       <section class="content">
-      <div class="row">
+      <div class="row"> 
         <div class="col-xs-8">
           <div class="box">
             <div class="box-header">
@@ -38,37 +38,37 @@
               </div>
             </div>
             <div class="form-group row">
-              <label class="col-md-3">Nama Soal Ujian</label>
+              <label class="col-md-3">Soal/Pertanyaan</label>
               <div class="col-md-9">
-                <input type="text" required="" class="form-control" placeholder="Pertanyaan" name="exam_title">
+                <textarea class="form-control" required="" name="exam_title" placeholder="Deskripsi Kursus" style="height: 250px;" id="summerBas"></textarea>
               </div>
             </div>
             <div class="form-group row">
-              <label class="col-md-3">Optioanal A</label>
+              <label class="col-md-3">Option A</label>
               <div class="col-md-9">
                 <input type="text" required="" class="form-control" placeholder="Optioanal A" name="exam_option1">
               </div>
             </div>
             <div class="form-group row">
-              <label class="col-md-3">Optioanal B</label>
+              <label class="col-md-3">Option B</label>
               <div class="col-md-9">
                 <input type="text" required="" class="form-control" placeholder="Optioanal B" name="exam_option2">
               </div>
             </div>
             <div class="form-group row">
-              <label class="col-md-3">Optioanal C</label>
+              <label class="col-md-3">Option C</label>
               <div class="col-md-9">
                 <input type="text" required="" class="form-control" placeholder="Optioanal C" name="exam_option3">
               </div>
             </div>
             <div class="form-group row">
-              <label class="col-md-3">Optioanal D</label>
+              <label class="col-md-3">Option D</label>
               <div class="col-md-9">
                 <input type="text" required="" class="form-control" placeholder="Optioanal D" name="exam_option4">
               </div>
             </div>
             <div class="form-group row">
-              <label class="col-md-3">Optioanal E</label>
+              <label class="col-md-3">Option E</label>
               <div class="col-md-9">
                 <input type="text" required="" class="form-control" placeholder="Optioanal E" name="exam_option5">
               </div>

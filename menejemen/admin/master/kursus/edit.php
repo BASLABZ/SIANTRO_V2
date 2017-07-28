@@ -1,5 +1,5 @@
 <?php 
-$id = $_GET['coursename_id'];
+$id = $_GET['coursename_id']; 
 $query = "SELECT * FROM ref_coursename where coursename_id = '".$id."'";
 $rowKursus = mysql_fetch_array(mysql_query($query));
 

@@ -54,9 +54,9 @@
                        <?php
                           $varkondisi=0;
                             if ($rowMember['member_status_active']=='N') {
-                              echo "Non Aktifkan";
+                              echo "Non Aktif";
                             }else{
-                              echo "Aktifkan<br>";
+                              echo "Aktif<br>";
                              
                             }
 

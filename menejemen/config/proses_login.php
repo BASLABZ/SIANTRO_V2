@@ -13,19 +13,24 @@
 		
 		if ($password == $data['operator_password'] and $data['operator_login']!='Y' )
 		{
+
 			mysql_query("UPDATE ref_operator SET operator_login='Y' WHERE operator_id='".$data['operator_id']."' ");
 		echo "<script> alert('Login Sukses');</script>";
 		    // menyimpan username dan level ke dalam session
 		    $_SESSION['operator_id']       = $data['operator_id']; 
 		    $_SESSION['level_id']    = $data['level_id'];
 		    $_SESSION['level_name']  = $data['level_name'];
+		    $_SESSION['operator_name']= $data['operator_name'];
 		    $_SESSION['operator_username']   = $data['operator_username'];
 		     $_SESSION['operator_image'] = $data['operator_image'];
 		    // $_SESSION['login_time'] = date('Y-m-d');
 		    //Penggunaan Meta Header HTTP
 		    if ($data['level_id']=='1'){
+
 		        echo '<META HTTP-EQUIV="Refresh" Content="0; URL=../admin/index.php">';    
 		    }else if($data['level_id']=='5'){
+		        echo '<META HTTP-EQUIV="Refresh" Content="0; URL=../admin/index.php">';    
+		    }else if($data['level_id']=='4'){
 		        echo '<META HTTP-EQUIV="Refresh" Content="0; URL=../admin/index.php">';    
 		    }
 		    exit;
