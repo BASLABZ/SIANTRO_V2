@@ -1,4 +1,4 @@
-<?php error_reporting(0); ?>
+<?php //error_reporting(0); ?>
     <div id="process" class="process content-section bg-light">
       <div class="container">
         <div class="row">
@@ -47,17 +47,18 @@
                           <td><?php echo $paketkursus['coursename_title']; ?></td>
                           <td></td>
                       <?php 
-                        $cek = mysql_query("SELECT * trx_score LEFT JOIN tbl_trainee ON tbl_trainee.trainee_id=trx_score.trainee_id_fk WHERE tbl_trainee.member_id_fk='".$_SESSION['member_id']."' ");
+                        $cek = mysql_query("SELECT * FROM trx_score LEFT JOIN tbl_trainee ON tbl_trainee.trainee_id=trx_score.trainee_id_fk WHERE tbl_trainee.member_id_fk='".$_SESSION['member_id']."' ");
+                      
                         if (mysql_num_rows($cek)=='') { $flag = 'no' ?>
                           <td><span class="label label-danger">Anda belum mengikuti ujian</span></td> <?php
                         } else { $flag = 'yes' ?>
                           <td><span class="label label-success">Anda telah mengikuti ujian</span></td> <?php
-                        }
+                        } 
                       ?>
                           <td>
                           <?php 
                             if ($flag=='yes') { ?>
-                              <a href="#" class="btn btn-warning"><span class="fa fa-eye"></span> Lihat Score / Cetak Sertifikat</a><?php                              
+                              <a href="index.php?hal=exam/member-exam-finish&kur=<?php echo $paketkursus['coursename_id_fk']; ?>&detailpeserta=<?php echo $paketkursus['tblx_trainee_detail_id']; ?> " class="btn btn-warning"><span class="fa fa-eye"></span> Lihat Score / Cetak Sertifikat</a><?php                              
                             } else { ?>
                               <a href="index.php?hal=exam/member-exam&kur=<?php echo $paketkursus['tblx_trainee_detail_id']; ?>&no=0" class="btn btn-warning"><span class="fa fa-edit"></span> Ujian Sekarang</a><?php
                             }

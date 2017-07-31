@@ -14,9 +14,9 @@ $mail->Host = 'smtp.gmail.com';
 $mail->Port = 587;
 $mail->SMTPSecure = 'tls';
 $mail->SMTPAuth = true;
-$mail->Username = "nsjm.cs@gmail.com";
-$mail->Password = "W0r3&Tr0j43";
-$mail->setFrom('ahmad.bastian8@gmail.com', 'Aktifasi Akun Member SIANTRO UGM');
+$mail->Username = "siantroUgm18@gmail.com";
+$mail->Password = "siantrougm1895";
+$mail->setFrom('siantroUgm18@gmail.com', 'Aktifasi Akun Member SIANTRO UGM');
 $namaPenerimaEmail  = "$emails";
 $mail->addAddress($emails, 'ADMIN');
 function get_include_contents($filename) {

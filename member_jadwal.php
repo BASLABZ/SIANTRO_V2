@@ -30,7 +30,8 @@
            
               </div>
               <div class="process-item-content"> 
-              <button class="btn btn primary " style="pull-right">Cetak Jadwal </button>
+              <button class="btn btn primary ">Cetak Jadwal </button><br/>
+               
              <table class="table table-resposive table-hover table-bordered">
               <thead>
                 <th>No</th>

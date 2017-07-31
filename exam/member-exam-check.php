@@ -91,6 +91,7 @@
 																)");	
 		//=========== (3) gue tampol loh =============
 		// echo "<script>location.href='index.php?hal=exam/member-exam-finish&peserta='".$var_peserta."' </script>";
+
 		echo "<script>location.href='index.php?hal=exam/member-exam-finish&detailpeserta=".$var_peserta_detail."' </script>";
 		// tampilan score
 	}

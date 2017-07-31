@@ -60,7 +60,7 @@
                     document.getElementById('lanjut').disabled = false;
                   }
                 </script>
-                    <button type="submit" class="btn btn-primary pull-right" id="lanjut" onclick="return confirm('Apakah anda yakin dengan jawaban anda?')" disabled="">Selanjutnya <i class="fa fa-arrow-right"></i> </button> 
+                    <button type="submit" class="btn btn-primary pull-right" id="lanjut" disabled="">Selanjutnya <i class="fa fa-arrow-right"></i> </button> 
               </div><!-- .process-item-content -->
             </div><!-- .process-item -->
             </form>

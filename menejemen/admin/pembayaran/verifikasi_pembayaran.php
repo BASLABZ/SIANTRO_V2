@@ -6,6 +6,8 @@
         $querymember = mysql_query("SELECT * from tbl_member where member_id = '".$idmember."'");
         $runmember = mysql_fetch_array($querymember);
         $email = $runmember['member_useremail'];
+
+
 		if (isset($_POST['ubahstatus'])) {
 			if ($_POST['payment_valid']=='VALID' OR $_POST['payment_valid']=='MENUNGGU KONFIRMASI') {
 				$query_valid = mysql_query("UPDATE trx_confirmation_ofpayment set payment_valid='".$_POST['payment_valid']."' , payment_date_valid = NOW(),
@@ -14,7 +16,25 @@
 
                 $query_valid = mysql_query("UPDATE tbl_trainee set trainee_invoice_status='".$_POST['payment_valid']."', trainee_inputdateconfirm= NOW() where trainee_id='".$qv1['trainee_id_fk']."'");
 
-                     
+
+                    //validasi saldo
+                    if ($detail['amount_transfer']>$detail['total_tagihan']) {
+                        //masukan ke saldo
+                        $var_sisa = $detail['amount_transfer']-$detail['total_tagihan'];
+                        $q_save = mysql_query("INSERT INTO trx_saldo(
+                                                                    saldo_id,
+                                                                    confirmation_id_fk,
+                                                                    saldo_total,
+                                                                    saldo_date,
+                                                                    saldo_status)
+                                                            VALUES(
+                                                                    '',
+                                                                    '".$id."',
+                                                                    '".$var_sisa."',
+                                                                    '".date('Y-m-d')."',
+                                                                    'Deposit'
+                                                                    )"); 
+                    }     
 
 			   if ($query_valid) {
 		            echo "<script> alert('STATUS BERHASIL DIUBAH'); location.href='SENDEMAIL/sendEmailDebug.php?id=".$id."&email=".$email."' </script>";exit;

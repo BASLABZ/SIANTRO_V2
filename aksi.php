@@ -26,17 +26,6 @@
 						window.location=('index.php?hal=paket')</script>";
 			}else if ($rowCekKodePaket <= 0 && $rowcekKeranjang <=0) {
 
-			// ayo buat validasi bab quotaaanya disini 
-			// ================================================================
-                // $sqlCek=mysql_query("SELECT coursename_id, coursename_quota from ref_coursename where coursename_id='".$_GET['id']."'");
-                // $dataCek=mysql_fetch_array($sqlCek);
-
-                // if($dataCek['coursename_quota']<='0'){
-                //     echo "<script> alert('Maaf, kuota Kursus yang Anda pilih sudah habis '); location.href='index.php?hal=paket' </script>";exit;
-                // }
-            // =====================================================================
-
-
 				if ($quota == 0) {
 					echo "KUOTA PENUH";
 				}else{

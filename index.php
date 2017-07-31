@@ -38,7 +38,8 @@
     <link href="assets/css/font-awesome.min.css" rel="stylesheet">
     <link href="assets/css/Pe-icon-7-stroke.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="assets/css/style.min.css">
-  
+
+      
   </head>
   <body id="home">
   <?php 
@@ -63,6 +64,9 @@
     <script src="assets/js/navigation.js"></script>
     <script src="assets/plugins/jquery.easing.js"></script>
     <script src="assets/js/script.js"></script>
+    <!-- tambahan JS buat tanggal  -->
+<script src="menejemen/assets/jquery_datepicker/jquery-ui.js"></script>
+
    
   </body>
 </html>
@@ -81,3 +85,12 @@
          });
     });
 </script>
+<script>
+  $( function() {
+    $( "#datepicker" ).datepicker({minDate: 0, maxDate: 14});
+    $( "#datepicker_jadwal" ).datepicker({minDate: 0});
+    $( "#datepicker_mulai" ).datepicker({minDate:0});
+    $( "#datepicker_penutupan" ).datepicker({minDate:0});
+    $( "#datepicker_birthday" ).datepicker({maxDate: "-18y", minDate:"-50y",changeMonth: true, changeYear: true});
+  } );
+  </script>

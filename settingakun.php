@@ -130,8 +130,10 @@
                     </div><!-- .col-sm-6 -->
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label for="dateofbirth" class="form-label">Tanggal Lahir</label>
-                        <input type="date" name="frm_dateofbirth" class="form-control" value="<?php echo $m['member_dateofbirth']; ?>">
+                      <!-- <label class="col-md-1">Mulai</label>
+              <div class="col-md-2"><input type="text" class="form-control " id="datepicker_mulai" name="mulai" required=""></div> -->
+                        <label class="form-label">Tanggal Lahir</label>
+                        <input type="text" name="frm_dateofbirth" class="form-control" id="datepicker_birthday" value="<?php echo $m['member_dateofbirth']; ?>">
                       </div><!-- .form-group -->
                     </div><!-- .col-sm-6 -->
                     <div class="col-sm-6">
@@ -260,3 +262,4 @@
               };
           }
     </script>
+    

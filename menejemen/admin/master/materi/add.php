@@ -1,8 +1,13 @@
 <?php 
     if (isset($_POST['simpan'])) {
-      if (!empty($_FILES) && $_FILES['coursematerial_file']['size'] >0 && $_FILES['coursematerial_file']['error'] == 0){
-            $coursematerial_file = $_FILES['coursematerial_file']['name'];
-                          $move = move_uploaded_file($_FILES['coursematerial_file']['tmp_name'], '../upload/materi/'.$coursematerial_file);
+      if ($_POST['video_link']!='') {
+        $coursematerial_file = $_POST['video_link'];
+        $queryInsert  = mysql_query("INSERT INTO trx_coursematerial (coursematerial_title,
+                coursematerial_file,coursematerial_description,coursematerial_dateofposted,
+                coursematerial_type,coursename_id_fk,operator_id_fk)
+                 VALUES ('".$_POST['coursematerial_title']."','".$coursematerial_file."','".$_POST['coursematerial_description']."',NOW(),'".$_POST['coursematerial_type']."','".$_POST['coursename_id_fk']."','".$_SESSION['operator_id']."')");
+      }
+      elseif (!empty($_FILES) && $_FILES['coursematerial_file']['size'] >0 && $_FILES['coursematerial_file']['error'] == 0){
 
             if ($move) {
               $queryInsert  = mysql_query("INSERT INTO trx_coursematerial (coursematerial_title,
@@ -74,17 +79,32 @@
             <div class="form-group row">
               <label class="col-md-3">Jenis File</label>
               <div class="col-md-3">
-                <select class="form-control" name="coursematerial_type">
+                <select class="form-control" id="teles" onchange="cusvid()" name="coursematerial_type">
                   <option value="">Pilih status</option>
                   <option value="PDF">PDF</option>
                   <option value="MS.WORD">MS. WORD</option>
                   <option value="VIDEO">VIDEO</option>
                 </select>
               </div>
+              <script type="text/javascript">
+                function cusvid(){
+                  var a = document.getElementById("teles").value;
+                  if (a == "VIDEO") {
+                    document.getElementById('vid').hidden = false;
+                    document.getElementById('pil').hidden = true;
+                  } else {
+                    document.getElementById('vid').hidden = true;
+                    document.getElementById('pil').hidden = false;
+                  }
+                }
+              </script>
+              <textarea id="vid" style="resize: none;" name="video_link" hidden=""></textarea>
                <label class="col-md-3" ><p align="right">File (PDF,WORD,VIDEO)</p></label>
+              <div id="pil">
                 <div class="col-md-3">
                   <input type="file" class="form-control" required="" name="coursematerial_file">
                 </div>
+              </div>
             </div>
             <div class="form-group">
               <button type="submit" class="btn btn-info pull-right" name="simpan"><span class="fa fa-save"></span> Simpan</button>

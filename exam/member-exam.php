@@ -1,5 +1,10 @@
 <?php 
-  // error_reporting(0);
+  error_reporting(0);
+  if ($_SESSION['member_id']=='') {
+    header('location:index.php');
+    exit();
+  }
+
   $kursus = mysql_query("SELECT * FROM tblx_trainee_detail
   LEFT JOIN ref_coursename ON tblx_trainee_detail.coursename_id_fk=ref_coursename.coursename_id
   LEFT JOIN trx_soalexam ON trx_soalexam.coursename_id_fk=ref_coursename.coursename_id
@@ -72,7 +77,7 @@
                       <button type="button" class="btn btn-primary" onclick="history.back()"><i class="fa fa-arrow-left"></i> Sebelumnya</button> <?php
                     }
                   ?>
-                    <button type="submit" class="btn btn-primary pull-right" id="lanjut" onclick="return confirm('Apakah anda yakin dengan jawaban anda?')" disabled="">Selanjutnya <i class="fa fa-arrow-right"></i> </button> 
+                    <button type="submit" class="btn btn-primary pull-right" id="lanjut"  disabled="">Selanjutnya <i class="fa fa-arrow-right"></i> </button> 
               </div><!-- .process-item-content -->
             </div><!-- .process-item -->
             </form>

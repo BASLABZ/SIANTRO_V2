@@ -142,6 +142,28 @@
     </div><!-- #team -->
     <!-- end:team -->
 
+    <!-- begin:team -->
+    <div id="team" class="team content-section bg-white">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 marg-60-btm">
+            <h2 class="text-big text-center text-uppercase">Video Tutorial</h2>
+          </div><!-- .col-## -->
+          <div class="col-sm-4">
+            <iframe src="https://www.youtube.com/embed/cjA6XUD3BfM" height="300px" allowfullscreen></iframe>
+          </div><!-- .col-## -->
+          <div class="col-sm-4">
+            <iframe src="https://www.youtube.com/embed/UtjFu8c_goE" height="300px" allowfullscreen></iframe>
+          </div><!-- .col-## -->
+          <div class="col-sm-4">
+            <iframe src="https://www.youtube.com/embed/UtjFu8c_goE" height="300px" allowfullscreen></iframe>
+          </div><!-- .col-## -->
+        </div><!-- .row -->
+      </div><!-- container -->
+    </div><!-- #team -->
+    <!-- end:team -->
+
+
     <?php include 'pengumuman.php'; ?>
     <?php 
       if (isset($_SESSION['member_id'])) {

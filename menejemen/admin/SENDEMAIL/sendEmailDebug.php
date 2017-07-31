@@ -13,9 +13,9 @@ $mail->Host = 'smtp.gmail.com';
 $mail->Port = 587;
 $mail->SMTPSecure = 'tls';
 $mail->SMTPAuth = true;
-$mail->Username = "ahmad.bastian8@gmail.com";
-$mail->Password = "4m4nd4b4s";
-$mail->setFrom('ahmad.bastian8@gmail.com', 'NOFITIFIKASI PEMBAYARAN KURSUS ANTROPOLOGI');
+$mail->Username = "siantroUgm18@gmail.com";
+$mail->Password = "siantrougm1895";
+$mail->setFrom('siantroUgm18@gmail.com', 'NOFITIFIKASI PEMBAYARAN KURSUS ANTROPOLOGI');
 $namaPenerimaEmail  = "$emails";
 $mail->addAddress($emails, 'John Doe');
 function get_include_contents($filename) {

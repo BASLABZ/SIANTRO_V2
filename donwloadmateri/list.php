@@ -63,6 +63,13 @@
                   </td>
                     <td><?php echo $rowMeteri['operator_name']; ?></td>
                      <td>
+                      <?php 
+                        if ($rowMeteri['coursematerial_type']=='VIDEO') { ?>
+                         <a href="<?php echo $rowMeteri['coursematerial_file']; ?>" class="btn btn-warning" target="_BLANK"> <span class="fa fa-eye"></span> lihat</a> <?php                        
+                        } else { ?>
+                          <a href="menejemen/upload/materi/<?php echo $rowMeteri['coursematerial_file']; ?>" class="btn btn-warning" target="_BLANK"> <span class="fa fa-eye"></span> lihat</a> <?php
+                        }
+                      ?>
                        <a href="menejemen/upload/materi/<?php echo $rowMeteri['coursematerial_file']; ?>" class="btn btn-info" target="_BLANK"> <span class="fa fa-download"></span> download</a>
                     </td>
 
