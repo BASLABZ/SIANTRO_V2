@@ -38,7 +38,11 @@
     <link href="assets/css/font-awesome.min.css" rel="stylesheet">
     <link href="assets/css/Pe-icon-7-stroke.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="assets/css/style.min.css">
-
+    <link rel="stylesheet" href="countdown/css/jquery.countdown.css">
+    <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
+     
+    <link rel="stylesheet" type="text/css" href="timer/CSS/jquery.countdownTimer.css" />
+    
       
   </head>
   <body id="home">
@@ -65,7 +69,7 @@
     <script src="assets/plugins/jquery.easing.js"></script>
     <script src="assets/js/script.js"></script>
     <!-- tambahan JS buat tanggal  -->
-<script src="menejemen/assets/jquery_datepicker/jquery-ui.js"></script>
+    <script src="menejemen/assets/jquery_datepicker/jquery-ui.js"></script>
 
    
   </body>
@@ -94,3 +98,31 @@
     $( "#datepicker_birthday" ).datepicker({maxDate: "-18y", minDate:"-50y",changeMonth: true, changeYear: true});
   } );
   </script>
+    <script src="countdown/js/jquery.plugin.min.js"></script>
+    <script src="countdown/js/jquery.countdown.js"></script>
+    <script type="text/javascript" src="timer/jquery.countdownTimer.js"></script>
+    <script>
+    $(function () {
+      var austDay = new Date();
+       austDay = new Date(austDay.getFullYear() + 1, 1 - 1, 26);
+        $('#defaultCountdown').countdown({until: austDay});
+    });
+    </script>
+    <script>
+         // $(function(){
+         //      $('#future_date').countdowntimer({
+         //          dateAndTime : "2018/01/01 12:00:00",
+         //          size : "lg",
+         //          regexpMatchFormat: 
+         //              "([0-9]{1,2}):([0-9]{1,2}):([0-9]{1,2}):([0-9]{1,2})",
+         //          regexpReplaceWith: "$1<sup class='displayformat'>days</sup> / $2<sup class='displayformat'>hours</sup> / $3<sup class='displayformat'>minutes</sup> / $4<sup class='displayformat'>seconds</sup>"
+         //      });
+         //  });
+           // $(function(){
+           //        $('#future_date').countdowntimer({
+           //            startDate : "2016/10/01 00:00:00",
+           //            dateAndTime : "2020/01/01 00:00:00",
+           //            size : "lg"
+           //        });
+           //    });
+      </script>

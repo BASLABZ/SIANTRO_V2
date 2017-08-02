@@ -109,6 +109,11 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/js/bootstrapValidator.min.js"></script>
 <script type="text/javascript">
+  
+      
+     
+</script>
+<script type="text/javascript">
   $('#kondisi_bersyarat').on('change',function () {
       if(this.value == "Y") {
         $('#referensi').show();
@@ -187,3 +192,9 @@
 <?php 
     include 'master-validasi.php';
  ?>
+
+  <script>
+    $(document).ready(function(){
+      $(".dropdown-toggle").dropdown();
+    }); 
+  </script>

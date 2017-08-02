@@ -14,7 +14,8 @@
             <h2 class="text-big text-center text-uppercase"><span class="fa fa-user"></span> Ujian <?php echo $rowKursus['coursename_title'] ?></h2>
             <!-- nama kursus dinamis diambil dari session -->
             <hr>
-           <i><p align="center"><span class="fa fa-arrow-left"></span> Bacalah soal dengan teliti, pastikan anda menjawab setiap soal. Semoga Sukses <span class="fa fa-arrow-right"></span> </p></i>
+           <i><p align="center"><span class="fa fa-arrow-left"></span> Bacalah soal dengan teliti, pastikan anda menjawab setiap soal. Semoga Sukses  <span class="fa fa-arrow-right"></span> </p></i>
+           <div id="countdown"></div>
            
           </div><!-- .col-## -->
         </div><!-- .row -->

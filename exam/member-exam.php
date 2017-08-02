@@ -17,10 +17,25 @@
       <div class="container">
         <div class="row">
           <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 marg-60-btm">
+          <div class="pull-left">
+             <div class="panel panel-primary">
+              <div class="panel-heading">
+                 <button class="btn btn-primary btn-lg">
+                 <center>  <div id="countdown"></div></center>
+                 </button>
+              </div>
+            </div>
+          </div>
+            <!-- <div id="defaultCountdown"></div> -->
             <h2 class="text-big text-center text-uppercase"><span class="fa fa-user"></span> Ujian <?php echo $rowKursus['coursename_title'] ?></h2>
             <!-- nama kursus dinamis diambil dari session -->
             <hr>
-           <i><p align="center"><span class="fa fa-arrow-left"></span> Bacalah soal dengan teliti, pastikan anda menjawab setiap soal. Semoga Sukses <span class="fa fa-arrow-right"></span> </p></i>
+           <i><p align="center"><span class="fa fa-arrow-left"></span> Bacalah soal dengan teliti, pastikan anda menjawab setiap soal. Semoga Sukses 
+           <!-- <span id="timer"></span>  -->
+           <span class="fa fa-arrow-right"></span> </p></i>
+           <p>
+              <center>   <span id="future_date"></span></center>
+           </p>
            
           </div><!-- .col-## -->
         </div><!-- .row -->
@@ -41,7 +56,9 @@
             while ($rowExam = mysql_fetch_array($querexam)) {
               $no_urut = $limit+1;
          ?>
-          <div class="col-md-2 col-sm-12"></div>
+          <div class="col-md-2 col-sm-12">
+         
+          </div>
           <div class="col-md-8 col-sm-12" style="margin-top: -6em">
             <form action="index.php?hal=exam/member-exam-check" method="post">
             <div class="process-item highlight text-center">
@@ -88,4 +105,38 @@
       </div><!-- .container -->
     </div><!-- #process -->
     <!-- end:process -->
+     <script type="text/javascript">
+        function countdown( elementName, minutes, seconds )
+          {
+              var element, endTime, hours, mins, msLeft, time;
+
+              function twoDigits( n )
+              {
+                  return (n <= 9 ? "0" + n : n);
+              }
+
+              function updateTimer()
+              {
+                  msLeft = endTime - (+new Date);
+                  if ( msLeft < 1000 ) {
+                      element.innerHTML = "UJIAN SELESAI";
+                      
+                      alert('Terimah Kasih Ujian Telah Selesai'); location.href='index.php' 
+                  } else {
+                      time = new Date( msLeft );
+                      hours = time.getUTCHours();
+                      mins = time.getUTCMinutes();
+                      element.innerHTML = (hours ? hours + ':' + twoDigits( mins ) : mins) + ':' + twoDigits( time.getUTCSeconds() );
+                      setTimeout( updateTimer, time.getUTCMilliseconds() + 500 );
+                  }
+              }
+
+              element = document.getElementById( elementName );
+              endTime = (+new Date) + 1000 * (60*minutes + seconds) + 500;
+              updateTimer();
+          }
+        countdown( "countdown", 90, 0 );
+      </script>
+    
+
     

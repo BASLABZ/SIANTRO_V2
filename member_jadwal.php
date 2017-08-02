@@ -30,7 +30,9 @@
            
               </div>
               <div class="process-item-content"> 
-              <button class="btn btn primary ">Cetak Jadwal </button><br/>
+   
+        <a href="cetak_jadwal_kursus_member.php" target="_BLANK"><button class="btn btn-primary"><span class="fa fa-print"></span> Cetak Jadwal</button></a>
+        <br><br>
                
              <table class="table table-resposive table-hover table-bordered">
               <thead>
@@ -73,6 +75,8 @@
            
               </div>
               <div class="process-item-content"> 
+               <a href="cetak_jadwal_ujian.php" target="_BLANK"><button class="btn btn-primary"><span class="fa fa-print"></span> Cetak Jadwal</button></a>
+               <br><br>
              <table class="table table-resposive table-hover table-bordered">
               <thead>
                 <th>No</th>

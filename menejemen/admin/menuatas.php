@@ -41,9 +41,3 @@
       </div>
     </nav>
   </header>
-
-  <script>
-    $(document).ready(function(){
-      $(".dropdown-toggle").dropdown();
-    }); 
-  </script>

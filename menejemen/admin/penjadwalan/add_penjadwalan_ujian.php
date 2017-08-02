@@ -1,10 +1,13 @@
   <?php 
     $id = $_GET['id'];
+    
     $query  = mysql_query("SELECT * FROM tbl_selectclass s JOIN ref_operator o ON s.operator_id_fk = o.operator_id JOIN ref_rooms r ON s.rooms_id = r.rooms_id JOIN ref_coursename c ON s.coursename_id = c.coursename_id where s.selectcalss_id='".$id."' ");
     $rowList = mysql_fetch_array($query);
     $idkus = $rowList['coursename_id'];
+
     $jumlah = $rowList['kuota'];
     $rowtrain = mysql_fetch_array(mysql_query("SELECT * FROM tblx_trainee_detail where coursename_id_fk = '".$idkus."'"));
+
     if (isset($_POST['jadwal'])) {
       $tglJadwal=date('Y-m-d',strtotime($_POST['jadwal_tanggal']));
       $queryjadwal  = "INSERT INTO tbl_jadwal (jadwal_tanggal,jadwal_mulai,jadwal_selesai,selectcalss_id_fk,trainee_id_fk,rooms_id_fk,jadwal_jenis) 

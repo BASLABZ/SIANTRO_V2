@@ -14,6 +14,7 @@
         
         for ($i=0; $i < $banyak ; $i++) { 
            $kodemember = $cekmember[$i];
+
            $insert = "INSERT INTO  trx_absen (absen_date,jadwal_id_fk,member_id_fk,absen_meet) values (NOW(),'".$idjadwal."','".$kodemember."','1')";
            $runinsert  = mysql_query($insert);
         }
@@ -24,6 +25,37 @@
            echo "<script> alert('Data Gagal Disimpan'); location.href='index.php?hal=absensi/jadwal_absensi&id=".$id."' </script>";exit;
         }
 
+      }
+      // absen semua 
+      if (isset($_POST['absensemua'])) {
+        $query_banyak_peserta = mysql_query("SELECT count(*) as banyak_peserta FROM tblx_trainee_detail d JOIN tbl_trainee tn ON d.trainee_id_fk = tn.trainee_id JOIN ref_coursename c ON d.coursename_id_fk = c.coursename_id JOIN tbl_member m ON tn.member_id_fk = m.member_id where c.coursename_id='".$idkus."' and m.member_status_active='active'");
+        $query_cek_member_id = mysql_query("SELECT * FROM tblx_trainee_detail d JOIN tbl_trainee tn ON d.trainee_id_fk = tn.trainee_id JOIN ref_coursename c ON d.coursename_id_fk = c.coursename_id JOIN tbl_member m ON tn.member_id_fk = m.member_id where c.coursename_id='".$idkus."' and m.member_status_active='active'");
+          
+          $row_banyak_peserta = mysql_fetch_array($query_banyak_peserta);
+          $banyak_peserta = $row_banyak_peserta['banyak_peserta'];        
+                  while ($row_cek_member_id = mysql_fetch_array($query_cek_member_id)) {
+                      $kodemember_semua = $row_cek_member_id['member_id'];
+                      
+                      $insert_semua = "INSERT INTO  trx_absen (absen_date,jadwal_id_fk,member_id_fk,absen_meet) values (NOW(),'".$idjadwal."','".$kodemember_semua."','1')";
+
+                      $run_query_semua=mysql_query($insert_semua);
+             
+          }
+          if ($run_query_semua) {
+             echo "<script> alert('Data Berhasil Disimpan'); location.href='index.php?hal=absensi/jadwal_absensi&id=".$id."' </script>";exit;
+          }
+        // $cek_member = mysql_fetch_array(mysql_query("SELECT * FROM tblx_trainee_detail d JOIN tbl_trainee tn ON d.trainee_id_fk = tn.trainee_id JOIN ref_coursename c ON d.coursename_id_fk = c.coursename_id JOIN tbl_member m ON tn.member_id_fk = m.member_id where c.coursename_id='".$idkus."' and m.member_status_active='active'"));
+
+        // $row_banyak_peserta = mysql_fetch_array($query_banyak_peserta);
+        // $banyak_peserta = $row_banyak_peserta['banyak_peserta'];
+        // $cek_member_id= $cek_member['member_id'];
+        //     for ($x=0 ; $x < $banyak_peserta ; $x++) { 
+        //      $kodemember_semua = $cek_member_id[$x];
+        //      print_r($cek_member_id[$x]);
+        //      // $insert_semua = "INSERT INTO  trx_absen (absen_date,jadwal_id_fk,member_id_fk,absen_meet) values (NOW(),'".$idjadwal."','".$kodemember_semua."','1')";
+        //      // print_r($insert_semua);
+        //      // $runinsert  = mysql_query($insert);
+        //   }    
       }
   ?>
   <section class="content-header">
@@ -100,7 +132,7 @@
                           
                          ?>
                          <tr>
-                          <td><input type="checkbox" name="absen"></td>
+                          <td><input type="checkbox" name="absen"> </td>
                            <td><input type="hidden" value="<?php echo $rowmember['member_id']; ?>" name='member_id[]'>
                            <?php echo $rowmember['member_name']; ?></td>
                          </tr>
@@ -113,7 +145,8 @@
                   <div class="form-group">
                       <div class="col-md-10">
                       <!-- nambah disini ??? -->
-                       <input type="checkbox" name="absen">Pilih semua 
+                       <!-- <input type="checkbox" >Pilih semua  -->
+                       <button type="submit" name="absensemua" class="btn btn-info pull-left"><span class="fa fa-list"></span> ABSEN SEMUA <span class="fa fa-check"></span> </button>
                         <button type="submit" class="btn btn-info pull-right" name="simpan"><span class="fa fa-check"></span> ABSEN</button>
                       </div>
                     </div>
@@ -123,3 +156,4 @@
         </div>
       </div>
     </section>
+
