@@ -40,9 +40,8 @@
     <link rel="stylesheet" type="text/css" href="assets/css/style.min.css">
     <link rel="stylesheet" href="countdown/css/jquery.countdown.css">
     <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
-     
     <link rel="stylesheet" type="text/css" href="timer/CSS/jquery.countdownTimer.css" />
-    
+            <script src="assets/plugins/jquery.min.js"></script>
       
   </head>
   <body id="home">
@@ -61,8 +60,6 @@
       }
    ?>
    <?php include 'footer.php'; ?>
-
-    <script src="assets/plugins/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/plugins/parallax.min.js"></script>
     <script src="assets/js/navigation.js"></script>

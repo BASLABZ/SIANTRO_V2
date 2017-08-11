@@ -4,6 +4,7 @@
     header('location:index.php');
     exit();
   }
+  // end block timer
 
   $kursus = mysql_query("SELECT * FROM tblx_trainee_detail
   LEFT JOIN ref_coursename ON tblx_trainee_detail.coursename_id_fk=ref_coursename.coursename_id
@@ -11,7 +12,18 @@
   WHERE tblx_trainee_detail_id='".$_GET['kur']."'");
   
   $rowKursus = mysql_fetch_array($kursus);
-// print_r($rowKursus);
+//============= bikin kombinasi ID untuk sessionnya biar dinamis disini ========================
+  $idxSessionTimer = md5('asdf');
+  // block timer
+  if (empty($_SESSION[$idxSessionTimer])) {
+      $_SESSION[$idxSessionTimer] = array(
+          'time_end' => strtotime(date('Y-m-d H:i:s') . ' +90 minutes'),
+      );
+      $timer = '?' . http_build_query($_SESSION[$idxSessionTimer]);
+  } else {
+      $timer = '?' . http_build_query($_SESSION[$idxSessionTimer]);
+  }
+  // print_r($rowKursus);
 
 ?>
   <!-- prosedur -->
@@ -23,7 +35,7 @@
              <div class="panel panel-primary">
               <div class="panel-heading">
                  <button class="btn btn-primary btn-lg">
-                 <center>  <div id="countdown"></div></center>
+                    <span id="waktu"></span>
                  </button>
               </div>
             </div>
@@ -108,36 +120,50 @@
     </div><!-- #process -->
     <!-- end:process -->
      <script type="text/javascript">
-        function countdown( elementName, minutes, seconds )
-          {
-              var element, endTime, hours, mins, msLeft, time;
+        // function countdown( elementName, minutes, seconds )
+        //   {
+        //       var element, endTime, hours, mins, msLeft, time;
 
-              function twoDigits( n )
-              {
-                  return (n <= 9 ? "0" + n : n);
-              }
+        //       function twoDigits( n )
+        //       {
+        //           return (n <= 9 ? "0" + n : n);
+        //       }
 
-              function updateTimer()
-              {
-                  msLeft = endTime - (+new Date);
-                  if ( msLeft < 1000 ) {
-                      element.innerHTML = "UJIAN SELESAI";
+        //       function updateTimer()
+        //       {
+        //           msLeft = endTime - (+new Date);
+        //           if ( msLeft < 1000 ) {
+        //               element.innerHTML = "UJIAN SELESAI";
                       
-                      alert('Terimah Kasih Ujian Telah Selesai'); location.href='index.php' 
-                  } else {
-                      time = new Date( msLeft );
-                      hours = time.getUTCHours();
-                      mins = time.getUTCMinutes();
-                      element.innerHTML = (hours ? hours + ':' + twoDigits( mins ) : mins) + ':' + twoDigits( time.getUTCSeconds() );
-                      setTimeout( updateTimer, time.getUTCMilliseconds() + 500 );
-                  }
-              }
+        //               alert('Terimah Kasih Ujian Telah Selesai'); location.href='index.php' 
+        //           } else {
+        //               time = new Date( msLeft );
+        //               hours = time.getUTCHours();
+        //               mins = time.getUTCMinutes();
+        //               element.innerHTML = (hours ? hours + ':' + twoDigits( mins ) : mins) + ':' + twoDigits( time.getUTCSeconds() );
+        //               setTimeout( updateTimer, time.getUTCMilliseconds() + 500 );
+        //           }
+        //       }
 
-              element = document.getElementById( elementName );
-              endTime = (+new Date) + 1000 * (60*minutes + seconds) + 500;
-              updateTimer();
+        //       element = document.getElementById( elementName );
+        //       endTime = (+new Date) + 1000 * (60*minutes + seconds) + 500;
+        //       updateTimer();
+        //   }
+        // countdown( "countdown", 90, 0 );
+          function loadlink(){
+              $('#waktu').load('timer.php<?php echo $timer; ?>',function () {
+                   // $(this).unwrap();
+                   
+              });
           }
-        countdown( "countdown", 90, 0 );
+
+          // This will run on page load
+          loadlink();
+
+          // this will run after every 1 seconds
+          setInterval(function(){
+              loadlink()
+          }, 1000);
       </script>
     
 
