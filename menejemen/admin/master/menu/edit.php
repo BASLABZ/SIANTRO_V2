@@ -11,7 +11,7 @@
                                                           menu_parent = '".$_POST['menu_parent']."'
                                                        WHERE menu_id='".$idmenu."'");
       if ($queryUbahMenu) {
-        echo "<script> alert('Terimakasih Data Berhasil Disimpan'); location.href='index.php?hal=master/menu/list' </script>";exit;
+        echo "<script> alert('Terimakasih Data Berhasil Diperbarui'); location.href='index.php?hal=master/menu/list' </script>";exit;
       }
     }
  ?>

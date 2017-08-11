@@ -1,12 +1,15 @@
+ <?php 
+ // session_start();
+  ?>
   <section class="content-header">
       <h1>
-        Absensi Kelas
+        Daftar Skor Ujian
         
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Transaksi</a></li>
-        <li class="active">Absensi Kelas</li>
+        <li><a href="#"></a></li>
+        <li class="active">Daftar Skor</li>
       </ol>
   </section>
     <section class="content">
@@ -14,7 +17,7 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Absensi Kelas</h3>
+              <h3 class="box-title">Daftar Skor Ujian <br/>
             </div>
             <div class="box-body">
               <table id="tableMaster" class="table table-bordered table-hover">
@@ -29,8 +32,12 @@
                 <tbody>
                   <?php 
                     $no=0;
-                      $query = mysql_query("SELECT * FROM tbl_selectclass s JOIN ref_operator o ON s.operator_id_fk = o.operator_id JOIN ref_rooms r ON s.rooms_id = r.rooms_id JOIN ref_coursename c ON s.coursename_id = c.coursename_id ");
-                      // TADINYA ADA INI TAPI NGGA NAMPIL DATANYA -___- : where o.operator_id = '".$_SESSION['operator_id']."'
+                      $query = mysql_query("SELECT * FROM tbl_selectclass s JOIN ref_operator o ON s.operator_id_fk = o.operator_id JOIN ref_rooms r ON s.rooms_id = r.rooms_id JOIN ref_coursename c ON s.coursename_id = c.coursename_id
+                        where o.operator_id = '".$_SESSION['operator_id']."'
+
+                        ");
+                      // where o.operator_id = '".$_SESSION['operator_id']."'
+                      // tadinya ada ini ada kondisi ddan parameter untuk query list nyaaa 
                       while ($rowselect  = mysql_fetch_array($query)) {
                         
                    ?>
@@ -41,7 +48,7 @@
                      <td><?php echo $rowselect['rooms_name']; ?></td>
                      <td><?php echo $rowselect['kuota']; ?></td>
                      <td>
-                     <a href="index.php?hal=absensi/jadwal_absensi&id=<?php echo $rowselect['selectcalss_id']; ?>" class="btn btn-success"><span class="fa fa-users"></span> ABSENSI KURSUS INI</a>
+                     <a href="index.php?hal=soalujian/view_soal_ujian&id=<?php echo $rowselect['coursename_id']; ?>" class="btn btn-success"> <span class="fa fa-eye"></span> lihat Soal Ujian</a>
                      </td>
                    </tr>
                    <?php } ?>

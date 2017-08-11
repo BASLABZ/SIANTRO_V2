@@ -29,8 +29,8 @@
             <span class="info-box-icon"><i class="fa fa-bookmark-o"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">Bookmarks</span>
-              <span class="info-box-number">41,410</span>
+              <span class="info-box-text">Skor Ujian</span>
+              <span class="info-box-number"><a href="index.php?hal=skor/list" style="color: white;">Daftar Skor</a></span>
 
               <div class="progress">
                 <div class="progress-bar" style="width: 70%"></div>
@@ -69,14 +69,14 @@
             <span class="info-box-icon"><i class="fa fa-calendar"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">Events</span>
-              <span class="info-box-number">41,410</span>
+              <span class="info-box-text">Jadwal Kursus</span>
+              <span class="info-box-number"><a href="index.php?hal=penjadwalan/list" style="color: white;">Data Jadwal Kursus</a></span>
 
               <div class="progress">
                 <div class="progress-bar" style="width: 70%"></div>
               </div>
                   <span class="progress-description">
-                    70% Increase in 30 Days
+                    
                   </span>
             </div>
             <!-- /.info-box-content -->
@@ -90,7 +90,7 @@
 
             <div class="info-box-content">
               <span class="info-box-text">UJIAN PESERTA</span>
-              <span class="info-box-number"><a href="index.php?hal=ujian/list" style="color: white;">Setting Ujian</a> </span>
+              <span class="info-box-number"><a href="index.php?hal=soalujian/list" style="color: white;">Setting Ujian</a> </span>
 
               <div class="progress">
                 <div class="progress-bar" style="width: 70%"></div>

@@ -11,6 +11,8 @@
       if (isset($_POST['simpan'])) {
         $cekmember = $_POST['member_id'];
         $banyak  = count($cekmember);
+        // print_r($cekmember);
+        // die();
         
         for ($i=0; $i < $banyak ; $i++) { 
            $kodemember = $cekmember[$i];

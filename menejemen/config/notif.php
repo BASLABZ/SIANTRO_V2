@@ -22,7 +22,7 @@
 	// ===== REGISTRASI MEMBER ==== //		
 
 	// ===== KONFIRMASI SALDO ==== //
-		$querySaldo=mysql_query("SELECT * from trx_saldo WHERE saldo_status='Deposit'");
+		$querySaldo=mysql_query("SELECT * from trx_saldo WHERE saldo_status='Deposit' or saldo_status='Request' ");
 		$cqS = mysql_num_rows($querySaldo);
 		if ($cqS>0) { 
 			$nSaldo = $cqS;

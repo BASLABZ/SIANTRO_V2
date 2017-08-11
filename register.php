@@ -3,7 +3,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-8 col-md-offset-2">
-            <h2 class="text-big text-center marg-40-btm">Sign Up <span class="pe-7s-add-user"></span></h2>
+            <h2 class="text-big text-center marg-40-btm">Sign Up / Silahkan Registrasi Disini <span class="pe-7s-add-user"></span></h2>
             <form class="contact-form" action="?hal=register-save" method="post" enctype='multipart/form-data'>
               <div class="row">
                 <div class="panel panel-success">
@@ -14,13 +14,14 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="name">Nama Lengkap</label>
-                        <input type="text" class="form-control form-bordered" placeholder="Masukkan nama" name="frm_name" required="" >
+                        <input type="text" class="form-control form-bordered" placeholder="Masukkan nama lengkap anda" name="frm_name" required="" >
                       </div><!-- .form-group -->
                     </div><!-- .col-sm-6 -->
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" class="form-control form-bordered" placeholder="Masukkan email" id="email" name="frm_email" required="">
+                        <input type="email" class="form-control form-bordered" placeholder="Masukkan email anda" id="email" name="frm_email" required="">
+                        <em>*)diperlukan alamat email valid untuk verifikasi akun serta pengiriman notifikasi terkait kursus ini</em>
                       </div><!-- .form-group -->
                     </div><!-- .col-sm-6 -->
                     <div class="col-sm-6">

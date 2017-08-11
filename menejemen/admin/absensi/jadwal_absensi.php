@@ -46,7 +46,7 @@
              <td><?php echo $rowjadwal['rooms_name']; ?></td>
              <td>
               
-                 <a href="index.php?hal=absensi/absen_peserta&id=<?php echo $rowjadwal['selectcalss_id_fk']; ?>" class="btn btn-success"><span class="fa fa-check"></span> ABENSI</a>
+                 <a href="index.php?hal=absensi/absen_peserta&id=<?php echo $rowjadwal['selectcalss_id_fk']; ?>" class="btn btn-success"><span class="fa fa-check"></span> ABSENSI</a>
              </td>
            </tr>
           <?php } ?>

@@ -18,11 +18,13 @@
             </div>
             <div class="box-body dataTables_scrollBody">
               <table id="tableMasterScroll" class="table table-bordered table-hover">
-               <thead>  
+               <thead>
                   <th>No</th>
+                  <th>Tanggal Saldo Masuk</th>
                   <th>Nama Peserta</th>
                   <th>Jumlah Total Saldo</th>
                   <th>Status Saldo</th>
+                  <th>Keterangan</th>
                   <th>Aksi</th>
                 </thead>
                 <tbody>
@@ -40,7 +42,6 @@
                                         ON tblx_trainee_detail.trainee_id_fk=tbl_trainee.trainee_id
                                         LEFT JOIN ref_coursename
                                         ON ref_coursename.coursename_id=tblx_trainee_detail.coursename_id_fk
-                                        GROUP BY trx_saldo.member_id_fk
                                         ORDER BY tbl_trainee.member_id_fk"); 
                       while ($roSaldo = mysql_fetch_array($querySaldo)) {
                    ?>
@@ -52,9 +53,21 @@
                      ?>
                    <tr>
                      <td><?php echo ++$no; ?></td>
+                     <td><?php echo $roSaldo['saldo_date']; ?></td>
                      <td><?php echo $roSaldo['member_name']; ?></td>
                      <td><?php echo "Rp.".number_format($roSaldo['saldo_total'],2,",","."); ?></td>
                      <td><button class="btn btn-sm btn-primary"><?php echo $roSaldo['saldo_status']; ?></button></td>
+                     <td>
+                        <?php 
+                          if ($roSaldo['saldo_status']=='Deposit') {
+                            echo "Kelebihan ".$roSaldo['confirmation_category']." ".$roSaldo['coursename_title']; 
+                          } elseif ($roSaldo['saldo_status']=='Request') {
+                            echo "Request Pencairan";
+                          } else {
+                            echo "Dana telah dicairkan";
+                          }
+                        ?>
+                     </td>
                      <td>
                         <a href="index.php?hal=saldo/verifikasi-pencairan-saldo&id=<?php echo $roSaldo['saldo_id']; ?>" class="btn btn-success"><span class="fa fa-pencil"></span> Lihat Detail</a>
                      

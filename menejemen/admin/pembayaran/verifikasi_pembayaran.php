@@ -26,13 +26,15 @@
                                                                     confirmation_id_fk,
                                                                     saldo_total,
                                                                     saldo_date,
-                                                                    saldo_status)
+                                                                    saldo_status,
+                                                                    member_id_fk)
                                                             VALUES(
                                                                     '',
                                                                     '".$id."',
                                                                     '".$var_sisa."',
                                                                     '".date('Y-m-d')."',
-                                                                    'Deposit'
+                                                                    'Deposit',
+                                                                    '".$idmember."'
                                                                     )"); 
                     }     
 

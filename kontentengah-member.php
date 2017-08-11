@@ -153,10 +153,10 @@
             <iframe src="https://www.youtube.com/embed/cjA6XUD3BfM" height="300px" allowfullscreen></iframe>
           </div><!-- .col-## -->
           <div class="col-sm-4">
-            <iframe src="https://www.youtube.com/embed/UtjFu8c_goE" height="300px" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/EjXRwPNGfsk" height="300px" allowfullscreen></iframe>
           </div><!-- .col-## -->
           <div class="col-sm-4">
-            <iframe src="https://www.youtube.com/embed/UtjFu8c_goE" height="300px" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/A9JNF1bHhFE" height="300px" allowfullscreen></iframe>
           </div><!-- .col-## -->
         </div><!-- .row -->
       </div><!-- container -->

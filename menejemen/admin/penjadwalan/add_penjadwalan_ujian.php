@@ -61,7 +61,7 @@
             <div class="form-group row">
               <label class="col-md-4">Hari/Tanggal</label>
               <div class="col-md-5">
-                <input type="text" autocomplete="off" id="datepicker" class="form-control" name="jadwal_tanggal" value="">
+                <input type="text" autocomplete="off" id="datepicker_jadwal" class="form-control" name="jadwal_tanggal" value="">
                 </div>
                 <div class="col-md-3">
                 <input type="text" class="form-control" name="jadwal_day" value="" readonly="">
@@ -160,3 +160,8 @@
      </div>
     </div>
   </section>
+   <style type="text/css">
+      div#ui-datepicker-div {
+        top: 99px !important;
+      }
+    </style>

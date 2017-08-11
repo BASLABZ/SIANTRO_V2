@@ -11,6 +11,8 @@
   WHERE tblx_trainee_detail_id='".$_GET['kur']."'");
   
   $rowKursus = mysql_fetch_array($kursus);
+// print_r($rowKursus);
+
 ?>
   <!-- prosedur -->
     <div id="process" class="process content-section bg-light">
